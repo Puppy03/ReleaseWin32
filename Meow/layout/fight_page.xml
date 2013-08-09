@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="FightPage" Delegator="FightDelegator" StaticPage="true">
+  <Button ID="BtnPause" Style="BtnPause" Touch="onPauseGame" Pos="L50,T85"/>
+</UIPage>

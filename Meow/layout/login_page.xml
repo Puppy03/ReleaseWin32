@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="BattleCommand" Delegator="LoginDelegator" StaticPage="false">
+  <Image ID="BoardTitle" ImageFile="ui/c01.png" Pos="0,100"/>
+  <Button ID="BtnStart" Style="DftBtnLong" Touch="onStartGame" Pos="0,B85">
+    <Text Content="开始游戏" Font="Arial" FontSize="24" Offset="0,0"/>
+  </Button>
+</UIPage>

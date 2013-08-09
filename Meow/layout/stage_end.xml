@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="StageEnd" Delegator="FightDelegator" StaticPage="false">
+  <Label ID="LblEnd" Style="" Content="关卡结束" Font="Arial" FontSize="24" Color="170,153,134" Pos="0,160"/>
+  <Button ID="BtnStart" Style="DftBtnLong" Touch="onContinue" Pos="0,0">
+    <Text Content="继续" Font="Arial" FontSize="24" Offset="0,0"/>
+  </Button>
+</UIPage>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Styles>
+  <Style Type="Button" ID="DftBtnLong" ImgFile="ui/btn_n.png" ImgPressed="ui/btn_s.png" TScale="1.0"/>
+  <Style Type="Button" ID="BtnPause" ImgFile="ui/btn_pause_c.png" ImgPressed="ui/btn_pause_n.png" TScale="1.00"/>
+</Styles>

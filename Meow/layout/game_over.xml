@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="GameOver" Delegator="FightDelegator" StaticPage="false">
+  <Button ID="BtnStart" Style="DftBtnLong" Touch="onRestart" Pos="0,0">
+    <Text Content="重新开始" Font="Arial" FontSize="24" Offset="0,0"/>
+  </Button>
+</UIPage>
