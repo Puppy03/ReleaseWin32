@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="CommandLeft" Delegator="BattleDelegator" StaticPage="false">
+  <Image ID="BoardBg" ImageFile="ui/command_box.png" Pos="L140,B400"/>
+  <Image ID="BoardTitle" ImageFile="ui/title.png" Pos="L140,B583"/>
+  <Label ID="LblTitle" Style="" Content="作战命令" BmpFont="font/default.fnt" Scale="1.12" Color="153,136,123" Pos="L140,B580"/>
+  <Button ID="BtnForward" Style="CommandBtn" Touch="onTouchForwardLeft" Pos="L140,B515">
+    <Text Content="全军进攻" BmpFont="font/default.fnt" Scale="1" Offset="0,0"/>
+  </Button>
+  <Button ID="BtnStandby" Style="CommandBtn" Touch="onTouchStanbyLeft" Pos="L140,B450">
+    <Text Content="全军待命" BmpFont="font/default.fnt" Scale="1" Offset="0,0"/>
+  </Button>
+  <Button ID="HeroForward" Style="CommandBtn" Touch="onHeroForwardLeft" Pos="L140,B385">
+    <Text Content="武将出击" BmpFont="font/default.fnt" Scale="1" Offset="0,0"/>
+  </Button>
+  <Button ID="BtnSkill1" Style="CommandBtn" Touch="onTouchSkill1Left" Pos="L140,B320">
+    <Text Content="技能1" BmpFont="font/default.fnt" Scale="1" Offset="0,0"/>
+  </Button>
+  <Button ID="BtnSkill2" Style="CommandBtn" Touch="onTouchSkill2Left" Pos="L140,B255">
+    <Text Content="技能2" BmpFont="font/default.fnt" Scale="1" Offset="0,0"/>
+  </Button>
+</UIPage>

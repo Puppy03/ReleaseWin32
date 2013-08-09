@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="BattlePage" Delegator="BattleDelegator" StaticPage="true">
+  <Image ID="BoardBgLeft" ImageFile="ui/board.png" Pos="L288,B60"/>
+  <Image ID="RageDecorLeft" ImageFile="ui/rage_decor.png" Pos="L290,B136"/>
+  <Image ID="RageBarBgLeft" ImageFile="ui/rage_bg.png" Pos="L290,B136"/>
+  <Progress ID="RageBarLeft" ImageFile="ui/rage_bar.png" Percent="100.0" Pos="L289,B135"/>
+  <Icon ID="AvatarLeft" Style="AvatarIcons" IconIdx="0" Pos="L91,B82" Touch="onTouchAvatarLeft"/>
+  <Image ID="FrameLeft" ImageFile="ui/frame.png" Pos="L121,B84"/>
+  <Image ID="HpBarBgLeft" ImageFile="ui/hp_bg.png" Pos="L260,B88"/>
+  <Image ID="SkillBarBgLeft" ImageFile="ui/skill_bg.png" Pos="L249,B69"/>
+  <Progress ID="HpBarLeft" ImageFile="ui/hp_bar.png" Percent="100.0" Pos="L260,B88"/>
+  <Progress ID="SkillBarLeft" ImageFile="ui/skill_bar.png" Percent="100.0" Pos="L249,B69"/>
+  <Image ID="BDecorLeft" ImageFile="ui/point_decor.png" Pos="L184,B84"/>
+  <Label ID="TMingLeft" Style="" Content="命" BmpFont="font/default.fnt" Scale="1" Color="170,153,134" Pos="L194,B94"/>
+  <Label ID="TJiLeft" Style="" Content="技" BmpFont="font/default.fnt" Scale="1" Color="170,153,134" Pos="L173,B73"/>
+  <Label ID="TPowerLeft" Style="" Content="武" BmpFont="font/default.fnt" Scale="1.5" Color="53,36,23" Pos="L215,B42"/>
+  <Label ID="TArmyLeft" Style="" Content="兵" BmpFont="font/default.fnt" Scale="1.5" Color="53,36,23" Pos="L300,B42"/>
+  <Label ID="ValPowerLeft" Style="" Content="999" BmpFont="font/default.fnt" Scale="0.6" Color="53,36,23" Pos="L215,B17"/>
+  <Label ID="ValArmyLeft" Style="" Content="999" BmpFont="font/default.fnt" Scale="0.6" Color="53,36,23" Pos="L300,B17"/>
+  <Image ID="BoardBgRight" ImageFile="ui/board.png" FlipX="true" Pos="R288,B60"/>
+  <Image ID="RageDecorRight" ImageFile="ui/rage_decor.png" FlipX="true" Pos="R290,B136"/>
+  <Image ID="RageBarBgRight" ImageFile="ui/rage_bg.png" FlipX="true" Pos="R290,B136"/>
+  <Progress ID="RageBarRight" ImageFile="ui/rage_bar.png" Percent="100.0" FlipX="true" Pos="R289,B135"/>
+  <Icon ID="AvatarRight" Style="AvatarIcons" IconIdx="1" Pos="R91,B82" FlipX="true" Touch="onTouchAvatarRight"/>
+  <Image ID="FrameRight" ImageFile="ui/frame.png" FlipX="true" Pos="R121,B84"/>
+  <Image ID="HpBarBgRight" ImageFile="ui/hp_bg.png" Pos="R260,B88"/>
+  <Image ID="SkillBarBgRight" ImageFile="ui/skill_bg.png" Pos="R249,B69"/>
+  <Progress ID="HpBarRight" ImageFile="ui/hp_bar.png" Percent="100.0" FlipX="true" Pos="R260,B88"/>
+  <Progress ID="SkillBarRight" ImageFile="ui/skill_bar.png" Percent="100.0" FlipX="true" Pos="R249,B69"/>
+  <Image ID="BDecorRight" ImageFile="ui/point_decor.png" FlipX="true" Pos="R184,B84"/>
+  <Label ID="TMingRight" Style="" Content="命" BmpFont="font/default.fnt" Scale="1" Color="170,153,134" Pos="R194,B94"/>
+  <Label ID="TJiRight" Style="" Content="技" BmpFont="font/default.fnt" Scale="1" Color="170,153,134" Pos="R173,B73"/>
+  <Label ID="TPowerRight" Style="" Content="武" BmpFont="font/default.fnt" Scale="1.5" Color="53,36,23" Pos="R215,B42"/>
+  <Label ID="TArmyRight" Style="" Content="兵" BmpFont="font/default.fnt" Scale="1.5" Color="53,36,23" Pos="R300,B42"/>
+  <Label ID="ValPowerRight" Style="" Content="999" BmpFont="font/default.fnt" Scale="0.6" Color="53,36,23" Pos="R215,B17"/>
+  <Label ID="ValArmyRight" Style="" Content="999" BmpFont="font/default.fnt" Scale="0.6" Color="53,36,23" Pos="R300,B17"/>
+  <Image ID="MiniMapBg" ImageFile="ui/minimap_bg.png" FlipX="true" Pos="0,B75"/>
+  <Label ID="LblTime" Style="" Content="3:00" BmpFont="font/default.fnt" Scale="1.2" Color="155,136,23" Pos="0,B119"/>
+</UIPage>

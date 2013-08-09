@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Styles>
+  <Style Type="Static" ID="DefautLbl" ImgFile="ui/label_bkg1.png"/>
+  <Style Type="Button" ID="DefautBtn" ImgFile="ui/btn_default2.png" Normal="0,0,158,52" Pressed="0,54,158,52" TScale="1.05"/>
+  <Style Type="Button" ID="CommandBtn" ImgFile="ui/btn_command.png" Normal="0,0,242,58" Pressed="0,58,242,58" TScale="1.00"/>
+  <Style Type="Icons" ID="AvatarIcons" ImgFile="ui/avatars.png" XSeg="2" YSeg="2"/>
+</Styles>
