@@ -69,7 +69,7 @@ updateStat:function (dt)
     if(fighter != null)
     {
         var e_rect = rectForNode(this);
-        var f_rect = rectForNode(fighter);
+        var f_rect = fighter.getColRect();
         if(cc.rectIntersectsRect(e_rect,f_rect))
         {
             this.unschedule(this.updateStat);

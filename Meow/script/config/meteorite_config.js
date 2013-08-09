@@ -16,6 +16,6 @@ Meteorite00:{
     circle_maxscale:2.0,
     particel:"particle/meteorite.plist",
     particel_offset:{x:0,y:50},
-    col_rect:{x:0,y:0,width:125,height:125},
+    col_size:{width:100,height:100},
 },
 };

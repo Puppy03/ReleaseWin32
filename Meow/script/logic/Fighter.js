@@ -139,6 +139,13 @@ tickDyingEnd:function(dt)
         this.getParent().removeChild(this,true);
         return;
     }
-}
+},
+getColRect:function () 
+{
+    var origin = this.getPosition();
+    origin.x -= this.col_size.width*0.5;
+    origin.y -= this.col_size.height*0.5;
+    return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
+},
 
 });

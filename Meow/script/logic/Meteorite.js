@@ -159,8 +159,8 @@ tickDrop:function(dt)
     var fighter = this.getParent().fighter;
     if(fighter != null)
     {
-        var e_rect = rectForNode(this.meteo_img,true);
-        var f_rect = rectForNode(fighter,true);
+        var e_rect = this.getColRect();;
+        var f_rect = fighter.getColRect();
         if(cc.rectIntersectsRect(e_rect,f_rect))
         {
             this.getParent().removeChild(this,true);
@@ -168,6 +168,15 @@ tickDrop:function(dt)
             return;
         }
     }
+},
+
+getColRect:function () 
+{
+    var origin = this.convertToWorldSpace(this.meteo_img.getPosition());
+    var col_size = this.config.col_size;
+    origin.x -= col_size.width*0.5;
+    origin.y -= col_size.height*0.5;
+    return new cc.rect(origin.x,origin.y,col_size.width,col_size.height);
 }
 
 });
