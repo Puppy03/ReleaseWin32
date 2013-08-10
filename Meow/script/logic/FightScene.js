@@ -218,7 +218,7 @@ var FightScene = UIController.extend({
 
     createNode:function (seg_node)
     {
-        var pos_x = seg_node.born_x>0?seg_node.born_x:(win_size.width+seg_node.born_x);
+        var pos_x = win_size.width*0.5+seg_node.born_x;
         var pos_y = win_size.height+100;
         if(seg_node.type == EObjType.EEnemy)
         {

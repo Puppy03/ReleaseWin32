@@ -21,7 +21,7 @@ Segment00:[
 {time:5.5,  type:0, born_x:160,config:"Enemy00"},
 {time:6.1,  type:0, born_x:30, config:"Enemy00"},
 {time:6.1,  type:0, born_x:-70,config:"Enemy00"},
-{time:7,  type:0, born_x:100, config:"Enemy00"},
+{time:7,    type:0, born_x:100, config:"Enemy00"},
 ],
 Segment01:[
 {time:1,  type:0, born_x:-200,config:"Enemy00"},
