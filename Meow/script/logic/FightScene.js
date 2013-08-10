@@ -176,7 +176,7 @@ var FightScene = UIController.extend({
     ticksSegments:function (dt) 
     {
         this.segment_tick += dt;
-        if(this.cur_node_idx == (this.cur_segment.length-1))
+        if(this.cur_node_idx == this.cur_segment.length)
         {
             this.cur_seg_idx++;
             this.cur_node_idx = 0;
@@ -202,12 +202,14 @@ var FightScene = UIController.extend({
             var seg_name = this.stage_config.segments[this.cur_seg_idx];
             this.cur_segment = segmentConfig[seg_name];
         }
-        for(var i=this.cur_node_idx+1; i<this.cur_segment.length; i++)
+
+        for(var i=this.cur_node_idx; i<this.cur_segment.length; i++)
         {
             if(this.segment_tick>this.cur_segment[i].time)
             {
+                cc.log("cur node idx:"+i);
                 this.createNode(this.cur_segment[i]);
-                this.cur_node_idx = i;
+                this.cur_node_idx = i+1;
             }
             else
             {
