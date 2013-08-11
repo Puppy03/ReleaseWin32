@@ -77,6 +77,17 @@ shoot:function ()
     this.getParent().addChild(_bullet);
     var pos = this.getPosition();
     pos.y += this.getContentSize().height*0.5;
+    
+    if(true)
+    {
+        pos.x -= 40;
+        var pos2 = cc.p(pos.x+80,pos.y);
+        var _bullet2 = new Bullet;
+        _bullet2.initBullet(this.bullet_config,this);
+        this.getParent().addChild(_bullet2);
+        _bullet2.setPosition(pos2);
+    }
+
     _bullet.setPosition(pos);
 },
 

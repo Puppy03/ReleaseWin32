@@ -16,11 +16,6 @@ tickStat:function(dt)
 {
     var pos = this.getPosition();
     var size = this.getContentSize();
-    if(pos.y<-size.height)
-    {
-        this.getParent().removeChild(this,true);
-        return;
-    }
     pos.y -= dt*this.speed;
     this.setPositionY(pos.y);
     var fighter = this.getParent().fighter;

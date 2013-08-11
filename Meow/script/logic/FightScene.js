@@ -40,7 +40,7 @@ var FightScene = UIController.extend({
         this.setTouchPriority(100);
         this.setTouchEnabled(true);
 
-        this.schedule(this.tickEnemies);
+        this.schedule(this.tickMapNodes);
         
         return true;
     },
@@ -98,8 +98,9 @@ var FightScene = UIController.extend({
            this.removeChild(this.barriers[i],true);
         }
         this.barriers = [];
+        this.segment_tick = 0;
         
-        this.unschedule(this.tickEnemies);
+        this.unschedule(this.tickMapNodes);
         this.unschedule(this.ticksSegments);
         this.setTouchEnabled(false);
     },
@@ -122,7 +123,7 @@ var FightScene = UIController.extend({
 
         this.setTouchEnabled(true);
 
-        this.schedule(this.tickEnemies);
+        this.schedule(this.tickMapNodes);
     },
 
     tickBackGround:function (dt)
@@ -152,7 +153,7 @@ var FightScene = UIController.extend({
         }
     },
 
-    tickEnemies:function (dt) 
+    tickMapNodes:function (dt) 
     {
         for(var i in this.enemies)
         {
@@ -169,6 +170,16 @@ var FightScene = UIController.extend({
             {
                 this.removeChild(this.enemies[i],true);
                 this.enemies.splice(i,1);
+            }
+        }
+        for(var i in this.barriers)
+        {
+            var pos_y = this.barriers[i].getPositionY();
+            var size = this.barriers[i].getContentSize();
+            if((pos_y+size.height*0.5)<0)
+            {
+                this.removeChild(this.barriers[i],true);
+                this.barriers.splice(i,1);
             }
         }
     },
@@ -220,33 +231,39 @@ var FightScene = UIController.extend({
 
     createNode:function (seg_node)
     {
-        var pos_x = win_size.width*0.5+seg_node.born_x;
-        var pos_y = win_size.height+100;
-        if(seg_node.type == EObjType.EEnemy)
+        var group = enemyGroup[seg_node.group];
+        for(var i in group)
         {
-            var _enemy = new Enemy;
-            _enemy.initEnemy(enemyConfig[seg_node.config]);
-            this.addChild(_enemy);
-            this.enemies.push(_enemy);         
-            _enemy.setPosition(pos_x,pos_y);
-        }
-        else if(seg_node.type == EObjType.EMeteorite)
-        {
-            var _meteo = new Meteorite;
-            var follow_speed = 0;
-            if(seg_node.hasOwnProperty("follow_speed"))
-            {follow_speed = seg_node.follow_speed;}
-            _meteo.initMeteorite(meteoriteConfig[seg_node.config],follow_speed,pos_x);
-            this.addChild(_meteo);
-        }
-        else if(seg_node.type == EObjType.EBarrier)
-        {
-            var _barrier = new Barrier;
-            _barrier.initBarrier(barrierConfig[seg_node.config],this.roll_speed);
-            _barrier.setPosition(pos_x,pos_y);
-            this.barriers.push(_barrier);
-            this.addChild(_barrier);
-        }
+            var node = group[i];
+            var pos_x = win_size.width*0.5+node.born_x+seg_node.offset;
+            var pos_y = win_size.height+100+node.born_y;
+             if(node.type == EObjType.EEnemy)
+            {
+                var _enemy = new Enemy;
+                _enemy.initEnemy(enemyConfig[node.config]);
+                this.addChild(_enemy);
+                this.enemies.push(_enemy);         
+                _enemy.setPosition(pos_x,pos_y);
+            }
+            else if(node.type == EObjType.EMeteorite)
+            {
+                var _meteo = new Meteorite;
+                var follow_speed = 0;
+                if(seg_node.hasOwnProperty("follow_speed"))
+                {follow_speed = seg_node.follow_speed;}
+                _meteo.initMeteorite(meteoriteConfig[node.config],follow_speed,pos_x);
+                this.addChild(_meteo);
+            }
+            else if(node.type == EObjType.EBarrier)
+            {
+                var _barrier = new Barrier;
+                _barrier.initBarrier(barrierConfig[node.config],this.roll_speed);
+                _barrier.setPosition(pos_x,pos_y);
+                this.barriers.push(_barrier);
+                this.addChild(_barrier);
+            }
+      }
+
     },
 
     onTouchBegan:function(touch, event)
