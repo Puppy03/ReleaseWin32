@@ -9,7 +9,7 @@ interval:0.06,
 var enemyConfig={
 Enemy00:{
     hp:100,
-    speed:100,
+    speed:200,
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
     Fly:{
