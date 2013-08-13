@@ -2,7 +2,7 @@ require("script/config/common_config.js");
 
 var meteoriteConfig = {
 Meteorite00:{
-    speed:900,
+    speed:1000,
     att:3,
     warn_time:1.0,
     warn_twink:0.1,
