@@ -189,6 +189,10 @@ Barrier2:[
 {type:2,config:"Barrier00",born_x:0,born_y:0},
 {type:2,config:"Barrier00",born_x:128,born_y:0},
 ],
+Barrier2a:[
+{type:2,config:"Barrier00",born_x:-128,born_y:0},
+{type:2,config:"Barrier00",born_x:128,born_y:0},
+],
 Barrier1:[
 {type:2,config:"Barrier00",born_x:0,born_y:0},
 ],
