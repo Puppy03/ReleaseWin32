@@ -78,7 +78,7 @@ shoot:function ()
     var pos = this.getPosition();
     pos.y += this.getContentSize().height*0.5;
     
-    if(true)
+    if(false)
     {
         pos.x -= 40;
         var pos2 = cc.p(pos.x+80,pos.y);

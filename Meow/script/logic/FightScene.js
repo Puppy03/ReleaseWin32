@@ -262,6 +262,12 @@ var FightScene = UIController.extend({
                 this.barriers.push(_barrier);
                 this.addChild(_barrier);
             }
+            else if(node.type == EObjType.ECoin)
+            {
+                var _coin = new Coin;
+                _coin.initCoin(cc.p(pos_x,pos_y),this.roll_speed);
+                this.addChild(_coin);
+            }
       }
 
     },

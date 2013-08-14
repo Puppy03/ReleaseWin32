@@ -7,7 +7,7 @@ var Bullet = cc.Sprite.extend({
     explosion:null,
     initBullet:function (config,caster) 
     {
-        this.init(config.image,config.rect_img);
+        this.init(config.image);
         //this.setAnchorPoint(config.anchor);
         this.col_size = config.col_size;
         this.speed = config.speed;

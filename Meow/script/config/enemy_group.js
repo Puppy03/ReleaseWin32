@@ -2,10 +2,16 @@
 var EObjType={
 EEnemy:0,
 EMeteorite:1,
-EBarrier:2
+EBarrier:2,
+ECoin:3,
 };
 
 var enemyGroup={
+Coin3X1:[
+{type:3,config:"Coin00",born_x:-90,born_y:0},
+{type:3,config:"Coin00",born_x:0,born_y:0},
+{type:3,config:"Coin00",born_x:90,born_y:0},
+],
 Mon1X1:[
 {type:0,config:"Enemy00",born_x:0,born_y:0},
 ],
