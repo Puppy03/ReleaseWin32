@@ -6,6 +6,6 @@ stage01:{
     back_img:"scene/01.png",
     roll_speed:250,
     loop:false,
-    segments:["SegmentCoin00"],
+    segments:["SegmentCoin01","SegmentCoin02","SegmentCoin03","SegmentCoin04","Segment00",],
 },
 }
