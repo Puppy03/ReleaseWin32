@@ -390,6 +390,14 @@ Barrier3X1:[
 {type:2,config:"Barrier00",born_x:0,born_y:128},
 {type:2,config:"Barrier00",born_x:0,born_y:256},
 ],
+Barrier3X2:[
+{type:2,config:"Barrier00",born_x:0,born_y:0},
+{type:2,config:"Barrier00",born_x:0,born_y:128},
+{type:2,config:"Barrier00",born_x:0,born_y:256},
+{type:2,config:"Barrier00",born_x:128,born_y:0},
+{type:2,config:"Barrier00",born_x:128,born_y:128},
+{type:2,config:"Barrier00",born_x:128,born_y:256},
+],
 Barrier2a:[
 {type:2,config:"Barrier00",born_x:-128,born_y:0},
 {type:2,config:"Barrier00",born_x:128,born_y:0},
