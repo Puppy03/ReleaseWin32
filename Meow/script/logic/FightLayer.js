@@ -28,6 +28,7 @@ var FightLayer = cc.Node.extend({
         this.setContentSize(layer_size);
         this.stage_config = stage_config;
         this.roll_speed = stage_config.roll_speed;
+        PlayerData.StageMaxDis = stage_config.max_distance;
 
         this.enemies = [];
         this.barriers = [];
@@ -125,6 +126,11 @@ var FightLayer = cc.Node.extend({
             PlayerData.StageDistance = parseInt(this.total_move/3.75+0.5);
             ui_parser.currentScene.refreshStageDistance();
         }
+        if(PlayerData.StageDistance>=PlayerData.StageMaxDis)
+        {
+             this.getParent().stageEnd();
+             this.unschedule(this.tickBackGround);
+        }
 
     },
 
@@ -182,7 +188,7 @@ var FightLayer = cc.Node.extend({
                 }
                 else
                 {
-                    this.getParent().stageEnd();
+                    //this.getParent().stageEnd();
                     this.unschedule(this.ticksSegments);
                     return;
                 }

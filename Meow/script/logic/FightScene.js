@@ -68,7 +68,6 @@ var FightScene = UIController.extend({
 
     refreshStageCoin:function()
     {
-        cc.log("coin_num:"+PlayerData.StageCoin);
         var lbl_coin = this.main_page.getUINode("LblCoins");
         lbl_coin.setCString(PlayerData.StageCoin);
     },
@@ -83,6 +82,13 @@ var FightScene = UIController.extend({
     {
         var lbl_dis = this.main_page.getUINode("LblDistance");
         lbl_dis.setCString(PlayerData.StageDistance);
+
+        var img_bar = this.main_page.getUINode("StagePg");
+        var img_gemo = this.main_page.getUINode("StagePgGemo");
+        var size_pg = img_bar.getContentSize();
+        var pos_x = -size_pg.width*0.5+(PlayerData.StageDistance/PlayerData.StageMaxDis)*size_pg.width;
+        var pg_pos_x = img_bar.getPositionX();
+        img_gemo.setPositionX(pos_x+pg_pos_x);
     },
 
      restartGame:function()

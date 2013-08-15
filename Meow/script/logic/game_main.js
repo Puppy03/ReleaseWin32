@@ -14,6 +14,7 @@ require("script/ui_parser/ui_parser.js");
 require("script/logic/LoginScene.js");
 require("script/logic/FightScene.js");
 require("script/logic/RoleMgrScene.js");
+require("script/logic/StagesScene.js");
 require("script/logic/PlayerData.js");
 
 //cc.dumpConfig();

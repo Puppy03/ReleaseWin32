@@ -4,7 +4,7 @@ ui_delegator.RoleManage =
 {
     onStartGame : function () 
     {
-        var scene = FightScene.scene();
+        var scene = StagesScene.scene();
         cc.Director.getInstance().replaceScene(scene);
     },
     onGoBack : function () 
