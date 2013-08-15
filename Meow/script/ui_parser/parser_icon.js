@@ -67,7 +67,6 @@ var UIIcon = cc.Layer.extend({
         {
             this.setScale(_style.scalePressed*1.0);
         }
-        //cc.log("touch begin");
         return true;
     },
     onTouchEnded:function (touch, event) 

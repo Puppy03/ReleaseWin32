@@ -2,9 +2,9 @@
 
 ui_delegator.LoginDelegator = 
 {
-    onStartGame : function () 
+    onEnterGame : function () 
     {
-        var scene = FightScene.scene();
+        var scene = RoleMgrScene.scene();
         cc.Director.getInstance().replaceScene(scene);
     },
 };

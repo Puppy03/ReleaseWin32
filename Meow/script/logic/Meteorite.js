@@ -24,12 +24,14 @@ meteo_img:null,
 meteo_tail:null,
 metoe_effect:null,
 born_circle:null,
+layer_size:null,
 
-initMeteorite:function(config,f_speed,born_x)
+initMeteorite:function(config,f_speed,born_x,layer_size)
 {
     this.config = config;
     this.follow_speed = f_speed;
     this.born_x = born_x;
+    this.layer_size = layer_size;
     this.drop_tick = (win_size.height+300)/this.config.speed;
     this.waring();
 },
@@ -41,13 +43,12 @@ waring:function ()
 
     this.warn_line = cc.Sprite.create(this.config.warn_line);
     var line_size = this.warn_line.getContentSize();
-    this.warn_line.setPositionY(win_size.height*0.5);
-    this.warn_line.setScaleY(win_size.height/line_size.height);
+    this.warn_line.setScaleY(this.layer_size.height/line_size.height);
     this.warn_node.addChild(this.warn_line);
 
     this.warn_mark = cc.Sprite.create(this.config.warn_mark);
     var mark_size = this.warn_mark.getContentSize();
-    this.warn_mark.setPositionY(win_size.height-mark_size.height*0.5);
+    this.warn_mark.setPositionY(this.layer_size.height*0.5-mark_size.height*0.5);
     this.warn_node.addChild(this.warn_mark);
 
     this.schedule(this.tickWarning);
@@ -63,11 +64,9 @@ born:function ()
     this.warn_mark = null;
 
    this.born_circle = cc.Sprite.create(this.config.born_circle);
-   //var circle_size = this.born_circle.getContentSize();
    this.warn_node.addChild(this.born_circle);   
    this.born_circle.setPositionY(circle_y);
    this.born_circle.setScale(this.config.circle_maxscale);
-  // shakeNode(this.born_circle,4);
    this.schedule(this.tickBorn);
 },
 tickWarning:function(dt)
@@ -117,8 +116,7 @@ tickBorn:function(dt)
 
         this.meteo_img = cc.Sprite.create(this.config.image);
         var img_size = this.meteo_img.getContentSize();
-        //this.setContentSize(img_size);
-        this.meteo_img.setPosition(this.warn_node.getPositionX(),win_size.height+img_size.height*0.5);
+        this.meteo_img.setPosition(this.warn_node.getPositionX(),this.layer_size.height*0.5+img_size.height*0.5);
         this.addChild(this.meteo_img);
     
         this.meteo_tail = cc.Sprite.create(this.config.tail_img);
@@ -173,10 +171,11 @@ tickDrop:function(dt)
 getColRect:function () 
 {
     var origin = this.convertToWorldSpace(this.meteo_img.getPosition());
+    origin = this.getParent().convertToNodeSpace(origin);
     var col_size = this.config.col_size;
     origin.x -= col_size.width*0.5;
     origin.y -= col_size.height*0.5;
     return new cc.rect(origin.x,origin.y,col_size.width,col_size.height);
-}
+},
 
 });

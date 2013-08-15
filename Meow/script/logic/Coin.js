@@ -1,15 +1,36 @@
 
+var coinConfig = {
+imgfile:"item/coin.png",
+x_seg:7,
+y_seg:1,
+start:0,
+end:6,
+interval:0.1,
+}
 
 var Coin = cc.Sprite.extend({
-gravity:980,
 speed_y:100,
-scale_peroid:0.3,
-scale_tick:0,
 life_tick:0,
 born_pos:null,
 initCoin:function (born_pos,speed_y) 
 {
-    this.init("item/item_coin.png");
+    var animation = cc.Animation.create();
+    animation.setDelayPerUnit(coinConfig.interval);
+    var texture = cc.TextureCache.getInstance().addImage(coinConfig.imgfile);
+    var img_size = texture.getContentSize();
+    var frame_width = img_size.width/coinConfig.x_seg;
+    var frame_height = img_size.height/coinConfig.y_seg;
+    for(var i=coinConfig.start;i<=coinConfig.end;i++)
+    {
+        var seg_x = i%coinConfig.x_seg;
+        var seg_y = parseInt(i/coinConfig.x_seg);
+        var _rect = new cc.rect(seg_x*frame_width,seg_y*frame_height,frame_width,frame_height);
+        animation.addSpriteFrameWithTexture(texture,_rect);
+    }
+    var animate = cc.Animate.create(animation);
+    var repeat = cc.RepeatForever.create(animate);
+    this.initWithTexture(texture,cc.rect(0,0,frame_width,frame_height));
+    this.runAction(repeat);
 
     this.speed_y = speed_y;
     this.born_pos = born_pos;
@@ -19,33 +40,23 @@ initCoin:function (born_pos,speed_y)
 },
 tickStat:function (dt)
 {
-    this.scale_tick += dt;
-    if(this.scale_tick >= this.scale_peroid)
-    {
-        this.scale_tick = 0;
-        this.setScaleX(1);
-        this.setFlipX(!this.isFlippedX());
-    }
-    else
-    {
-        this.setScaleX((this.scale_peroid-this.scale_tick)/this.scale_peroid);
-    }
-
     var pos_y = this.getPositionY();
     pos_y -= this.speed_y*dt;
     this.setPositionY(pos_y);
-    if(pos_y<-100)
+    var parent = this.getParent();
+    var layer_size = parent.getContentSize();
+    if(pos_y<-layer_size.height*0.5)
     {
-        this.getParent().removeChild(this,true);
+        parent.removeChild(this,true);
         return;
     }
-     var fighter = this.getParent().fighter;
+     var fighter = parent.fighter;
      if(fighter!=null)
      {
           var rect = rectForNode(fighter);
           if(cc.rectContainsPoint(rect,this.getPosition()))
           {
-             this.getParent().removeChild(this,true);
+             parent.removeChild(this,true);
              return;
           }
      }

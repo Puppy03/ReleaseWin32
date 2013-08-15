@@ -13,8 +13,8 @@ stat:EFighterStat.EBorn,
 col_size:null,
 shoot_interval:0.12,
 shoot_tick:0,
-born_y:-300,
-fight_y:150,
+born_y:-200,
+fight_y:180,
 born_tick:0,
 bullet_config:null,
 dying_tick:0,
@@ -35,8 +35,8 @@ initFighter:function (fighter_config)
     var repeat = cc.RepeatForever.create(animate);
     this.runAction(repeat);
 
-    this.setPosition(win_size.width*0.5,this.born_y);
-    var move = cc.MoveTo(0.3,cc.p(win_size.width*0.5,this.fight_y));
+    this.setPosition(0,-480+this.born_y);
+    var move = cc.MoveTo(0.3,cc.p(0,-480+this.fight_y));
     this.born_tick = 0.3;
     this.runAction(move);
 
@@ -46,9 +46,9 @@ initFighter:function (fighter_config)
 tickBorn:function (dt) 
 {
     this.born_tick -= dt;
-    if(this.getPositionY()>=this.fight_y || this.born_tick<0.3)
+    if(this.getPositionY()>=(-480+this.fight_y) || this.born_tick<0.3)
     {
-        this.setPositionY(this.fight_y);
+        this.setPositionY(-480+this.fight_y);
         this.schedule(this.tickShoot);
         this.unschedule(this.tickBorn);
         return;
@@ -99,7 +99,7 @@ pauseShoot:function ()
 die:function () 
 {
     this.unschedule(this.tickShoot);
-    this.getParent().gameOver();
+    this.getParent().getParent().gameOver();
     this.dying_effect1 = cc.Sprite.create("fighter/bloodCircle.png");
     this.dying_effect2 = cc.Sprite.create("fighter/bloodCircle.png");
     this.dying_effect2.setFlipX(true);

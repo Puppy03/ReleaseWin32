@@ -7,11 +7,13 @@ require("script/common/jsb_cocos2d.js");
 require("script/common/jsb_opengl_constants.js");
 require("script/common/jsb_opengl.js");
 require("script/common/jsb_sys.js");
+
+var design_size = cc.size(640,960);
+
 require("script/ui_parser/ui_parser.js");
-
-
 require("script/logic/LoginScene.js");
 require("script/logic/FightScene.js");
+require("script/logic/RoleMgrScene.js");
 
 //cc.dumpConfig();
 

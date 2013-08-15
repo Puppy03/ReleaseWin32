@@ -1,6 +1,28 @@
 
 
 var win_size = cc.Director.getInstance().getWinSizeInPixels();
+var ui_size = cc.size(win_size.width,win_size.height);
+var ui_scale = 1;
+if(win_size.width!=design_size.width )
+{
+    var asp = win_size.height/win_size.width;
+    var scale_x = win_size.width/design_size.width;
+    var scale_y = win_size.height/design_size.height;
+    if(scale_x>scale_y)
+    {
+        ui_scale = scale_y;
+        ui_size.height = design_size.height;
+        ui_size.width = design_size.height/asp;
+    }
+    else
+    {
+        ui_scale = scale_x;
+        ui_size.width = design_size.width;
+        ui_size.height = design_size.width*asp;
+    };
+    cc.log("ui_size:"+ui_size.width+","+ui_size.height);
+    cc.log("ui_scale:"+ui_scale);
+}
 
 function getUIPosVal(_val) 
 {
@@ -10,22 +32,22 @@ function getUIPosVal(_val)
     {
      case "L":
      {
-        return -win_size.width*0.5 + _val.substring(1)*1.0;
+        return -ui_size.width*0.5 + _val.substring(1)*1.0;
         break;
      }
      case "R":
      {
-        return win_size.width*0.5 - _val.substring(1)*1.0;
+        return ui_size.width*0.5 - _val.substring(1)*1.0;
         break;
      }
      case "T":
      {
-        return win_size.height*0.5 - _val.substring(1)*1.0;
+        return ui_size.height*0.5 - _val.substring(1)*1.0;
         break;
      }
      case "B":
      {
-        return -win_size.height*0.5 + _val.substring(1)*1.0;
+        return -ui_size.height*0.5 + _val.substring(1)*1.0;
         break;
      }
      default:
@@ -131,4 +153,26 @@ function getAttributeNum(_val)
         num++;
     }
     return _num;
+}
+
+function getSizeFromStr(str)
+{
+    var size_v = str.split(',');
+    if(size_v.length!=2)
+    {
+        cc.log("wrong argument getSizeFromStr");
+        return cc.size(0,0);
+    }
+    return cc.size(size_v[0],size_v[1]);
+}
+
+function getRectFromStr(str)
+{
+    var r_v = str.split(',');
+    if(r_v.length!=4)
+    {
+        cc.log("wrong argument getRectFromStr");
+        return cc.rect(0,0,0,0);
+    }
+    return cc.rect(r_v[0],r_v[1],r_v[2],r_v[3]);
 }

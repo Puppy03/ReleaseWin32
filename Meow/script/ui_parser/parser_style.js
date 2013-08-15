@@ -32,7 +32,7 @@ ui_parser.parseStyle = function (attrs)
             var _normal = attrs["Normal"].split(',');
             aStyle.rectNormal = new cc.rect(_normal[0],_normal[1],_normal[2],_normal[3]);
         }
-        if(attrs.hasOwnProperty("Normal"))
+        if(attrs.hasOwnProperty("Pressed"))
         {
            var _pressed = attrs["Pressed"].split(',');
            aStyle.rectPressed = new cc.rect(_pressed[0],_pressed[1],_pressed[2],_pressed[3]);
@@ -42,7 +42,7 @@ ui_parser.parseStyle = function (attrs)
            aStyle.scalePressed = attrs["TScale"].split(',');
         }
         if(attrs.hasOwnProperty("ImgPressed"))
-        {;
+        {
            aStyle.imgPressed = attrs["ImgPressed"];
         }
     }

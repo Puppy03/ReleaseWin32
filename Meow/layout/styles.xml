@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Styles>
   <Style Type="Button" ID="DftBtnLong" ImgFile="ui/btn_n.png" ImgPressed="ui/btn_s.png" TScale="1.0"/>
-  <Style Type="Button" ID="BtnPause" ImgFile="ui/btn_pause_c.png" ImgPressed="ui/btn_pause_n.png" TScale="1.00"/>
+  <Style Type="Button" ID="DftBtn1" ImgFile="ui/btn_normal.png" TScale="1.0"/>
+  <Style Type="Button" ID="BtnPause" ImgFile="ui/pause.png" TScale="1.10"/>
+  <Style Type="Button" ID="BtnBack" ImgFile="ui/go_back.png" TScale="1.10"/>
+  <Style Type="Button" ID="BtnAddCoin" ImgFile="ui/btn_add.png" TScale="1.10"/>
+  <Style Type="Button" ID="BtnUpgrade" ImgFile="ui/btn_upgrade.png" TScale="1.10"/>
+  <Style Type="Button" ID="BtnChgRole" ImgFile="ui/btn_chg_role.png" TScale="1.05"/>
+  <Style Type="Button" ID="BtnAddBlue" ImgFile="ui/btn_add_b.png" TScale="1.05"/>
+  <Style Type="Button" ID="BtnAddBlueS" ImgFile="ui/btn_add_bs.png" TScale="1.05"/>
 </Styles>
