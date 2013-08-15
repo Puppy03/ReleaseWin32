@@ -90,7 +90,7 @@ die:function ()
     parent.addChild(explosion);
 
     var coin = new Coin;
-    coin.initCoin(pos,parent.roll_speed,this.fighter);
+    coin.initCoin(coinConfig.Coin00,pos,parent.roll_speed,this.fighter);
     this.getParent().addChild(coin);
     this.getParent().removeChild(this,true);
 },
