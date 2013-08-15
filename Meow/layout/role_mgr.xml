@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="BattleCommand" Delegator="RoleManage" StaticPage="false">
+  <Button ID="BtnGoBack" Style="BtnBack" Touch="onGoBack" Pos="L50,T50"/>
+  <Button ID="BtnAddCoins" Style="BtnAddCoin" Touch="onAddCoins" Pos="R45,T44"/>
+  <Image ID="RolePvwBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="346,466" Pos="-140,150"/>
+  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" FontSize="24" Pos="-31,-51"/>
+  <Image ID="ItemBg1" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="112,112" Pos="120,150"/>
+  <Image ID="Item1" ImageFile="item/item_invincible.png" Pos="R200,150"/>
+  <Image ID="ItemBg2" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="112,112" Pos="240,150"/>
+  <Button ID="BtnAddItem2" Style="BtnAddBlueS" Touch="onAddItem" Pos="240,150"/>
+  <Button ID="BtnUpg" Style="BtnUpgrade" Touch="onUpgradeRole" Pos="184,-16"/>
+  <Image ID="CoinImgNeed" ImageFile="ui/coin.png" Pos="140,58"/>
+  <Label ID="CoinNumNeed" BmpFont="font/zl_1.fnt" Content="12345" FontSize="24" Pos="206,60"/>
+  <Image ID="RoleIconBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="192,240" Pos="-200,-226"/>
+  <Image ID="RoleIcon" ImageFile="ui/role_head1.png" Pos="-200,-226"/>
+  <Image ID="PetIconBg1" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="190,190" Pos="0,-256"/>
+  <Image ID="PetIcon1" ImageFile="ui/pet1.png" Pos="0,-256"/>
+  <Image ID="PetIconBg2" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="190,190" Pos="200,-256"/>
+  <Button ID="BtnAddPet2" Style="BtnAddBlue" Touch="onAddPet" Pos="200,-256"/>
+  <Button ID="BtnChangeRole" Style="BtnChgRole" Touch="onStartGame" Pos="-202,-306"/>
+  <Button ID="BtnStart" Style="DftBtn1" Touch="onStartGame" Pos="0,B65">
+    <Text Content="开始" Font="Arial" FontSize="30" Color="138,63,102" Offset="0,0"/>
+  </Button>
+</UIPage>
