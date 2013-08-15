@@ -2,7 +2,7 @@
 
 ui_delegator.LoginDelegator = 
 {
-    onEnterGame : function () 
+    onEnterGame : function (node) 
     {
         var scene = RoleMgrScene.scene();
         cc.Director.getInstance().replaceScene(scene);

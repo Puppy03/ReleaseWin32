@@ -64,7 +64,7 @@ var UIButton = cc.Layer.extend({
         {
             return;
         }
-        this._touch();
+        this._touch(this);
     },
 
 });

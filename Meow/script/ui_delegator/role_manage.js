@@ -2,43 +2,43 @@
 
 ui_delegator.RoleManage = 
 {
-    onStartGame : function () 
+    onStartGame : function(node) 
     {
         var scene = StagesScene.scene();
         cc.Director.getInstance().replaceScene(scene);
     },
-    onGoBack : function () 
+    onGoBack : function(node) 
     {
         var scene = LoginScene.scene();
         cc.Director.getInstance().replaceScene(scene);
     },
-    onAddCoins : function () 
+    onAddCoins : function(node) 
     {
         cc.log("touch add coins!");
     },
-    onAddItem : function () 
+    onAddItem : function(node) 
     {
         cc.log("touch add item!");
     },
-     onAddPet : function () 
+     onAddPet : function(node) 
     {
         cc.log("touch add pet!");
     },
-    onUpgradeRole : function () 
+    onUpgradeRole : function(node) 
     {
         cc.log("touch onUpgradeRole!");
     },
-    onChangeRole:function ()
+    onChangeRole:function(node)
     {
         ui_parser.currentScene.closePage("RoleMgr");
         ui_parser.currentScene.openUIPage("layout/role_choose.xml");
     },
-    onChooseRole:function ()
+    onChooseRole:function(node)
     {
         ui_parser.currentScene.closePage("RoleChoose");
         ui_parser.currentScene.openRoleMgr();
     },
-    onRoleChooseBack:function () 
+    onRoleChooseBack:function(node) 
     {
         ui_parser.currentScene.closePage("RoleChoose");
         ui_parser.currentScene.openRoleMgr();

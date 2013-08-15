@@ -10,12 +10,8 @@ var FightScene = UIController.extend({
     pre_touch_pos:null,
     fight_layer:null,
     main_page:null,
-    init:function () 
+    initWithStage:function (stage) 
     {
-        if (!this._super()) 
-        {
-            return false;
-        }
         this.main_page = this.openUIPage("layout/fight_page.xml");
 
         this.refreshStageCoin();
@@ -23,7 +19,7 @@ var FightScene = UIController.extend({
         this.refreshStageDistance();
 
         this.fight_layer = new FightLayer;
-        this.fight_layer.initStage(stageConfigs.stage01);
+        this.fight_layer.initStage(stage);
         this.addChild(this.fight_layer);
         var layer_size = this.fight_layer.getContentSize();
         var scale = win_size.width/layer_size.width;
@@ -111,17 +107,17 @@ var FightScene = UIController.extend({
     },
 });
 
-FightScene.create = function () {
+FightScene.create = function (stage) {
     var sg = new FightScene();
-    if (sg && sg.init()) {
+    if (sg && sg.initWithStage(stage)) {
         return sg;
     }
     return null;
 };
 
-FightScene.scene = function () {
+FightScene.scene = function (stage) {
     var scene = cc.Scene.create();
-    var layer = FightScene.create();
+    var layer = FightScene.create(stage);
     scene.addChild(layer);
     return scene;
 };

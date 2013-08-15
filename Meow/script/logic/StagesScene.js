@@ -10,7 +10,7 @@ var stagePoints=[
 {x:342,y:1380},
 {x:448,y:594},
 {x:192,y:920},
-]
+];
 
 var StagesScene = UIController.extend({
     back_image:null,
@@ -34,11 +34,11 @@ var StagesScene = UIController.extend({
         var idx = 0;
         for(var i in stagePoints)
         {
+            idx++;
             var entry = new UIButton;
             entry.initButton(_style,this.onTouchEntry);
-            entry.setTag(i);
+            entry.setTag(idx);
             entry.setPosition(stagePoints[i]);
-            idx++;
             if(idx<=8)
             {
                 var lbl = cc.LabelBMFont.create(idx,"font/zl_2.fnt",24);
@@ -54,9 +54,13 @@ var StagesScene = UIController.extend({
         return true;
     },
 
-    onTouchEntry:function()
+    onTouchEntry:function(node)
     {
-        var scene = FightScene.scene();
+        var stage_idx = node.getTag();
+        var stageName = "stage"+stage_idx;
+        cc.log(stageName);
+        var stage = stageConfigs[stageName];
+        var scene = FightScene.scene(stage);
         cc.Director.getInstance().replaceScene(scene);
     },
 

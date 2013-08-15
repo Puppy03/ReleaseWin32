@@ -80,7 +80,7 @@ var UIIcon = cc.Layer.extend({
         }
         if(this._touch != null)
         {
-            this._touch();
+            this._touch(this);
         }
     },
 

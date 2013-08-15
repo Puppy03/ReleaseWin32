@@ -87,6 +87,7 @@ var FightLayer = cc.Node.extend({
         
         this.unschedule(this.tickMapNodes);
         this.unschedule(this.ticksSegments);
+        this.unschedule(this.tickBackGround);
         this.getParent().setTouchEnabled(false);
     },
 
@@ -129,7 +130,6 @@ var FightLayer = cc.Node.extend({
         if(PlayerData.StageDistance>=PlayerData.StageMaxDis)
         {
              this.getParent().stageEnd();
-             this.unschedule(this.tickBackGround);
         }
 
     },
@@ -270,10 +270,11 @@ var FightLayer = cc.Node.extend({
         this.cur_node_idx = 0;
         var seg_name = this.stage_config.segments[this.cur_seg_idx];
         this.cur_segment = segmentConfig[seg_name];
+
+        this.schedule(this.tickMapNodes);
+        this.schedule(this.tickBackGround);
         this.schedule(this.ticksSegments);
 
         this.getParent().setTouchEnabled(true);
-
-        this.schedule(this.tickMapNodes);
     }
 });
