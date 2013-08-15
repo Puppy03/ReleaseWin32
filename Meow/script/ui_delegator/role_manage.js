@@ -28,4 +28,19 @@ ui_delegator.RoleManage =
     {
         cc.log("touch onUpgradeRole!");
     },
+    onChangeRole:function ()
+    {
+        ui_parser.currentScene.closePage("RoleMgr");
+        ui_parser.currentScene.openUIPage("layout/role_choose.xml");
+    },
+    onChooseRole:function ()
+    {
+        ui_parser.currentScene.closePage("RoleChoose");
+        ui_parser.currentScene.openRoleMgr();
+    },
+    onRoleChooseBack:function () 
+    {
+        ui_parser.currentScene.closePage("RoleChoose");
+        ui_parser.currentScene.openRoleMgr();
+    },
 };

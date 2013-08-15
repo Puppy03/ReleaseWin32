@@ -13,6 +13,7 @@ hurt_flag:false,
 hurt_time:0,
 die_delay:0,
 die_effect:null,
+score_val:10,
 
 initEnemy:function (enemy_config) 
 {

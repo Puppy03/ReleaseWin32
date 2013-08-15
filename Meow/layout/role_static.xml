@@ -1,5 +1,6 @@
-<UIPage ID="RolePets" Delegator="RoleManage" StaticPage="true">
+<UIPage ID="RoleStatic" Delegator="RoleManage" StaticPage="true">
   <Image ID="CoinNumBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="340,72" Pos="R178,T45"/>
   <Image ID="CoinImgOwn" ImageFile="ui/coin.png" Pos="R316,T45"/>
   <Label ID="CoinNum" BmpFont="font/zl_1.fnt" Content="123456789" FontSize="24" Pos="R170,T41"/>
+  <Button ID="BtnAddCoins" Style="BtnAddCoin" Touch="onAddCoins" Pos="R45,T44"/>
 </UIPage>

@@ -9,13 +9,18 @@ require("script/logic/FightLayer.js");
 var FightScene = UIController.extend({
     pre_touch_pos:null,
     fight_layer:null,
+    main_page:null,
     init:function () 
     {
         if (!this._super()) 
         {
             return false;
         }
-        var page = this.openUIPage("layout/fight_page.xml");
+        this.main_page = this.openUIPage("layout/fight_page.xml");
+
+        this.refreshStageCoin();
+        this.refreshStageScore();
+        this.refreshStageDistance();
 
         this.fight_layer = new FightLayer;
         this.fight_layer.initStage(stageConfigs.stage01);
@@ -59,6 +64,25 @@ var FightScene = UIController.extend({
             this.fight_layer.fighter.pauseShoot();
         }
         var page = this.openUIPage("layout/stage_end.xml");
+    },
+
+    refreshStageCoin:function()
+    {
+        cc.log("coin_num:"+PlayerData.StageCoin);
+        var lbl_coin = this.main_page.getUINode("LblCoins");
+        lbl_coin.setCString(PlayerData.StageCoin);
+    },
+
+    refreshStageScore:function()
+    {
+        var lbl_score = this.main_page.getUINode("LblScore");
+        lbl_score.setCString(PlayerData.StageScore);
+    },
+
+    refreshStageDistance:function ()
+    {
+        var lbl_dis = this.main_page.getUINode("LblDistance");
+        lbl_dis.setCString(PlayerData.StageDistance);
     },
 
      restartGame:function()

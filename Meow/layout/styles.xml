@@ -9,4 +9,5 @@
   <Style Type="Button" ID="BtnChgRole" ImgFile="ui/btn_chg_role.png" TScale="1.05"/>
   <Style Type="Button" ID="BtnAddBlue" ImgFile="ui/btn_add_b.png" TScale="1.05"/>
   <Style Type="Button" ID="BtnAddBlueS" ImgFile="ui/btn_add_bs.png" TScale="1.05"/>
+  <Style Type="Button" ID="BtnChoose" ImgFile="ui/btn_choose.png" TScale="1.05"/>
 </Styles>

@@ -6,8 +6,12 @@ var RoleMgrScene = UIController.extend({
         {
             return false
         }
-        var page = this.openUIPage("layout/role_mgr.xml");
+        var page_role_staic = this.openUIPage("layout/role_static.xml");
+        var lbl_coin_num = page_role_staic.getUINode("CoinNum");
+        lbl_coin_num.setCString(PlayerData.CoinNum);
 
+        this.openRoleMgr();
+        
         var main_bg = cc.Sprite.create("scene/01.png");
         var bg_size = main_bg.getContentSize();
         var scale = win_size.width/bg_size.width;
@@ -25,7 +29,12 @@ var RoleMgrScene = UIController.extend({
             space_img.setPosition(win_size.width*0.5,space_height*0.5);
         }
 
-        var role_bg = page._nodesMap["RolePvwBg"];
+        return true;
+    },
+    openRoleMgr:function ()
+    {
+        var page_role_mgr = this.openUIPage("layout/role_mgr.xml");
+        var role_bg = page_role_mgr._nodesMap["RolePvwBg"];
         var motion = fighterConfig.Fighter00.actor.Fly;
         var img_array = genImgArray(motion);
         var role_preview = cc.Sprite.create(img_array[0]);
@@ -34,8 +43,6 @@ var RoleMgrScene = UIController.extend({
         role_bg.addChild(role_preview);
         role_preview.runAction(repeat);
         role_preview.setPosition(170,160);
-
-        return true;
     },
 });
 

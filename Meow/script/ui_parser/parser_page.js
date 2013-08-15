@@ -28,6 +28,16 @@ var UIPage = cc.Layer.extend(
         this.registerNode(node,id);
     },
 
+    getUINode:function(node_id)
+    {
+        if(!this._nodesMap.hasOwnProperty(node_id))
+        {
+            cc.log("Invalid Node Id: " + node_id);
+            return null;
+        }
+        return this._nodesMap[node_id]
+    },
+
     isStaticPage:function ()
     {
         return this._staticpage;

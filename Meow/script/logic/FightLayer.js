@@ -19,6 +19,8 @@ var FightLayer = cc.Node.extend({
     cur_node_idx:0,
     cur_segment:null,
     segment_tick:0,
+    total_move:0,
+    move_check:0,
 
     initStage:function (stage_config) 
     {
@@ -114,6 +116,16 @@ var FightLayer = cc.Node.extend({
             pos_y = this.back_imgs[i].getPositionY();
             this.back_imgs[i].setPositionY(pos_y-move_y);
         }
+
+        this.total_move += move_y;
+        this.move_check += move_y;
+        if(this.move_check>3.75)
+        {
+            this.move_check = 0;
+            PlayerData.StageDistance = parseInt(this.total_move/3.75+0.5);
+            ui_parser.currentScene.refreshStageDistance();
+        }
+
     },
 
     tickMapNodes:function (dt) 
@@ -123,6 +135,8 @@ var FightLayer = cc.Node.extend({
         {
             if(this.enemies[i].hp <=0 )
             {
+                PlayerData.StageScore += this.enemies[i].score_val;
+                ui_parser.currentScene.refreshStageScore();
                 this.enemies[i].die();
                 this.enemies.splice(i,1);
                 continue;
@@ -229,7 +243,7 @@ var FightLayer = cc.Node.extend({
             else if(node.type == EObjType.ECoin)
             {
                 var _coin = new Coin;
-                _coin.initCoin(cc.p(pos_x,pos_y),this.roll_speed);
+                _coin.initCoin(coinConfig[node.config],cc.p(pos_x,pos_y),this.roll_speed);
                 this.addChild(_coin);
             }
       }
