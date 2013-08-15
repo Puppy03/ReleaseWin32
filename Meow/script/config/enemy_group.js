@@ -7,6 +7,9 @@ ECoin:3,
 };
 
 var enemyGroup={
+BigCoin1X1:[
+{type:3,config:"Coin01",born_x:0,born_y:0},
+],
 Coin1X1:[
 {type:3,config:"Coin00",born_x:0,born_y:0},
 ],
@@ -353,6 +356,13 @@ MonW:[
 {type:0,config:"Enemy00",born_x:256,born_y:128},
 {type:0,config:"Enemy00",born_x:-128,born_y:0},
 {type:0,config:"Enemy00",born_x:128,born_y:0},
+],
+MonM:[
+{type:0,config:"Enemy00",born_x:-256,born_y:0},
+{type:0,config:"Enemy00",born_x:-128,born_y:128},
+{type:0,config:"Enemy00",born_x:0,born_y:0},
+{type:0,config:"Enemy00",born_x:128,born_y:128},
+{type:0,config:"Enemy00",born_x:256,born_y:0},
 ],
 MonV:[
 {type:0,config:"Enemy00",born_x:-256,born_y:256},
