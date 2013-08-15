@@ -12,7 +12,8 @@ var UIScroll = cc.Layer.extend({
        this.vertical = vertical;
        this.interval = interval;
 
-       this.cliping_node = cc.cli
+       this.stencil = cc.DrawNode.create();
+       this.cliping_node = ClipingNode.create();
 
        this.setTouchMode(1);
        this.setTouchEnabled(true);

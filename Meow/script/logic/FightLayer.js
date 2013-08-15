@@ -21,6 +21,7 @@ var FightLayer = cc.Node.extend({
     segment_tick:0,
     total_move:0,
     move_check:0,
+    distance_psp:4,
 
     initStage:function (stage_config) 
     {
@@ -121,10 +122,10 @@ var FightLayer = cc.Node.extend({
 
         this.total_move += move_y;
         this.move_check += move_y;
-        if(this.move_check>3.75)
+        if(this.move_check>this.distance_psp)
         {
             this.move_check = 0;
-            PlayerData.StageDistance = parseInt(this.total_move/3.75+0.5);
+            PlayerData.StageDistance = parseInt(this.total_move/this.distance_psp+0.5);
             ui_parser.currentScene.refreshStageDistance();
         }
         if(PlayerData.StageDistance>=PlayerData.StageMaxDis)
@@ -268,6 +269,8 @@ var FightLayer = cc.Node.extend({
 
         this.cur_seg_idx = 0;
         this.cur_node_idx = 0;
+        this.move_check = 0;
+        this.total_move = 0;
         var seg_name = this.stage_config.segments[this.cur_seg_idx];
         this.cur_segment = segmentConfig[seg_name];
 

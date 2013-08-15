@@ -89,6 +89,13 @@ var FightScene = UIController.extend({
 
      restartGame:function()
     {
+        PlayerData.StageScore = 0;
+        PlayerData.StageDistance = 0;
+        PlayerData.StageCoin = 0;
+        this.refreshStageCoin();
+        this.refreshStageScore();
+        this.refreshStageDistance();
+
         this.fight_layer.restartStage();
     },
 

@@ -22,8 +22,6 @@ require("script/logic/PlayerData.js");
 var director = cc.Director.getInstance();
 director.setDisplayStats(false);
 
-//var clip_node = ClipingNode.create();
-
 // set FPS. the default value is 1.0/60 if you don't call this
 //director.setAnimationInterval(1.0 / 60);
 
