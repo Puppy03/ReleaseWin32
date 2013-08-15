@@ -2,7 +2,7 @@ require("script/config/common_config.js");
 require("script/config/enemy_group.js");
 
 var segmentConfig = {
-SegmentCoin00:[
+SegmentCoin10:[
 {time:0,  group:"Coin1X5",offset:-256},
 {time:1,  group:"Mon1X3",offset:128},
 {time:2,  group:"Coin1X5",offset:0},
@@ -13,6 +13,18 @@ SegmentCoin00:[
 {time:7,  group:"Mon1X3",offset:-256},
 {time:8,  group:"Coin1X5",offset:-256},
 {time:9,  group:"Mon1X3",offset:128},
+],
+SegmentCoin00:[
+{time:0,  group:"Coin1X5",offset:-256},
+{time:1,  group:"MonSuper1X5",offset:0},
+{time:2,  group:"Coin1X5",offset:0},
+{time:3,  group:"MonSuper1X5",offset:0},
+{time:4,  group:"Coin1X5",offset:-256},
+{time:5,  group:"MonSuper1X5",offset:0},
+{time:6,  group:"Coin1X5",offset:0},
+{time:7,  group:"MonSuper1X5",offset:0},
+{time:8,  group:"Coin1X5",offset:-256},
+{time:9,  group:"MonSuper1X5",offset:0},
 ],
 SegmentCoin01:[
 {time:2,  group:"Coin5X1",offset:-192},

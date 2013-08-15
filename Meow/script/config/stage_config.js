@@ -9,11 +9,11 @@ stage1:{
     segments:["Segment00","SegmentMete01","Segment01","SegmentMete02","Segment02","SegmentMete03","Segment03","SegmentMete04","Segment04","SegmentMete05","Segment05","Segment06",],
 },
 stage2:{
-    max_distance:10000,
+    max_distance:10200,
     back_img:"scene/01.png",
     roll_speed:250,
     loop:false,
-    segments:["Segment00","Segment01","Segment02","Segment03","Segment04","Segment05"],
+    segments:["Segment02","Segment01","Segment02","Segment03","Segment04","Segment05"],
 },
 stage3:{
     max_distance:10000,
@@ -60,9 +60,9 @@ stage8:{
 stage9:{
     max_distance:10000,
     back_img:"scene/01.png",
-    roll_speed:250,
+    roll_speed:400,
     loop:false,
-    segments:["Segment00","Segment01","Segment02","Segment03","Segment04","Segment05"],
+    segments:["SegmentCoin00","SegmentCoin01","SegmentCoin02","SegmentCoin03","SegmentCoin04","SegmentCoin05"],
 },
 stage10:{
     max_distance:10000,

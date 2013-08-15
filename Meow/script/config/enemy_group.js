@@ -7,6 +7,13 @@ ECoin:3,
 };
 
 var enemyGroup={
+MonSuper1X5:[
+{type:0,config:"Enemy10",born_x:-256,born_y:0},
+{type:0,config:"Enemy10",born_x:-128,born_y:0},
+{type:0,config:"Enemy10",born_x:0,born_y:0},
+{type:0,config:"Enemy10",born_x:128,born_y:0},
+{type:0,config:"Enemy10",born_x:256,born_y:0},
+],
 BigCoin1X1:[
 {type:3,config:"Coin01",born_x:0,born_y:0},
 ],
