@@ -22,7 +22,8 @@ ui_delegator.RoleManage =
     },
      onAddPet : function(node) 
     {
-        cc.log("touch add pet!");
+        ui_parser.currentScene.closePage("RoleMgr");
+        ui_parser.currentScene.openPetsMgr();
     },
     onUpgradeRole : function(node) 
     {

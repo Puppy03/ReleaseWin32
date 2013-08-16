@@ -2,16 +2,13 @@
 var Bullet = cc.Sprite.extend({
     att:0,
     speed:0,
-    caster:null,
     col_size:null,
     explosion:null,
-    initBullet:function (config,caster) 
+    initBullet:function (config) 
     {
         this.init(config.image);
-        //this.setAnchorPoint(config.anchor);
         this.col_size = config.col_size;
         this.speed = config.speed;
-        this.caster = caster;
         this.att = config.att;
         if(config.hasOwnProperty("explosion"))
         {
@@ -28,21 +25,29 @@ var Bullet = cc.Sprite.extend({
             this.getParent().removeChild(this,true);
             return;
         }
-        var ori_x = pos.x-this.col_size.width*0.5;
-        var ori_y = pos.y-this.col_size.height*0.5;
-        var col_rect = cc.rect(ori_x,ori_y,this.col_size.width,this.col_size.height);
-        var enemies = this.getParent().enemies;
-        for(var i in enemies)
+
+        var col_rect = this.getColRect();
+        var map_nodes = this.getParent().map_nodes;
+        for(var i in map_nodes)
         {
-            var pos_y = enemies[i].getPositionY();
+            var node = map_nodes[i];
+            if(node.mn_type != EMNodeType.EEnemy)
+            {
+                continue;
+            }
+            var pos_y = node.getPositionY();
             if(pos_y>win_size.height)
             {
                 continue;
             }
-            var e_rect = rectForNode(enemies[i]);
+            var e_rect = node.getColRect();;
             if(cc.rectIntersectsRect(e_rect,col_rect))
             {
-                this.hitEnemy(enemies[i]);
+                  node.hited(this.att);
+                //if(this.explosion != null)
+                //{
+                    this.doExplosion();
+                // }
                 return;
             }
         }
@@ -50,19 +55,17 @@ var Bullet = cc.Sprite.extend({
         this.setPositionY(pos.y+this.speed*dt);
     },
 
-    hitEnemy:function (enemy) 
-    {
-        enemy.hited(this.att);
-        //if(this.explosion != null)
-        //{
-            this.doExplosion();
-       // }
-    },
-
     doExplosion:function () 
     {
         this.getParent().removeChild(this,true);
-    }
+    },
+    getColRect:function () 
+    {
+        var origin = this.getPosition();
+        origin.x -= this.col_size.width*0.5;
+        origin.y -= this.col_size.height*0.5;
+        return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
+    },
 
 });
 

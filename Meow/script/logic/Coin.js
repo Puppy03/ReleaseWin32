@@ -1,13 +1,15 @@
 require("script/config/coin_config.js");
 
 var Coin = cc.Sprite.extend({
-speed_y:100,
+mn_type:EMNodeType.ECoin,
+hp:1,
 life_tick:0,
-born_pos:null,
 coin_val:1,
-initCoin:function (config,born_pos,speed_y) 
+col_size:null,
+initCoin:function (config) 
 {
     this.coin_val = config.coin_val;
+    this.col_size = config.col_size;
     var motion = config.actor;
     var animation = cc.Animation.create();
     animation.setDelayPerUnit(motion.interval);
@@ -26,36 +28,36 @@ initCoin:function (config,born_pos,speed_y)
     var repeat = cc.RepeatForever.create(animate);
     this.initWithTexture(texture,cc.rect(0,0,frame_width,frame_height));
     this.runAction(repeat);
-
-    this.speed_y = speed_y;
-    this.born_pos = born_pos;
-    this.setPosition(born_pos);
-    
-    this.schedule(this.tickStat);
 },
-tickStat:function (dt)
+
+die:function()
 {
-    var pos_y = this.getPositionY();
-    pos_y -= this.speed_y*dt;
-    this.setPositionY(pos_y);
+},
+updateStat:function (dt)
+{
     var parent = this.getParent();
-    var layer_size = parent.getContentSize();
-    if(pos_y<-layer_size.height*0.5)
+    var pos_y = this.getPositionY();
+    this.setPositionY(pos_y - this.getParent().roll_speed*dt);
+    var fighter = parent.fighter;
+    if(fighter!=null)
     {
-        parent.removeChild(this,true);
-        return;
-    }
-     var fighter = parent.fighter;
-     if(fighter!=null)
-     {
-          var rect = rectForNode(fighter);
-          if(cc.rectContainsPoint(rect,this.getPosition()))
+          var f_rect = fighter.getColRect();
+          var s_rect = this.getColRect();
+          if(cc.rectIntersectsRect(f_rect,s_rect))
           {
              PlayerData.StageCoin += this.coin_val;
              ui_parser.currentScene.refreshStageCoin();
-             parent.removeChild(this,true);
+             this.hp = 0;
              return;
           }
-     }
+    }
+},
+
+getColRect:function () 
+{
+    var origin = this.getPosition();
+    origin.x -= this.col_size.width*0.5;
+    origin.y -= this.col_size.height*0.5;
+    return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
 },
 });

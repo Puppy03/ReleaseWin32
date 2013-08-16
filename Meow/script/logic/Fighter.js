@@ -14,7 +14,7 @@ col_size:null,
 shoot_interval:0.12,
 shoot_tick:0,
 born_y:-200,
-fight_y:180,
+fight_y:120,
 born_tick:0,
 bullet_config:null,
 dying_tick:0,
@@ -35,8 +35,8 @@ initFighter:function (fighter_config)
     var repeat = cc.RepeatForever.create(animate);
     this.runAction(repeat);
 
-    this.setPosition(0,-480+this.born_y);
-    var move = cc.MoveTo(0.3,cc.p(0,-480+this.fight_y));
+    this.setPosition(0,-design_size.height*0.5+this.born_y);
+    var move = cc.MoveTo(0.3,cc.p(0,-design_size.height*0.5+this.fight_y));
     this.born_tick = 0.3;
     this.runAction(move);
 
@@ -46,9 +46,19 @@ initFighter:function (fighter_config)
 tickBorn:function (dt) 
 {
     this.born_tick -= dt;
-    if(this.getPositionY()>=(-480+this.fight_y) || this.born_tick<0.3)
+    if(this.getPositionY()>=(-design_size.height*0.5+this.fight_y) || this.born_tick<0.3)
     {
-        this.setPositionY(-480+this.fight_y);
+        this.setPositionY(-design_size.height*0.5+this.fight_y);
+        var pos = this.getPosition();
+        pos = this.getParent().convertToWorldSpace(pos);
+
+        if(pos.y < this.fight_y)
+        {
+            cc.log("fight_pos:"+pos.y);
+            pos = this.getParent().convertToNodeSpace(cc.p(win_size.width*0.5,this.fight_y));
+            cc.log("adjust pos:"+pos.y);
+            this.setPosition(pos);
+        }
         this.schedule(this.tickShoot);
         this.unschedule(this.tickBorn);
         return;
@@ -73,7 +83,7 @@ tickShoot:function (dt)
 shoot:function () 
 {
     var _bullet = new Bullet;
-    _bullet.initBullet(this.bullet_config,this);
+    _bullet.initBullet(this.bullet_config);
     this.getParent().addChild(_bullet);
     var pos = this.getPosition();
     pos.y += this.getContentSize().height*0.5;
@@ -83,7 +93,7 @@ shoot:function ()
         pos.x -= 40;
         var pos2 = cc.p(pos.x+80,pos.y);
         var _bullet2 = new Bullet;
-        _bullet2.initBullet(this.bullet_config,this);
+        _bullet2.initBullet(this.bullet_config);
         this.getParent().addChild(_bullet2);
         _bullet2.setPosition(pos2);
     }
@@ -96,10 +106,15 @@ pauseShoot:function ()
     this.unschedule(this.tickShoot);
 },
 
+resumeShoot:function ()
+{
+    this.schedule(this.tickShoot);
+},
+
 die:function () 
 {
     this.unschedule(this.tickShoot);
-    this.getParent().getParent().gameOver();
+    ui_parser.currentScene.gameOver();
     this.dying_effect1 = cc.Sprite.create("fighter/bloodCircle.png");
     this.dying_effect2 = cc.Sprite.create("fighter/bloodCircle.png");
     this.dying_effect2.setFlipX(true);

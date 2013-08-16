@@ -12,8 +12,7 @@ var FightLayer = cc.Node.extend({
     back_imgs:null,
     roll_speed:900,
     pre_touch_pos:null,
-    enemies:null,
-    barriers:null,
+    map_nodes:null,
     stage_config:null,
     cur_seg_idx:0,
     cur_node_idx:0,
@@ -31,8 +30,7 @@ var FightLayer = cc.Node.extend({
         this.roll_speed = stage_config.roll_speed;
         PlayerData.StageMaxDis = stage_config.max_distance;
 
-        this.enemies = [];
-        this.barriers = [];
+        this.map_nodes = [];
         this.back_imgs = [];
 
         this.fighter = new Fighter;
@@ -53,13 +51,19 @@ var FightLayer = cc.Node.extend({
         this.addChild(img1,-999);
         this.addChild(img2,-999);
 
-        this.schedule(this.tickBackGround);
-        this.schedule(this.tickMapNodes);
-
         var seg_name = this.stage_config.segments[this.cur_seg_idx];
         this.cur_segment = segmentConfig[seg_name];
-        this.schedule(this.ticksSegments);
+
+        this.schedule(this.updateStats);
     },
+
+    updateStats:function(dt)
+    {
+        this.ticksSegments(dt);
+        this.tickMapNodes(dt);
+        this.tickMoveGround(dt);
+    },
+
     moveFighter:function(move_x)
     {
         var cur_x = this.fighter.getPositionX()+move_x/this.getScale();
@@ -70,32 +74,38 @@ var FightLayer = cc.Node.extend({
         }
     },
 
-
-
     clearStage:function () 
     {
-         for(var i in this.enemies)
+        cc.log("clear stage!!!!!!!");
+        this.unschedule(this.updateStats); 
+
+         for(var i in this.map_nodes)
         {
-           this.removeChild(this.enemies[i],true);
+           this.removeChild(this.map_nodes[i],true);   
         }
-        this.enemies = [];
-        for(var i in this.barriers)
-        {
-           this.removeChild(this.barriers[i],true);
-        }
-        this.barriers = [];
+        this.map_nodes = [];
         this.segment_tick = 0;
+        this.cur_seg_idx = 0;
+        this.cur_node_idx = 0;
+        this.move_check = 0;
+        this.total_move = 0;
         
-        this.unschedule(this.tickMapNodes);
-        this.unschedule(this.ticksSegments);
-        this.unschedule(this.tickBackGround);
-        this.getParent().setTouchEnabled(false);
     },
 
-    tickBackGround:function (dt)
+    pause:function()
+    {
+        this.unschedule(this.updateStats);
+        this.fighter.pauseShoot();
+    },
+    resume:function()
+    {
+        this.schedule(this.updateStats);
+        this.fighter.resumeShoot();
+    },
+
+    tickMoveGround:function (dt)
     {
         var layer_size = this.getContentSize();
-        var move_y = this.roll_speed*dt;
         var front = this.back_imgs[0];
         var back = this.back_imgs[this.back_imgs.length-1];
         var pos_y = front.getPositionY();
@@ -106,6 +116,7 @@ var FightLayer = cc.Node.extend({
             this.back_imgs.splice(0,1);
         }
         pos_y = back.getPositionY();
+        var move_y = this.roll_speed*dt;
         
         if((pos_y+size.height*0.5)<layer_size.height*0.5)
         {
@@ -138,35 +149,40 @@ var FightLayer = cc.Node.extend({
     tickMapNodes:function (dt) 
     {
         var layer_size = this.getContentSize();
-        for(var i in this.enemies)
+        for(var i=0; i<this.map_nodes.length; )
         {
-            if(this.enemies[i].hp <=0 )
+            if(this.map_nodes.length==0 || i>=this.map_nodes.length)
             {
-                PlayerData.StageScore += this.enemies[i].score_val;
-                ui_parser.currentScene.refreshStageScore();
-                this.enemies[i].die();
-                this.enemies.splice(i,1);
+                return;
+            }
+            var node = this.map_nodes[i];
+            if(node.hp <=0 )
+            {
+                node.die();
+                this.removeChild(node,true);
+                this.map_nodes.splice(i,1);
                 continue;
             }
+            var pos_y = node.getPositionY();
+            var size = node.getContentSize();
+            if((pos_y+size.height*0.5)<-layer_size.height*0.5)
+            {
+                this.removeChild(node,true);
+                this.map_nodes.splice(i,1);
+                continue;
+            }
+            i++;
+            node.updateStat(dt);
+        }
+    },
 
-            var pos_y = this.enemies[i].getPositionY();
-            var size = this.enemies[i].getContentSize();
-            if((pos_y+size.height*0.5)<-layer_size.height*0.5)
-            {
-                this.removeChild(this.enemies[i],true);
-                this.enemies.splice(i,1);
-            }
-        }
-        for(var i in this.barriers)
-        {
-            var pos_y = this.barriers[i].getPositionY();
-            var size = this.barriers[i].getContentSize();
-            if((pos_y+size.height*0.5)<-layer_size.height*0.5)
-            {
-                this.removeChild(this.barriers[i],true);
-                this.barriers.splice(i,1);
-            }
-        }
+    dropCoin:function(config,pos)
+    {
+        var coin = new Coin;
+        coin.initCoin(config);
+        coin.setPosition(pos);
+        this.addChild(coin);
+        this.map_nodes.push(coin);
     },
 
     ticksSegments:function (dt) 
@@ -189,7 +205,6 @@ var FightLayer = cc.Node.extend({
                 }
                 else
                 {
-                    //this.getParent().stageEnd();
                     this.unschedule(this.ticksSegments);
                     return;
                 }
@@ -226,9 +241,10 @@ var FightLayer = cc.Node.extend({
             {
                 var _enemy = new Enemy;
                 _enemy.initEnemy(enemyConfig[node.config]);
-                this.addChild(_enemy);
-                this.enemies.push(_enemy);         
+                this.addChild(_enemy);      
                 _enemy.setPosition(pos_x,pos_y);
+
+                this.map_nodes.push(_enemy); 
             }
             else if(node.type == EObjType.EMeteorite)
             {
@@ -236,26 +252,34 @@ var FightLayer = cc.Node.extend({
                 var follow_speed = 0;
                 if(seg_node.hasOwnProperty("follow_speed"))
                 {follow_speed = seg_node.follow_speed;}
-                _meteo.initMeteorite(meteoriteConfig[node.config],follow_speed,pos_x,this.getContentSize());
+                _meteo.initMeteorite(meteoriteConfig[node.config],follow_speed,this.getContentSize());
+                _meteo.setPosition(pos_x,pos_y);
                 this.addChild(_meteo);
+
+                this.map_nodes.push(_meteo); 
             }
             else if(node.type == EObjType.EBarrier)
             {
                 var _barrier = new Barrier;
-                _barrier.initBarrier(barrierConfig[node.config],this.roll_speed);
+                _barrier.initBarrier(barrierConfig[node.config]);
                 _barrier.setPosition(pos_x,pos_y);
-                this.barriers.push(_barrier);
                 this.addChild(_barrier);
+
+                this.map_nodes.push(_barrier);
             }
             else if(node.type == EObjType.ECoin)
             {
                 var _coin = new Coin;
-                _coin.initCoin(coinConfig[node.config],cc.p(pos_x,pos_y),this.roll_speed);
+                _coin.initCoin(coinConfig[node.config]);
+                _coin.setPosition(pos_x,pos_y);
                 this.addChild(_coin);
+
+                this.map_nodes.push(_coin);
             }
       }
 
     },
+
 
     restartStage:function () 
     {
@@ -267,17 +291,10 @@ var FightLayer = cc.Node.extend({
         this.fighter.initFighter(fighterConfig.Fighter00);
         this.addChild(this.fighter);
 
-        this.cur_seg_idx = 0;
-        this.cur_node_idx = 0;
-        this.move_check = 0;
-        this.total_move = 0;
         var seg_name = this.stage_config.segments[this.cur_seg_idx];
         this.cur_segment = segmentConfig[seg_name];
 
-        this.schedule(this.tickMapNodes);
-        this.schedule(this.tickBackGround);
-        this.schedule(this.ticksSegments);
-
+        this.schedule(this.updateStats);
         this.getParent().setTouchEnabled(true);
     }
 });

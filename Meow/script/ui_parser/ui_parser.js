@@ -22,3 +22,4 @@ require('script/ui_parser/parser_button.js');
 require('script/ui_parser/parser_image.js');
 require('script/ui_parser/parser_icon.js');
 require('script/ui_parser/parser_progress.js');
+require('script/ui_parser/parser_scroll.js');

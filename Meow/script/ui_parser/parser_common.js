@@ -32,22 +32,22 @@ function getUIPosVal(_val)
     {
      case "L":
      {
-        return -ui_size.width*0.5 + _val.substring(1)*1.0;
+        return -ui_size.width*0.5 + _val.substring(1)*1;
         break;
      }
      case "R":
      {
-        return ui_size.width*0.5 - _val.substring(1)*1.0;
+        return ui_size.width*0.5 - _val.substring(1)*1;
         break;
      }
      case "T":
      {
-        return ui_size.height*0.5 - _val.substring(1)*1.0;
+        return ui_size.height*0.5 - _val.substring(1)*1;
         break;
      }
      case "B":
      {
-        return -ui_size.height*0.5 + _val.substring(1)*1.0;
+        return -ui_size.height*0.5 + _val.substring(1)*1;
         break;
      }
      default:
@@ -70,14 +70,14 @@ function affineFlip(attrs,node)
 {
     if(attrs.hasOwnProperty("FlipX"))
     {
-         if(attrs["FlipX"])
+         if(attrs["FlipX"]=="true")
          {
             node.setFlipX(true);
          }
     }
     if(attrs.hasOwnProperty("FlipY"))
     {
-         if(attrs["FlipY"])
+         if(attrs["FlipY"]=="true")
          {
             node.setFlipY(true);
          }
@@ -99,7 +99,7 @@ function affineScale(attrs,node)
     if(attrs.hasOwnProperty("Scale"))
     {
         var _scale = attrs["Scale"];
-        node.setScale(_scale);
+        node.setScale(_scale*1);
     }
 } 
 
@@ -107,7 +107,7 @@ function getZorder(attrs)
 {
     if(attrs.hasOwnProperty("ZOrder"))
     {
-        return attrs["ZOrder"];
+        return attrs["ZOrder"]*1;
     }
     return 0;
 }
@@ -136,7 +136,7 @@ function getCallback(attrs,name)
 function strToPosition(_str) 
 {
     var _pos_str = _str.split(",");
-    return cc.p(_pos_str[0],_pos_str[1]);
+    return cc.p(_pos_str[0]*1,_pos_str[1]*1);
 }
 
 function getTouchLocation(touch)
@@ -163,7 +163,7 @@ function getSizeFromStr(str)
         cc.log("wrong argument getSizeFromStr");
         return cc.size(0,0);
     }
-    return cc.size(size_v[0],size_v[1]);
+    return cc.size(size_v[0]*1,size_v[1]*1);
 }
 
 function getRectFromStr(str)
@@ -174,5 +174,5 @@ function getRectFromStr(str)
         cc.log("wrong argument getRectFromStr");
         return cc.rect(0,0,0,0);
     }
-    return cc.rect(r_v[0],r_v[1],r_v[2],r_v[3]);
+    return cc.rect(r_v[0]*1,r_v[1]*1,r_v[2]*1,r_v[3]*1);
 }

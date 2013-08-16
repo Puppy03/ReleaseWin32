@@ -44,6 +44,16 @@ var RoleMgrScene = UIController.extend({
         role_preview.runAction(repeat);
         role_preview.setPosition(170,160);
     },
+    openPetsMgr:function()
+    {
+        var page = this.openUIPage("layout/role_pets.xml");
+        var pets_scroll = page.getUINode("petScroll");
+        for(var i=0; i<5; i++)
+        {
+            var sp = cc.Sprite.create("ui/btn_s.png");
+            pets_scroll.addItemNode(sp);
+        }
+    },
 });
 
 RoleMgrScene.create = function () {

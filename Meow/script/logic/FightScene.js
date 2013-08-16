@@ -33,7 +33,8 @@ var FightScene = UIController.extend({
             var space_img = cc.Sprite.create("ui/space.png");
             this.addChild(space_img);
             space_img.setScale(scale);
-            space_img.setPosition(win_size.width*0.5,space_height*0.5);
+            pos.y -= layer_size.height*scale*0.5+space_height*0.5;
+            space_img.setPosition(pos);
         }
 
         this.setTouchMode(1);
@@ -47,6 +48,7 @@ var FightScene = UIController.extend({
     {
         cc.log("game over!");
         this.fight_layer.clearStage();
+        this.setTouchEnabled(false);
         this.fight_layer.fighter = null;
         var page = this.openUIPage("layout/game_over.xml");
     },
@@ -55,6 +57,7 @@ var FightScene = UIController.extend({
     {
         cc.log("stage end!!!");
         this.fight_layer.clearStage();
+        this.setTouchEnabled(false);
         if(this.fight_layer.fighter!=null)
         {
             this.fight_layer.fighter.pauseShoot();
@@ -97,6 +100,18 @@ var FightScene = UIController.extend({
         this.refreshStageDistance();
 
         this.fight_layer.restartStage();
+    },
+
+    pauseGame:function()
+    {
+        this.fight_layer.pause();
+        this.setTouchEnabled(false);
+    },
+
+    resumeGame:function()
+    {
+        this.fight_layer.resume();
+        this.setTouchEnabled(true);
     },
 
     onTouchBegan:function(touch, event)

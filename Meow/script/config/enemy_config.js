@@ -10,6 +10,7 @@ var enemyConfig={
 Enemy00:{
     hp:100,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
     Fly:{
@@ -22,6 +23,7 @@ Enemy00:{
 Enemy01:{
     hp:200,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level1/normal.png",
     img_hurt:"monster/level1/hurt.png",
     Fly:{
@@ -34,6 +36,7 @@ Enemy01:{
 Enemy02:{
     hp:300,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level2/normal.png",
     img_hurt:"monster/level2/hurt.png",
     Fly:{
@@ -46,6 +49,7 @@ Enemy02:{
 Enemy03:{
     hp:400,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level3/normal.png",
     img_hurt:"monster/level3/hurt.png",
     Fly:{
@@ -58,6 +62,7 @@ Enemy03:{
 Enemy04:{
     hp:500,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level4/normal.png",
     img_hurt:"monster/level4/hurt.png",
     Fly:{
@@ -70,6 +75,7 @@ Enemy04:{
 Enemy05:{
     hp:600,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level5/normal.png",
     img_hurt:"monster/level5/hurt.png",
     Fly:{
@@ -82,6 +88,7 @@ Enemy05:{
 Enemy06:{
     hp:700,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level6/normal.png",
     img_hurt:"monster/level6/hurt.png",
     Fly:{
@@ -94,6 +101,7 @@ Enemy06:{
 Enemy07:{
     hp:800,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level7/normal.png",
     img_hurt:"monster/level7/hurt.png",
     Fly:{
@@ -106,6 +114,7 @@ Enemy07:{
 Enemy08:{
     hp:900,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level8/normal.png",
     img_hurt:"monster/level8/hurt.png",
     Fly:{
@@ -118,6 +127,7 @@ Enemy08:{
 Enemy09:{
     hp:1000,
     speed:500,
+    col_size:{width:95,height:116},
     img_normal:"monster/level9/normal.png",
     img_hurt:"monster/level9/hurt.png",
     Fly:{
@@ -130,6 +140,7 @@ Enemy09:{
 Enemy10:{
     hp:100,
     speed:800,
+    col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
     Fly:{
