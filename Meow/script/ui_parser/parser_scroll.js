@@ -22,7 +22,7 @@ var UIScroll = cc.Layer.extend({
        rectangle[2] = cc.p(size.width*0.5,-size.height*0.5)  
        rectangle[3] = cc.p(-size.width*0.5,-size.height*0.5)
        var white = cc.c4f(1,1,1,1);  
-       this.stencil.drawPoly(rectangle, 4, white, white);  
+       this.stencil.drawPoly(rectangle, white,1, white);  
        this.cliping_node = ClipingNode.create(this.stencil);
        this.addChild(this.cliping_node);
 

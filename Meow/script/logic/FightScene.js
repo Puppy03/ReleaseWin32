@@ -108,12 +108,14 @@ var FightScene = UIController.extend({
     {
         this.fight_layer.pause();
         this.setTouchEnabled(false);
+        this.shadowMask(true);
     },
 
     resumeGame:function()
     {
         this.fight_layer.resume();
         this.setTouchEnabled(true);
+        this.shadowMask(false);
     },
 
     onTouchBegan:function(touch, event)

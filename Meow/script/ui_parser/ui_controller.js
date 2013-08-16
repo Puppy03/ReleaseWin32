@@ -2,7 +2,7 @@
 var UIController = cc.Layer.extend ({
   staticPages:null,
   popedPages:null,
-  
+  shadow_msk:null,
   openUIPage : function (layout_file) 
   {
      if(this.staticPages == null)
@@ -106,6 +106,34 @@ var UIController = cc.Layer.extend ({
             this.staticPages.splice(i,1);
             this.resetActivePage();
             return;
+        }
+    }
+  },
+  shadowMask:function(show_msk)
+  {
+    if(show_msk)
+    {
+        if(this.shadow_msk == null)
+        {
+            cc.log("create shadow!!!!!!!");
+            this.shadow_msk = cc.DrawNode.create();
+            var rectangle = [];  
+            rectangle[0] = cc.p(-win_size.width*0.5,win_size.height*0.5)  
+            rectangle[1] = cc.p(win_size.width*0.5,win_size.height*0.5)  
+            rectangle[2] = cc.p(win_size.width*0.5,-win_size.height*0.5)  
+            rectangle[3] = cc.p(-win_size.width*0.5,-win_size.height*0.5)
+            var msk_color = cc.c4f(0,0,0,0.6);  
+            this.shadow_msk.drawPoly(rectangle,msk_color,1, msk_color);
+            this.addChild(this.shadow_msk,0);
+            this.shadow_msk.setPosition(win_size.width*0.5,win_size.height*0.5);
+        }
+    }
+    else
+    {
+        if(this.shadow_msk != null)
+        {
+            this.removeChild(this.shadow_msk,true);
+            this.shadow_msk = null;
         }
     }
   },
