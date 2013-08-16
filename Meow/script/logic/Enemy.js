@@ -93,6 +93,9 @@ die:function ()
     var parent = this.getParent();
     parent.addChild(explosion);
 
+    cc.AudioEngine.getInstance().stopAllEffects();
+    cc.AudioEngine.getInstance().playEffect(deadSound);
+
     parent.dropCoin(coinConfig.Coin00,pos);
 },
 

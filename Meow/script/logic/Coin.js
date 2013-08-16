@@ -1,15 +1,18 @@
 require("script/config/coin_config.js");
 
+
 var Coin = cc.Sprite.extend({
 mn_type:EMNodeType.ECoin,
 hp:1,
 life_tick:0,
 coin_val:1,
 col_size:null,
+sound:null,
 initCoin:function (config) 
 {
     this.coin_val = config.coin_val;
     this.col_size = config.col_size;
+    this.sound = config.sound;
     var motion = config.actor;
     var animation = cc.Animation.create();
     animation.setDelayPerUnit(motion.interval);
@@ -46,6 +49,7 @@ updateStat:function (dt)
           if(cc.rectIntersectsRect(f_rect,s_rect))
           {
              PlayerData.StageCoin += this.coin_val;
+             cc.AudioEngine.getInstance().playEffect(this.sound);
              ui_parser.currentScene.refreshStageCoin();
              this.hp = 0;
              return;

@@ -37,6 +37,8 @@ var FightScene = UIController.extend({
             space_img.setPosition(pos);
         }
 
+        cc.AudioEngine.getInstance().playMusic("music/backgroundmusic01.mp3",true);
+
         this.setTouchMode(1);
         this.setTouchPriority(100);
         this.setTouchEnabled(true);

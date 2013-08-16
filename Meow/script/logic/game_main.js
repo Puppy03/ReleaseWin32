@@ -22,6 +22,8 @@ require("script/logic/PlayerData.js");
 var director = cc.Director.getInstance();
 director.setDisplayStats(false);
 
+cc.AudioEngine.getInstance().preloadEffect("music/SND_GET_GOLD.mp3");
+
 // set FPS. the default value is 1.0/60 if you don't call this
 //director.setAnimationInterval(1.0 / 60);
 

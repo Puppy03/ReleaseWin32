@@ -4,6 +4,7 @@ var coinConfig={
 Coin00:{
     coin_val:1,
     col_size:{width:50,height:50},
+    sound:"music/SND_GET_GOLD.mp3",
     actor:
     {
         imgfile:"item/coin_small.png",
@@ -17,6 +18,7 @@ Coin00:{
 Coin01:{
     coin_val:10,
     col_size:{width:90,height:90},
+    sound:"sound/coin.mp3",
     actor:
     {
         imgfile:"item/coin_big.png",

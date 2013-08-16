@@ -6,6 +6,9 @@ start:1,
 end:12,
 interval:0.06,
 };
+
+var deadSound="sound/mon_dead.mp3";
+
 var enemyConfig={
 Enemy00:{
     hp:100,

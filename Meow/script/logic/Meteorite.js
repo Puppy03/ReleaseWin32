@@ -105,7 +105,7 @@ createWaring:function ()
 
     this.warn_mark = cc.Sprite.create(this.config.warn_mark);
     var mark_size = this.warn_mark.getContentSize();
-    this.warn_mark.setPositionY(-100-mark_size.height*0.5);
+    this.warn_mark.setPositionY(-this.getPositionY()+layer_size.height*0.5-mark_size.height*0.5);
     this.addChild(this.warn_mark);
 },
 createCircle:function () 
