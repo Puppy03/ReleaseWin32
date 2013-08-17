@@ -13,7 +13,7 @@ stage2:{
     back_img:"scene/01.png",
     roll_speed:250,
     loop:false,
-    segments:["Segment02","Segment01","Segment02","Segment03","Segment04","Segment05"],
+    segments:["S0205","S0200","S0201","S0202","S0203","S0204","S0205",],
 },
 stage3:{
     max_distance:10000,

@@ -2,6 +2,7 @@ require("script/config/common_config.js");
 require("script/config/enemy_group.js");
 
 var segmentConfig = {
+//---------------------------------------stage9coin------------------------------
 SegmentCoin10:[
 {time:0,  group:"Coin1X5",offset:-256},
 {time:1,  group:"Mon1X3",offset:128},
@@ -221,6 +222,99 @@ Segment06:[
 {time:19,  group:"Mon1X5b5",offset:0},
 {time:21,  group:"Mon1X5c",offset:0},
 ],
+//---------------------------------------stage2------------------------------
+S0200:[
+{time:1,  group:"Mon1X1",offset:72},
+{time:2,  group:"Mon1X1",offset:-200},
+{time:3,  group:"Mon1X1",offset:128},
+{time:4,  group:"Mon1X1",offset:-128},
+],
+S0201:[
+{time:2,  group:"MonW",offset:0},
+{time:4,  group:"MonW",offset:0},
+{time:6,  group:"MonW",offset:0},
+{time:8,  group:"MonW",offset:0},
+{time:10,  group:"MonW",offset:0},
+],
+S0202:[
+{time:2,  group:"MonV",offset:0},
+{time:4,  group:"MonV",offset:0},
+{time:6,  group:"MonV",offset:0},
+{time:8,  group:"MonV",offset:0},
+{time:10,  group:"MonV",offset:0},
+],
+S0203:[
+{time:2,  group:"Mon1X5",offset:0},
+{time:2,  group:"Meteorite1",offset:0},
+{time:2,  group:"Meteorite1",offset:-256},
+{time:2,  group:"Meteorite1",offset:256},
+{time:4,  group:"Mon1X5",offset:0},
+{time:4,  group:"Meteorite1",offset:-128},
+{time:4,  group:"Meteorite1",offset:128},
+{time:6,  group:"Mon1X5",offset:0},
+{time:6,  group:"Meteorite1",offset:0},
+{time:6,  group:"Meteorite1",offset:-256},
+{time:6,  group:"Meteorite1",offset:256},
+{time:8,  group:"Mon1X5",offset:0},
+{time:8,  group:"Meteorite1",offset:-128},
+{time:8,  group:"Meteorite1",offset:128},
+{time:10,  group:"Mon1X5",offset:0},
+],
+S0204:[
+
+{time:2,  group:"Meteorite1",offset:0},
+{time:2,  group:"Meteorite1",offset:-256},
+{time:2,  group:"Meteorite1",offset:256},
+
+{time:3,  group:"Meteorite1",offset:-128},
+{time:3,  group:"Meteorite1",offset:128},
+
+{time:4,  group:"Meteorite1",offset:0},
+{time:4,  group:"Meteorite1",offset:-128},
+{time:4,  group:"Meteorite1",offset:256},
+{time:4,  group:"Meteorite1",offset:-256},
+
+{time:5,  group:"Meteorite1",offset:-128},
+{time:5,  group:"Meteorite1",offset:128},
+//
+{time:6,  group:"Meteorite1",offset:0},
+{time:6,  group:"Meteorite1",offset:-256},
+{time:6,  group:"Meteorite1",offset:256},
+
+{time:7,  group:"Meteorite1",offset:-0},
+{time:7,  group:"Meteorite1",offset:-128},
+{time:7,  group:"Meteorite1",offset:128},
+{time:7,  group:"Meteorite1",offset:256},
+
+{time:8,  group:"Meteorite1",offset:0},
+{time:8,  group:"Meteorite1",offset:-256},
+{time:8,  group:"Meteorite1",offset:256},
+
+{time:9,  group:"Meteorite1",offset:-128},
+{time:9,  group:"Meteorite1",offset:128},
+{time:9,  group:"Meteorite1",offset:-256},
+{time:9,  group:"Meteorite1",offset:256},
+
+{time:9,  group:"Coin5X10",offset:0},
+{time:11,  group:"Coin5X10",offset:0},
+{time:13,  group:"Coin5X10",offset:0},
+{time:15,  group:"Coin5X10",offset:0},
+],
+S0205:[
+{time:2,  group:"Mon1X5a5",offset:0},
+{time:2,  group:"Meteorite1",offset:0},
+{time:4,  group:"Mon1X5a5",offset:0},
+{time:4,  group:"Meteorite1",offset:-128},
+{time:6,  group:"Mon1X5a5",offset:0},
+{time:6,  group:"Meteorite1",offset:-256},
+{time:8,  group:"Mon1X5a5",offset:0},
+{time:8,  group:"Meteorite1",offset:128},
+{time:10,  group:"BigCoin1X5",offset:0},
+],
+//---------------------------------------stage3------------------------------
+
+
+//---------------------------------------stage4------------------------------
 Segment00a:[
 {time:2,  group:"MonW",offset:0},
 {time:4,  group:"MonW",offset:0},
