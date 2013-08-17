@@ -162,6 +162,10 @@ born:function(dt)
     this.meteo_img.addChild(particle,-2);
 },
 
+die:function ()
+{
+},
+
 getColRect:function () 
 {
     var origin = this.convertToWorldSpace(this.meteo_img.getPosition());

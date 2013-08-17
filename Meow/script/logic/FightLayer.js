@@ -303,8 +303,7 @@ var FightLayer = cc.Node.extend({
         this.fighter.initFighter(fighterConfig.Fighter00);
         this.addChild(this.fighter);
 
-        var seg_name = this.stage_config.segments[this.cur_seg_idx];
-        this.cur_segment = segmentConfig[seg_name];
+        this.loadSegment();
 
         this.schedule(this.updateStats);
         this.getParent().setTouchEnabled(true);

@@ -3,6 +3,7 @@ require("script/config/barrier_config.js");
 var Barrier = cc.Sprite.extend({
 mn_type:EMNodeType.EBarrier,
 id:0,
+hp:1,
 config:null,
 col_size:null,
 initBarrier:function(config)
@@ -10,7 +11,6 @@ initBarrier:function(config)
     this.config = config;
     this.col_size = config.col_size;
     this.init(config.image);
-
 },
 
 updateStat:function(dt)
@@ -25,10 +25,15 @@ updateStat:function(dt)
         var f_rect = fighter.getColRect();
         if(cc.rectIntersectsRect(e_rect,f_rect))
         {
+            this.hp = 0;
             fighter.die();
             return;
         }
     }
+},
+
+die:function ()
+{
 },
 
 getColRect:function () 
