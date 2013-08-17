@@ -1,4 +1,4 @@
-require("script/config/coin_config.js");
+require("script/config/item_config.js");
 
 
 var PropItem = cc.Sprite.extend({
@@ -6,10 +6,13 @@ mn_type:EMNodeType.EItem,
 item_type:EItemType.ENone,
 hp:1,
 col_size:null,
+config:null,
 initItem:function (config)
 {
+    this.config = config;
     this.item_type = config.item_type;
     this.col_size = config.col_size;
+    this.init(config.image);
 },
 die:function()
 {
@@ -27,6 +30,7 @@ updateStat:function (dt)
           if(cc.rectIntersectsRect(f_rect,s_rect))
           {
              this.hp = 0;
+             this.itemPicked();
              return;
           }
     }
@@ -34,6 +38,12 @@ updateStat:function (dt)
 
 itemPicked:function()
 {
+    var parent = this.getParent();
+    var fighter = parent.fighter;
+    if(this.item_type == EItemType.EAccelerate)
+    {
+        parent.chargeAhead(this.config.duration);
+    }
 },
 
 getColRect:function () 

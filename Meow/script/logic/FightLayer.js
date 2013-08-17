@@ -6,6 +6,7 @@ require("script/logic/Fighter.js");
 require("script/logic/Enemy.js");
 require("script/logic/Meteorite.js");
 require("script/logic/Barrier.js");
+require("script/logic/PropItem.js");
 
 var FightLayer = cc.Node.extend({
     fighter:null,
@@ -22,6 +23,9 @@ var FightLayer = cc.Node.extend({
     total_move:0,
     move_check:0,
     distance_psp:4,
+    charge_dur:0,
+    charge_acc:3,
+
 
     initStage:function (stage_config) 
     {
@@ -59,6 +63,16 @@ var FightLayer = cc.Node.extend({
 
     updateStats:function(dt)
     {
+        if(this.charge_dur>0)
+        {
+            this.charge_dur -= dt;
+            if(this.charge_dur<=0)
+            {
+                this.charge_dur=0;
+            }
+            else            
+            {dt *= this.charge_acc;}
+        }
         this.ticksSegments(dt);
         this.tickMapNodes(dt);
         this.tickMoveGround(dt);
@@ -165,6 +179,16 @@ var FightLayer = cc.Node.extend({
             }
             var pos_y = node.getPositionY();
             var size = node.getContentSize();
+            if(this.charge_dur>0 && node.mn_type!=EMNodeType.ECoin && node.mn_type!=EMNodeType.EItem)
+            {
+                if(pos_y<size.height*0.5)
+                {
+                    node.die();
+                    this.removeChild(node,true);
+                    this.map_nodes.splice(i,1);
+                    continue;
+                }
+            }
             if((pos_y+size.height*0.5)<-layer_size.height*0.5)
             {
                 this.removeChild(node,true);
@@ -187,6 +211,11 @@ var FightLayer = cc.Node.extend({
 
     dropItem:function (config,pos)
     {
+        var prop_item = new PropItem;
+        prop_item.initItem(config);
+        prop_item.setPosition(pos);
+        this.addChild(prop_item);
+        this.map_nodes.push(prop_item);
     },
 
     ticksSegments:function (dt) 
@@ -300,7 +329,6 @@ var FightLayer = cc.Node.extend({
 
     },
 
-
     restartStage:function () 
     {
          if(this.fighter!=null)
@@ -315,5 +343,10 @@ var FightLayer = cc.Node.extend({
 
         this.schedule(this.updateStats);
         this.getParent().setTouchEnabled(true);
-    }
+    },
+
+    chargeAhead:function(duration)
+    {
+        this.charge_dur = duration;
+    },
 });

@@ -102,8 +102,13 @@ die:function ()
     if(this.config.hasOwnProperty("drop_item"))
     {
         var drop = this.config.drop_item;
-        pos.x += randomF(-50,50);
-        parent.dropItem(drop,pos);
+        var rand_val = randomF(0,100);
+        var item_config = itemConfig[drop.item_id];
+        if(rand_val<drop.percent)
+        {
+            pos.x += randomF(-50,50);
+            parent.dropItem(item_config,pos);
+        }
     }
     
 },
