@@ -27,7 +27,7 @@ stage2:{
     roll_speed:250,
     loop:false,
     segments:[
-        {id:"S0205",diff:1,acc:1,acc:1},
+        {id:"S0206",diff:1,acc:1,acc:1},
     {id:"S0200",diff:1,acc:1},
     {id:"S0201",diff:1,acc:1},
     {id:"S0202",diff:1,acc:1},
