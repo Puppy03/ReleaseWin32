@@ -155,7 +155,7 @@ SegmentCoin08:[
 ],
 //---------------------------------------stage1------------------------------
 Segment00:[
-{time:1,  group:"Mon1X1",offset:72},
+{time:1,  group:"Mon1X1",offset:72,speed:900},
 {time:2,  group:"Mon1X1",offset:-200},
 {time:3,  group:"Mon1X1",offset:128},
 {time:4,  group:"Mon1X1",offset:-128},

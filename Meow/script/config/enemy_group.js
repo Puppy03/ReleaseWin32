@@ -457,9 +457,9 @@ Meteorite1:[
 {type:1,config:"Meteorite00",born_x:0,born_y:0},
 ],
 Meteorite4:[
-{type:1,config:"Meteorite00",born_x:-256,born_y:128},
-{type:1,config:"Meteorite00",born_x:-128,born_y:128},
-{type:1,config:"Meteorite00",born_x:128,born_y:128},
-{type:1,config:"Meteorite00",born_x:256,born_y:128},
+{type:1,config:"Meteorite00",born_x:-256,born_y:0},
+{type:1,config:"Meteorite00",born_x:-128,born_y:0},
+{type:1,config:"Meteorite00",born_x:128,born_y:0},
+{type:1,config:"Meteorite00",born_x:256,born_y:0},
 ]
 };
