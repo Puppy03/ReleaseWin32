@@ -99,13 +99,17 @@ createWaring:function ()
 
     this.warn_line = cc.Sprite.create(this.config.warn_line);
     var line_size = this.warn_line.getContentSize();
-    this.warn_line.setPositionY(-layer_size.height*0.5-100);
+    var line_pos = parent.convertToWorldSpace(cc.p(this.getPositionX(),0));
+    line_pos = this.convertToNodeSpace(line_pos);
+    this.warn_line.setPosition(line_pos);
     this.warn_line.setScaleY(layer_size.height/line_size.height);
     this.addChild(this.warn_line);
 
     this.warn_mark = cc.Sprite.create(this.config.warn_mark);
     var mark_size = this.warn_mark.getContentSize();
-    this.warn_mark.setPositionY(-this.getPositionY()+layer_size.height*0.5-mark_size.height*0.5);
+    var mark_pos = parent.convertToWorldSpace(cc.p(this.getPositionX(),layer_size.height*0.5-mark_size.height*0.5));
+    mark_pos = this.convertToNodeSpace(mark_pos);
+    this.warn_mark.setPosition(mark_pos);
     this.addChild(this.warn_mark);
 },
 createCircle:function () 

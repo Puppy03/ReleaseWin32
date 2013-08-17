@@ -1,11 +1,4 @@
 
-var EObjType={
-EEnemy:0,
-EMeteorite:1,
-EBarrier:2,
-ECoin:3,
-};
-
 var enemyGroup={
 MonSuper1X5:[
 {type:0,config:"Enemy10",born_x:-256,born_y:0},

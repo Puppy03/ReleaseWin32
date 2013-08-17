@@ -4,6 +4,7 @@ require("script/logic/Coin.js");
 
 var Enemy = cc.Sprite.extend({
 mn_type:EMNodeType.EEnemy,
+config:null,
 id:0,
 speed:0,
 hp:0,
@@ -19,6 +20,7 @@ col_size:null,
 
 initEnemy:function (enemy_config) 
 {
+    this.config = enemy_config;
     this.hp = enemy_config.hp;
     this.speed = enemy_config.speed;
     this.col_size = enemy_config.col_size;
@@ -93,10 +95,17 @@ die:function ()
     var parent = this.getParent();
     parent.addChild(explosion);
 
-    cc.AudioEngine.getInstance().stopAllEffects();
     cc.AudioEngine.getInstance().playEffect(deadSound);
 
     parent.dropCoin(coinConfig.Coin00,pos);
+
+    if(this.config.hasOwnProperty("drop_item"))
+    {
+        var drop = this.config.drop_item;
+        pos.x += randomF(-50,50);
+        parent.dropItem(drop,pos);
+    }
+    
 },
 
 updateDieDelay:function (dt) 

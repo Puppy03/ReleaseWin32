@@ -185,6 +185,10 @@ var FightLayer = cc.Node.extend({
         this.map_nodes.push(coin);
     },
 
+    dropItem:function (config,pos)
+    {
+    },
+
     ticksSegments:function (dt) 
     {
         this.segment_tick += dt;
@@ -229,6 +233,10 @@ var FightLayer = cc.Node.extend({
     {
         this.cur_node_idx = 0;
         var seg_pair = this.stage_config.segments[this.cur_seg_idx];
+        if(!segmentConfig.hasOwnProperty(seg_pair.id))
+        {
+            cc.log("Wrong segment id:"+seg_pair.id);
+        }
         this.cur_segment = segmentConfig[seg_pair.id];
         this.cur_segment_diff = seg_pair.diff;
         cc.log("cur segment:"+this.cur_seg_idx);
@@ -243,7 +251,7 @@ var FightLayer = cc.Node.extend({
             var node = group[i];
             var pos_x = node.born_x+seg_node.offset;
             var pos_y = this.getContentSize().height*0.5+100+node.born_y;
-             if(node.type == EObjType.EEnemy)
+             if(node.type == EMNodeType.EEnemy)
             {
                 var _enemy = new Enemy;
                 _enemy.initEnemy(enemyConfig[node.config]);
@@ -258,7 +266,7 @@ var FightLayer = cc.Node.extend({
 
                 this.map_nodes.push(_enemy); 
             }
-            else if(node.type == EObjType.EMeteorite)
+            else if(node.type == EMNodeType.EMeteorite)
             {
                 var _meteo = new Meteorite;
                 var follow_speed = 0;
@@ -270,7 +278,7 @@ var FightLayer = cc.Node.extend({
 
                 this.map_nodes.push(_meteo); 
             }
-            else if(node.type == EObjType.EBarrier)
+            else if(node.type == EMNodeType.EBarrier)
             {
                 var _barrier = new Barrier;
                 _barrier.initBarrier(barrierConfig[node.config]);
@@ -279,7 +287,7 @@ var FightLayer = cc.Node.extend({
 
                 this.map_nodes.push(_barrier);
             }
-            else if(node.type == EObjType.ECoin)
+            else if(node.type == EMNodeType.ECoin)
             {
                 var _coin = new Coin;
                 _coin.initCoin(coinConfig[node.config]);

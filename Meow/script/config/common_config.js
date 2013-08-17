@@ -2,7 +2,7 @@
 
 var EMNodeType={
 EEnemy:0,
-EBarrier:1,
-ECoin:2,
-EMeteorite:3,
+EMeteorite:1,
+EBarrier:2,
+ECoin:3,
 }
