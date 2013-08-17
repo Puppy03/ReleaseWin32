@@ -5,7 +5,7 @@ var segmentConfig = {
 //---------------------------------------stage9coin------------------------------
 SegmentCoin10:[
 {time:0,  group:"Coin1X5",offset:-256},
-{time:1,  group:"Mon1X3",offset:128},
+{time:1,  group:"Mon1X3",offset:128,speed:600},
 {time:2,  group:"Coin1X5",offset:0},
 {time:3,  group:"Mon1X3",offset:-256},
 {time:4,  group:"Coin1X5",offset:-256},

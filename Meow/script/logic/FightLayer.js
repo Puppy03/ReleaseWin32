@@ -17,6 +17,7 @@ var FightLayer = cc.Node.extend({
     cur_seg_idx:0,
     cur_node_idx:0,
     cur_segment:null,
+    cur_segment_diff:1,
     segment_tick:0,
     total_move:0,
     move_check:0,
@@ -51,8 +52,7 @@ var FightLayer = cc.Node.extend({
         this.addChild(img1,-999);
         this.addChild(img2,-999);
 
-        var seg_name = this.stage_config.segments[this.cur_seg_idx];
-        this.cur_segment = segmentConfig[seg_name];
+        this.loadSegment();
 
         this.schedule(this.updateStats);
     },
@@ -194,8 +194,6 @@ var FightLayer = cc.Node.extend({
             this.cur_node_idx = 0;
             this.segment_tick = 0;
 
-            cc.log("next segment:"+this.cur_seg_idx);
-            
             if(this.cur_seg_idx>=this.stage_config.segments.length)
             {
                 if(this.stage_config.loop=="true")
@@ -209,9 +207,7 @@ var FightLayer = cc.Node.extend({
                     return;
                 }
             }
-
-            var seg_name = this.stage_config.segments[this.cur_seg_idx];
-            this.cur_segment = segmentConfig[seg_name];
+            this.loadSegment();
         }
 
         for(var i=this.cur_node_idx; i<this.cur_segment.length; i++)
@@ -219,7 +215,7 @@ var FightLayer = cc.Node.extend({
             if(this.segment_tick>this.cur_segment[i].time)
             {
                 cc.log("cur node idx:"+i);
-                this.createNode(this.cur_segment[i]);
+                this.createNode(this.cur_segment[i],this.cur_segment_diff);
                 this.cur_node_idx = i+1;
             }
             else
@@ -229,7 +225,17 @@ var FightLayer = cc.Node.extend({
         } 
     },
 
-    createNode:function (seg_node)
+    loadSegment:function()
+    {
+        this.cur_node_idx = 0;
+        var seg_pair = this.stage_config.segments[this.cur_seg_idx];
+        this.cur_segment = segmentConfig[seg_pair.id];
+        this.cur_segment_diff = seg_pair.diff;
+        cc.log("cur segment:"+this.cur_seg_idx);
+        cc.log("cur diffculty:"+this.cur_segment_diff);
+    },
+
+    createNode:function (seg_node,diff)
     {
         var group = enemyGroup[seg_node.group];
         for(var i in group)
@@ -243,6 +249,12 @@ var FightLayer = cc.Node.extend({
                 _enemy.initEnemy(enemyConfig[node.config]);
                 this.addChild(_enemy);      
                 _enemy.setPosition(pos_x,pos_y);
+                _enemy.hp *= diff;
+                if(seg_node.hasOwnProperty("speed"))
+                {
+                    _enemy.speed = seg_node.speed;
+                    cc.log("cur mon speed:"+ _enemy.speed);
+                }
 
                 this.map_nodes.push(_enemy); 
             }
