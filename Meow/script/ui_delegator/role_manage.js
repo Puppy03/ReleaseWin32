@@ -7,7 +7,7 @@ ui_delegator.RoleManage =
         var scene = StagesScene.scene();
         cc.Director.getInstance().replaceScene(scene);
     },
-    onGoBack : function(node) 
+    onRoleMgrGoBack : function(node) 
     {
         var scene = LoginScene.scene();
         cc.Director.getInstance().replaceScene(scene);
@@ -44,4 +44,9 @@ ui_delegator.RoleManage =
         ui_parser.currentScene.closePage("RoleChoose");
         ui_parser.currentScene.openRoleMgr();
     },
+    onRolePetsGoBack:function(node)
+    {
+        ui_parser.currentScene.closePage("RolePets");
+        ui_parser.currentScene.openRoleMgr();
+    }
 };

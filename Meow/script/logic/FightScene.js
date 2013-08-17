@@ -31,9 +31,10 @@ var FightScene = UIController.extend({
         if(space_height>1)
         {
             var space_img = cc.Sprite.create("ui/space.png");
+            var img_size = space_img.getContentSize();
             this.addChild(space_img);
             space_img.setScale(scale);
-            pos.y -= layer_size.height*scale*0.5+space_height*0.5;
+            pos.y -= layer_size.height*scale*0.5+img_size.height*scale*0.5;
             space_img.setPosition(pos);
         }
 

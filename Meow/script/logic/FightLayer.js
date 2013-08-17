@@ -198,18 +198,18 @@ var FightLayer = cc.Node.extend({
             
             if(this.cur_seg_idx>=this.stage_config.segments.length)
             {
-                if(this.stage_config.loop)
+                if(this.stage_config.loop=="true")
                 {
                     cc.log("segment loop!!");
                     this.cur_seg_idx = 0;
                 }
                 else
                 {
-                    this.unschedule(this.ticksSegments);
+                    this.getParent().stageEnd();
                     return;
                 }
             }
-            
+
             var seg_name = this.stage_config.segments[this.cur_seg_idx];
             this.cur_segment = segmentConfig[seg_name];
         }

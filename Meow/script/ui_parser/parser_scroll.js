@@ -74,7 +74,6 @@ var UIScroll = cc.Layer.extend({
             var pos = last_node.getPosition();
             if(this.vertical)
             {
-                cc.log(this.interval);
                 pos.y -= node_size.height*0.5 + size.height*0.5 + this.interval;
             }
             else
@@ -89,8 +88,14 @@ var UIScroll = cc.Layer.extend({
     {
         if(!this._enabled)
             return false;
-        this.pre_touchpos = getTouchLocation(touch);
-        return true;
+        var pos = getTouchLocation(touch);
+        var rect = rectForNode(this,true);
+        if(cc.rectContainsPoint(rect,pos))
+        { 
+            this.pre_touchpos = pos;
+            return true;
+        }
+        return false;
     },
     onTouchMoved:function (touch, event) 
     {
