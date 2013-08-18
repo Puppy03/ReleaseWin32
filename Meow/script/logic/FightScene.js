@@ -81,7 +81,6 @@ var FightScene = UIController.extend({
 
     refreshStageCoin:function()
     {
-        cc.log("refresh coin!!!!!!");
         var lbl_coin = this.main_page.getUINode("LblCoins");
         lbl_coin.setText(PlayerData.StageCoin);
         var lbl_size = lbl_coin.getContentSize();

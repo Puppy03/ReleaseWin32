@@ -53,10 +53,6 @@ updateStat:function (dt)
             this.twink_tick = 0;
             this.warn_mark.setVisible( !this.warn_mark.isVisible());
         }
-        if(this.follow_speed>0)
-        {
-            this.tickFollow(dt);
-        }
     }
     else if(this.cur_stat==EMeteStat.ECircle)
     {
@@ -90,16 +86,27 @@ updateStat:function (dt)
             }
         }
     }
+
+    if(this.follow_speed>0 && this.cur_stat!=EMeteStat.EDrop)
+    {
+        this.tickFollow(dt);
+    }
 },
 
 createWaring:function () 
 {
     var parent = this.getParent();
     var layer_size = parent.getContentSize();
+    var born_x = this.getPositionX();
+    if(this.follow_speed>0)
+    {
+        born_x = parent.fighter.getPositionX();
+        this.setPositionX(born_x);
+    }
 
     this.warn_line = cc.Sprite.create(this.config.warn_line);
     var line_size = this.warn_line.getContentSize();
-    var line_pos = parent.convertToWorldSpace(cc.p(this.getPositionX(),0));
+    var line_pos = parent.convertToWorldSpace(cc.p(born_x,0));
     line_pos = this.convertToNodeSpace(line_pos);
     this.warn_line.setPosition(line_pos);
     this.warn_line.setScaleY(layer_size.height/line_size.height);
@@ -107,7 +114,7 @@ createWaring:function ()
 
     this.warn_mark = cc.Sprite.create(this.config.warn_mark);
     var mark_size = this.warn_mark.getContentSize();
-    var mark_pos = parent.convertToWorldSpace(cc.p(this.getPositionX(),layer_size.height*0.5-mark_size.height*0.5));
+    var mark_pos = parent.convertToWorldSpace(cc.p(born_x,layer_size.height*0.5-mark_size.height*0.5));
     mark_pos = this.convertToNodeSpace(mark_pos);
     this.warn_mark.setPosition(mark_pos);
     this.addChild(this.warn_mark);
@@ -130,15 +137,20 @@ tickFollow:function(dt)
     if(fighter==null)
         return;
     var f_pos_x = fighter.getPositionX();
-    var l_pos_x = this.warn_line.getPositionX();
-    var d_x = f_pos_x - l_pos_x;
+    var s_pos_x = this.getPositionX();
+    var d_x = f_pos_x - s_pos_x;
+    if(Math.abs(d_x)<fighter.col_size.width*0.5)
+    {
+        return;
+    }
     var f_speed = this.follow_speed
-    if(d_x>0)
+    if(d_x<0)
     {
        f_speed = -this.follow_speed;
     }
-    l_pos_x += dt*f_speed;
-    this.setPositionX(l_pos_x);
+    s_pos_x += dt*f_speed;
+    this.setPositionX(s_pos_x);
+    cc.log("mete Pos x:"+s_pos_x);
 },
 
 born:function(dt) 

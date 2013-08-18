@@ -478,7 +478,7 @@ Meteorite1:[
 {type:1,config:"Meteorite00",born_x:0,born_y:0},
 ],
 MeteoriteA1:[
-{type:1,config:"Meteorite00",born_x:0,born_y:0,followspeed:100},
+{type:1,config:"Meteorite00",born_x:200,born_y:0,follow_speed:100},
 ],
 Meteorite4:[
 {type:1,config:"Meteorite00",born_x:-256,born_y:0},

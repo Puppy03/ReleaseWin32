@@ -334,8 +334,11 @@ var FightLayer = cc.Node.extend({
             {
                 var _meteo = new Meteorite;
                 var follow_speed = 0;
-                if(seg_node.hasOwnProperty("follow_speed"))
-                {follow_speed = seg_node.follow_speed;}
+                if(node.hasOwnProperty("follow_speed"))
+                {
+                    cc.log("follow speed:"+node.follow_speed)
+                    follow_speed = node.follow_speed;
+                }
                 _meteo.initMeteorite(meteoriteConfig[node.config],follow_speed,this.getContentSize());
                 _meteo.setPosition(pos_x,pos_y);
                 this.addChild(_meteo);

@@ -16,6 +16,7 @@ SegmentCoin10:[
 {time:9,  group:"Mon1X3",offset:128},
 ],
 SegmentCoin00:[
+{time:1,  group:"MeteoriteA1",offset:0},
 {time:2,  group:"CoinA5",offset:0},
 {time:3,  group:"CoinA5",offset:0},
 {time:4,  group:"CoinA5",offset:0},
