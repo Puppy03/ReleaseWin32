@@ -53,7 +53,7 @@ var FightScene = UIController.extend({
         this.fight_layer.clearStage();
         this.setTouchEnabled(false);
         this.fight_layer.fighter = null;
-        var page = this.openUIPage("layout/game_over.xml");
+        this.openEndScore();
     },
 
      stageEnd:function () 
@@ -65,25 +65,37 @@ var FightScene = UIController.extend({
         {
             this.fight_layer.fighter.pauseShoot();
         }
-        var page = this.openUIPage("layout/stage_end.xml");
+        this.openEndScore();
+    },
+
+    openEndScore:function()
+    {
+        var page = this.openUIPage("layout/score_end.xml");
     },
 
     refreshStageCoin:function()
     {
+        cc.log("refresh coin!!!!!!");
         var lbl_coin = this.main_page.getUINode("LblCoins");
-        lbl_coin.setCString(PlayerData.StageCoin);
+        lbl_coin.setText(PlayerData.StageCoin);
+        var lbl_size = lbl_coin.getContentSize();
+        var coin_img = this.main_page.getUINode("CoinImg");
+        var pos_x = coin_img.getPositionX();
+        lbl_coin.setPositionX(pos_x-lbl_size.width*0.5-15);
     },
 
     refreshStageScore:function()
     {
         var lbl_score = this.main_page.getUINode("LblScore");
-        lbl_score.setCString(PlayerData.StageScore);
+        lbl_score.setText(PlayerData.StageScore);
     },
 
     refreshStageDistance:function ()
     {
         var lbl_dis = this.main_page.getUINode("LblDistance");
-        lbl_dis.setCString(PlayerData.StageDistance+"m");
+        lbl_dis.setText(PlayerData.StageDistance+"m");
+        var lbl_size = lbl_dis.getContentSize();
+        lbl_dis.setPositionX(ui_size.width*0.5-lbl_size.width*0.5-20);
 
         var img_bar = this.main_page.getUINode("StagePg");
         var img_gemo = this.main_page.getUINode("StagePgGemo");

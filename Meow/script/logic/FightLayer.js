@@ -25,7 +25,7 @@ var FightLayer = cc.Node.extend({
     distance_psp:4,
     charge_dur:0,
     charge_acc:3,
-
+    segment_acc:1,
 
     initStage:function (stage_config) 
     {
@@ -63,6 +63,7 @@ var FightLayer = cc.Node.extend({
 
     updateStats:function(dt)
     {
+        dt *= this.segment_acc;
         if(this.charge_dur>0)
         {
             this.charge_dur -= dt;
@@ -72,7 +73,9 @@ var FightLayer = cc.Node.extend({
                 this.fighter.charge(false);
             }
             else            
-            {dt *= this.charge_acc;}
+            {
+                dt *= this.charge_acc;
+            }
         }
         this.ticksSegments(dt);
         this.tickMapNodes(dt);
@@ -298,6 +301,14 @@ var FightLayer = cc.Node.extend({
     createNode:function (seg_node,diff)
     {
         var group = enemyGroup[seg_node.group];
+        if(seg_node.hasOwnProperty("acc"))
+        {
+            this.segment_acc = seg_node.acc;
+        }
+        else
+        {
+            this.segment_acc = 1;
+        }
         for(var i in group)
         {
             var node = group[i];

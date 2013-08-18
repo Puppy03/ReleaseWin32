@@ -8,7 +8,7 @@ var RoleMgrScene = UIController.extend({
         }
         var page_role_staic = this.openUIPage("layout/role_static.xml");
         var lbl_coin_num = page_role_staic.getUINode("CoinNum");
-        lbl_coin_num.setCString(PlayerData.CoinNum);
+        lbl_coin_num.setText(PlayerData.CoinNum);
 
         this.openRoleMgr();
         

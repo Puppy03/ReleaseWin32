@@ -1,15 +1,11 @@
 <UIPage ID="RoleChoose" Delegator="RoleManage" StaticPage="true">
   <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleChooseBack" Pos="L50,T50"/>
-  <Image ID="SelRoleBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="610,457" Pos="0,T339"/>
+  <Image ID="SelRoleBg" ImageFile="ui/role_info.png" Pos="0,T339"/>
   <Image ID="SelRoleImg" ImageFile="ui/role1.png" Pos="146,T339"/>
-  <Image ID="Role1Bg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="192,240" Pos="-200,T698"/>
-  <Image ID="Role2Bg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="192,240" Pos="0,T698"/>
-  <Image ID="Role3Bg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="192,240" Pos="200,T698"/>
-  <Image ID="Role1" ImageFile="ui/role_head1.png" Pos="-200,T698"/>
-  <Image ID="Role2" ImageFile="ui/role_head2.png" Pos="0,T698"/>
-  <Image ID="Role3" ImageFile="ui/role_head3.png" Pos="200,T698"/>
-  <Image ID="Role2Lock" ImageFile="ui/lock.png" Pos="0,T698"/>
-  <Image ID="Role3Lock" ImageFile="ui/lock.png" Pos="200,T698"/>
-  <Image ID="RoleSelected" ImageFile="ui/grid9_2.png" Inset="28,28,23,23" Size="192,240" Pos="-200,T698"/>
-  <Button ID="BtnChooseRole" Style="BtnChoose" Touch="onChooseRole" Pos="0,B70"/>
+  <Image ID="Role1" ImageFile="ui/role_cur.png" Pos="-200,T725"/>
+  <Image ID="Role2" ImageFile="ui/role_cur.png" Pos="0,T725"/>
+  <Image ID="Role3" ImageFile="ui/role_cur.png" Pos="200,T725"/>
+  <Image ID="Role2Lock" ImageFile="ui/lock.png" Pos="0,T712"/>
+  <Image ID="Role3Lock" ImageFile="ui/lock.png" Pos="200,T712"/>
+  <Button ID="BtnBuyRole" Style="BtnBuyRole" Touch="onBuyRole" Pos="-120,T476"/>
 </UIPage>

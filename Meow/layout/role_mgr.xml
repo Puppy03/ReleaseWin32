@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UIPage ID="RoleMgr" Delegator="RoleManage" StaticPage="true">
   <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleMgrGoBack" Pos="L50,T50"/>
-  <Image ID="RolePvwBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="346,466" Pos="-140,150"/>
-  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" FontSize="24" Pos="-31,-51"/>
-  <Image ID="ItemBg1" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="112,112" Pos="120,150"/>
-  <Image ID="Item1" ImageFile="item/item_invincible.png" Pos="120,150"/>
-  <Image ID="ItemBg2" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="112,112" Pos="240,150"/>
-  <Button ID="BtnAddItem2" Style="BtnAddBlueS" Touch="onAddItem" Pos="240,150"/>
-  <Button ID="BtnUpg" Style="BtnUpgrade" Touch="onUpgradeRole" Pos="184,-16"/>
-  <Image ID="CoinImgNeed" ImageFile="ui/coin.png" Pos="140,58"/>
-  <Label ID="CoinNumNeed" BmpFont="font/zl_1.fnt" Content="12345" FontSize="24" Pos="206,60"/>
-  <Image ID="RoleIconBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="192,240" Pos="-200,-226"/>
-  <Image ID="RoleIcon" ImageFile="ui/role_head1.png" Pos="-200,-226"/>
-  <Image ID="PetIconBg1" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="190,190" Pos="0,-256"/>
-  <Image ID="PetIcon1" ImageFile="ui/pet1.png" Pos="0,-256"/>
-  <Image ID="PetIconBg2" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="190,190" Pos="200,-256"/>
-  <Button ID="BtnAddPet2" Style="BtnAddBlue" Touch="onAddPet" Pos="200,-256"/>
-  <Button ID="BtnChangeRole" Style="BtnChgRole" Touch="onChangeRole" Pos="-202,-306"/>
-  <Button ID="BtnStart" Style="DftBtn1" Touch="onStartGame" Pos="0,B65">
-    <Text Content="开始" Font="Arial" FontSize="30" Color="138,63,102" Offset="0,0"/>
-  </Button>
+  <Image ID="RolePvwBg" ImageFile="ui/role_preview.png" Pos="-130,T336"/>
+  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" Dimension="110,34" Alignment="Right" Scale="1" Pos="-51,-47"/>
+  <Image ID="Item1" ImageFile="ui/item_1.png" Pos="120,T330"/>
+  <Image ID="Item2" ImageFile="ui/item_add.png" Pos="245,T330"/>
+  <Button ID="BtnStart" Style="BtnPLayEnter" Touch="onStartGame" Pos="184,T496"/>
+  <Image ID="TMypets" ImageFile="ui/t_my_pets.png" Pos="20,T600"/>
+  <Image ID="RoleCurrent" ImageFile="ui/role_cur.png" Pos="-200,T730"/>
+  <Image ID="Pet1" ImageFile="ui/pet_current.png" Pos="5,T740"/>
+  <Button ID="BtnAddPet" Style="BtnAddPet" Touch="onAddPet" Pos="205,T740"/>
+  <Button ID="BtnChangeRole" Style="BtnChgRole" Touch="onChangeRole" Pos="-260,T794"/>
 </UIPage>

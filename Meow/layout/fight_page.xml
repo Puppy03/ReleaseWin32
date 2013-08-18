@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UIPage ID="RoleMgr" Delegator="FightDelegator" StaticPage="true">
   <Image ID="TScore" ImageFile="ui/text_score1.png" Pos="L55,T26"/>
-  <Label ID="LblScore" BmpFont="font/white.fnt" Content="56789" FontSize="24"  Alignment="Right" Pos="L68,T55"/>
+  <Label ID="LblScore" BmpFont="font/white.fnt" Content="56789" Dimension="178,34" Alignment="Right" Scale="1" Pos="L55,T55"/>
   <Image ID="CoinImg" ImageFile="ui/coin.png" Pos="R25,T65"/>
-  <Label ID="LblCoins" BmpFont="font/gold.fnt" Content="123" FontSize="24" Pos="R90,T64"/> 
+  <Label ID="LblCoins" BmpFont="font/gold.fnt" Content="123" Dimension="178,34" Alignment="Right" Scale="1" Pos="R56,T64"/> 
   <Image ID="StagePg" ImageFile="ui/pg_dst.png" Pos="0,T30"/>
   <Image ID="StagePgGemo" ImageFile="ui/cat_gemo.png" Pos="-150,T30"/>
   <Button ID="ButtonPause" Style="BtnPause" Touch="onPauseGame" Pos="0,T88"/>
-  <Label ID="LblDistance" BmpFont="font/white.fnt" Content="12345M" FontSize="24" Pos="R72,T30"/>
+  <Label ID="LblDistance" BmpFont="font/white.fnt" Content="12345M" Dimension="178,34" Alignment="Right" Scale="1" Pos="R72,T30"/>
 </UIPage>

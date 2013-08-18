@@ -28,13 +28,7 @@ var UIScroll = cc.Layer.extend({
 
        if(this.draw_bound)
        {
-            var d_bound = cc.DrawNode.create();
-            var green = cc.c4f(0,1,0,1); 
-            d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(size.width*0.5,size.height*0.5),1,green);
-            d_bound.drawSegment(cc.p(size.width*0.5,size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
-            d_bound.drawSegment(cc.p(-size.width*0.5,-size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
-            d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(-size.width*0.5,-size.height*0.5),1,green);
-            this.addChild(d_bound);
+            drawBound(this);
        }
 
        this.setTouchMode(1);

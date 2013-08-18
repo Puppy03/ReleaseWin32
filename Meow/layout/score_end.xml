@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UIPage ID="StageEnd" Delegator="FightDelegator" StaticPage="false">
+  <Image ID="EndBox" ImageFile="ui/end_box.png" Pos="0,0"/>
+  <Label ID="lblScore" BmpFont="font/white_big.fnt" Content="1234567" Dimension="178,34" Alignment="Right" Scale="1" Pos="95,50"/>
+  <Label ID="lblDistance" BmpFont="font/white_big.fnt" Content="1234567m" Dimension="178,34" Alignment="Right" Scale="1" Pos="95,0"/>
+  <Image ID="textScore" ImageFile="ui/text_score2.png" Pos="185,50"/>
+  <Image ID="CoinImg" ImageFile="ui/coin.png" Pos="145,-58"/>
+  <Label ID="lblCoin" BmpFont="font/gold_big.fnt" Content="123456" Dimension="120,34" Alignment="Right" Scale="1" Pos="76,-65"/>
+  <Button ID="BtnReturn" Style="BtnReturn" Touch="onReturn" Pos="-140,-150"/>
+  <Button ID="BtnRestart" Style="BtnRestart" Touch="onRestart" Pos="0,-150"/>
+  <Button ID="BtnNext" Style="BtnNext" Touch="onNext" Pos="140,-150"/>
+</UIPage>

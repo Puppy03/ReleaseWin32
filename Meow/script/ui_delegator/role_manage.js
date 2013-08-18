@@ -34,10 +34,10 @@ ui_delegator.RoleManage =
         ui_parser.currentScene.closePage("RoleMgr");
         ui_parser.currentScene.openUIPage("layout/role_choose.xml");
     },
-    onChooseRole:function(node)
+    onBuyRole:function(node)
     {
-        ui_parser.currentScene.closePage("RoleChoose");
-        ui_parser.currentScene.openRoleMgr();
+        //ui_parser.currentScene.closePage("RoleChoose");
+        //ui_parser.currentScene.openRoleMgr();
     },
     onRoleChooseBack:function(node) 
     {

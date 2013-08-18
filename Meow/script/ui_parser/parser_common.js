@@ -22,7 +22,7 @@ if(win_size.width!=design_size.width )
     };
     cc.log("ui_size:"+ui_size.width+","+ui_size.height);
     cc.log("ui_scale:"+ui_scale);
-}
+};
 
 function getUIPosVal(_val) 
 {
@@ -56,7 +56,7 @@ function getUIPosVal(_val)
         break;
      }
     }
-}
+};
 
 function affinePostion(attrs,node) 
 {
@@ -64,7 +64,7 @@ function affinePostion(attrs,node)
     var x = getUIPosVal(pos[0]);
     var y = getUIPosVal(pos[1]);
     node.setPosition(x,y);
-}
+};
 
 function affineFlip(attrs,node) 
 {
@@ -82,7 +82,7 @@ function affineFlip(attrs,node)
             node.setFlipY(true);
          }
     }
-}
+};
 
 function affineColor(attrs,node) 
 {
@@ -92,7 +92,7 @@ function affineColor(attrs,node)
         var _c3b = new cc.c3b(_color[0],_color[1],_color[2]);
         node.setColor(_c3b);
     }
-}  
+};
 
 function affineScale(attrs,node) 
 {
@@ -101,7 +101,7 @@ function affineScale(attrs,node)
         var _scale = attrs["Scale"];
         node.setScale(_scale*1);
     }
-} 
+};
 
 function getZorder(attrs) 
 {
@@ -110,7 +110,7 @@ function getZorder(attrs)
         return attrs["ZOrder"]*1;
     }
     return 0;
-}
+};
 function getStyle(attrs)
 {
     if(attrs.hasOwnProperty("Style"))
@@ -124,26 +124,26 @@ function getStyle(attrs)
         return ui_parser.styles[style_id];
     }
     return null;
-}
+};
 
 function getCallback(attrs,name) 
 {
     var func_name = attrs[name];
     var func = ui_parser.currentPage._delegator[func_name];
     return func;
-}
+};
 
 function strToPosition(_str) 
 {
     var _pos_str = _str.split(",");
     return cc.p(_pos_str[0]*1,_pos_str[1]*1);
-}
+};
 
 function getTouchLocation(touch)
 {
     var pos = touch.getLocationInView();
     return cc.Director.getInstance().convertToGL(pos);
-}
+};
 
 function getAttributeNum(_val)
 {
@@ -153,7 +153,7 @@ function getAttributeNum(_val)
         num++;
     }
     return _num;
-}
+};
 
 function getSizeFromStr(str)
 {
@@ -164,7 +164,7 @@ function getSizeFromStr(str)
         return cc.size(0,0);
     }
     return cc.size(size_v[0]*1,size_v[1]*1);
-}
+};
 
 function getRectFromStr(str)
 {
@@ -175,20 +175,43 @@ function getRectFromStr(str)
         return cc.rect(0,0,0,0);
     }
     return cc.rect(r_v[0]*1,r_v[1]*1,r_v[2]*1,r_v[3]*1);
-}
+};
 
-function affineAligment(attrs,node)
+var ETextAlign={
+Left:0,
+Center:1,
+Right:2,
+};
+
+function getAligment(attrs)
 {
     if(attrs.hasOwnProperty("Alignment"))
     {
         var str = attrs["Alignment"];
         if(str == "Left")
         {
-            node.setAnchorPoint(cc.p(0,0.5));
+            return ETextAlign.Left;
+        }
+        else if(str == "Center")
+        {
+            return ETextAlign.Center;
         }
         else if(str == "Right")
         {
-            node.setAnchorPoint(cc.p(1,0.5));
+            return ETextAlign.Right;
         }
     }
-}
+    return ETextAlign.Center;
+};
+
+function drawBound(node)
+{
+    var size = node.getContentSize();
+    var d_bound = cc.DrawNode.create();
+    var green = cc.c4f(0,1,0,1); 
+    d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(size.width*0.5,size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(size.width*0.5,size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(-size.width*0.5,-size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(-size.width*0.5,-size.height*0.5),1,green);
+    node.addChild(d_bound);
+};
