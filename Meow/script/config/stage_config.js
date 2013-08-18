@@ -6,8 +6,13 @@ stage1:{
     back_img:"scene/01.png",
     roll_speed:250,
     loop:false,
+    drop_items:[
+    {item_id:"Item00",percent:15.6},
+    {item_id:"Item01",percent:13.5},
+    {item_id:"Item02",percent:11.8},
+    ],
     segments:[
-    {id:"Segment00",diff:1,acc:1,acc:1},
+    {id:"Segment00",diff:1,acc:1},
     {id:"M01",diff:1,acc:1},
     {id:"Segment01",diff:1,acc:1},
     {id:"M02",diff:1,acc:1},
@@ -27,7 +32,7 @@ stage2:{
     roll_speed:250,
     loop:false,
     segments:[
-        {id:"S0206",diff:1,acc:1,acc:1},
+    {id:"S0206",diff:1,acc:1,acc:1},
     {id:"S0200",diff:1,acc:1},
     {id:"S0201",diff:1,acc:1},
     {id:"S0202",diff:1,acc:1},
@@ -84,7 +89,7 @@ stage9:{
     roll_speed:400,
     loop:false,
     segments:[
-            {id:"SegmentCoin00",diff:1,acc:1,acc:1},
+    {id:"SegmentCoin00",diff:1,acc:1,acc:1},
     {id:"SegmentCoin01",diff:1,acc:1},
     {id:"SegmentCoin02",diff:1,acc:1},
     {id:"SegmentCoin03",diff:1,acc:1},

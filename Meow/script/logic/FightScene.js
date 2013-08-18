@@ -83,12 +83,12 @@ var FightScene = UIController.extend({
     refreshStageDistance:function ()
     {
         var lbl_dis = this.main_page.getUINode("LblDistance");
-        lbl_dis.setCString(PlayerData.StageDistance);
+        lbl_dis.setCString(PlayerData.StageDistance+"m");
 
         var img_bar = this.main_page.getUINode("StagePg");
         var img_gemo = this.main_page.getUINode("StagePgGemo");
         var size_pg = img_bar.getContentSize();
-        var pos_x = -size_pg.width*0.5+(PlayerData.StageDistance/PlayerData.StageMaxDis)*size_pg.width;
+        var pos_x = -size_pg.width*0.5+23+(PlayerData.StageDistance/PlayerData.StageMaxDis)*(size_pg.width-46);
         var pg_pos_x = img_bar.getPositionX();
         img_gemo.setPositionX(pos_x+pg_pos_x);
     },

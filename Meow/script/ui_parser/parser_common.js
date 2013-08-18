@@ -176,3 +176,19 @@ function getRectFromStr(str)
     }
     return cc.rect(r_v[0]*1,r_v[1]*1,r_v[2]*1,r_v[3]*1);
 }
+
+function affineAligment(attrs,node)
+{
+    if(attrs.hasOwnProperty("Alignment"))
+    {
+        var str = attrs["Alignment"];
+        if(str == "Left")
+        {
+            node.setAnchorPoint(cc.p(0,0.5));
+        }
+        else if(str == "Right")
+        {
+            node.setAnchorPoint(cc.p(1,0.5));
+        }
+    }
+}

@@ -69,6 +69,7 @@ var FightLayer = cc.Node.extend({
             if(this.charge_dur<=0)
             {
                 this.charge_dur=0;
+                this.fighter.charge(false);
             }
             else            
             {dt *= this.charge_acc;}
@@ -209,13 +210,35 @@ var FightLayer = cc.Node.extend({
         this.map_nodes.push(coin);
     },
 
-    dropItem:function (config,pos)
+    dropItem:function (pos)
     {
-        var prop_item = new PropItem;
-        prop_item.initItem(config);
-        prop_item.setPosition(pos);
-        this.addChild(prop_item);
-        this.map_nodes.push(prop_item);
+        var total_percent = 0;
+        for(var i in this.stage_config.drop_items)
+        {
+            total_percent += this.stage_config.drop_items[i].percent;
+        }
+        var percent = 100-total_percent;
+        var rand_val = randomF(0,100);
+        if(rand_val<percent)
+        {
+            return false;
+        }
+        for(var i in this.stage_config.drop_items)
+        {
+            var drop_data = this.stage_config.drop_items[i];
+            if(rand_val>=percent && rand_val<(drop_data.percent+percent))
+            {
+                var config = itemConfig[drop_data.item_id];
+                var prop_item = new PropItem;
+                prop_item.initItem(config);
+                prop_item.setPosition(pos);
+                this.addChild(prop_item);
+                this.map_nodes.push(prop_item);
+                return true;
+            }
+            percent += drop_data.percent;
+        }
+        return false;
     },
 
     ticksSegments:function (dt) 
@@ -348,5 +371,6 @@ var FightLayer = cc.Node.extend({
     chargeAhead:function(duration)
     {
         this.charge_dur = duration;
+        this.fighter.charge(true);
     },
 });

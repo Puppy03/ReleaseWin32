@@ -97,20 +97,10 @@ die:function ()
 
     cc.AudioEngine.getInstance().playEffect(deadSound);
 
-    parent.dropCoin(coinConfig.Coin00,pos);
-
-    if(this.config.hasOwnProperty("drop_item"))
+    if(!parent.dropItem(pos))
     {
-        var drop = this.config.drop_item;
-        var rand_val = randomF(0,100);
-        var item_config = itemConfig[drop.item_id];
-        if(rand_val<drop.percent)
-        {
-            pos.x += randomF(-50,50);
-            parent.dropItem(item_config,pos);
-        }
-    }
-    
+        parent.dropCoin(coinConfig.Coin00,pos);
+    }  
 },
 
 updateDieDelay:function (dt) 

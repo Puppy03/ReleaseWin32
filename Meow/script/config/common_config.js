@@ -12,4 +12,5 @@ var EItemType={
 ENone:0,
 EDouleBullet:1,
 EAccelerate:2,
+EMagnet:3
 };

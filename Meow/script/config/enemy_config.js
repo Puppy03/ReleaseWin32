@@ -14,7 +14,6 @@ Enemy00:{
     hp:100,
     speed:500,
     col_size:{width:95,height:116},
-    drop_item:{item_id:"Item00",percent:50},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
     Fly:{

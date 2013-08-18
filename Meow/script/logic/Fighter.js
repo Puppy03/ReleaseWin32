@@ -20,6 +20,7 @@ bullet_config:null,
 dying_tick:0,
 dying_effect1:null,
 dying_effect2:null,
+charge_effect:null,
 initFighter:function (fighter_config) 
 {
     this.bullet_config = bulletConfig.Bullet00;
@@ -164,6 +165,23 @@ tickDyingEnd:function(dt)
     {
         this.getParent().removeChild(this,true);
         return;
+    }
+},
+charge:function(show)
+{
+    if(show && this.charge_effect==null)
+    {
+        this.charge_effect = cc.Sprite.create("fighter/boosterHead.png");
+        this.addChild(this.charge_effect);
+        var size = this.getContentSize();
+        this.charge_effect.setPosition(size.width*0.5,size.height+20);
+        this.charge_effect.setScaleY(2);
+        this.charge_effect.setScaleX(4);
+    }
+    if(!show && this.charge_effect!=null)
+    {
+        this.removeChild(this.charge_effect,false);
+        this.charge_effect = null;
     }
 },
 getColRect:function () 

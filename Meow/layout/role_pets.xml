@@ -1,3 +1,4 @@
 <UIPage ID="RolePets" Delegator="RoleManage" StaticPage="true">
+  <Button ID="BtnGoBack" Style="BtnBack" Touch="onRolePetsGoBack" Pos="L50,T50"/>
   <Scroll ID="petScroll" Size="400,500" Vertical="true" Interval="5" Pos="0,0"/>
 </UIPage>
