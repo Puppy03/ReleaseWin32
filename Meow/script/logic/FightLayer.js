@@ -294,6 +294,15 @@ var FightLayer = cc.Node.extend({
         }
         this.cur_segment = segmentConfig[seg_pair.id];
         this.cur_segment_diff = seg_pair.diff;
+        if(seg_pair.hasOwnProperty("acc"))
+        {
+            cc.log("segment acc:"+seg_pair.acc);
+            this.segment_acc = seg_pair.acc;
+        }
+        else
+        {
+            this.segment_acc = 1;
+        }
         cc.log("cur segment:"+this.cur_seg_idx);
         cc.log("cur diffculty:"+this.cur_segment_diff);
     },
@@ -301,14 +310,6 @@ var FightLayer = cc.Node.extend({
     createNode:function (seg_node,diff)
     {
         var group = enemyGroup[seg_node.group];
-        if(seg_node.hasOwnProperty("acc"))
-        {
-            this.segment_acc = seg_node.acc;
-        }
-        else
-        {
-            this.segment_acc = 1;
-        }
         for(var i in group)
         {
             var node = group[i];
