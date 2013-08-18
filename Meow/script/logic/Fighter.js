@@ -21,10 +21,14 @@ dying_tick:0,
 dying_effect1:null,
 dying_effect2:null,
 charge_effect:null,
+double_duration:0,
+magnet_duration:0,
+magnet_size:null,
 initFighter:function (fighter_config) 
 {
     this.bullet_config = bulletConfig.Bullet00;
     this.col_size = fighter_config.col_size;
+    this.magnet_size = cc.size(300,300);
     var motion = fighter_config.actor.Fly;
     var img_array = genImgArray(motion);
 
@@ -73,6 +77,14 @@ setCurBullet:function(config)
 
 tickShoot:function (dt) 
 {
+    if(this.double_duration>0)
+    {
+        this.double_duration -= dt;
+    }
+    else
+    {
+        this.double_bullet = false;
+    }
     if(this.shoot_tick >= this.shoot_interval)
     {
         this.shoot_tick -= this.shoot_interval;
@@ -89,7 +101,7 @@ shoot:function ()
     var pos = this.getPosition();
     pos.y += this.getContentSize().height*0.5;
     
-    if(false)
+    if(this.double_duration>0)
     {
         pos.x -= 40;
         var pos2 = cc.p(pos.x+80,pos.y);
@@ -114,6 +126,7 @@ resumeShoot:function ()
 
 die:function () 
 {
+    return;
     this.unschedule(this.tickShoot);
     ui_parser.currentScene.gameOver();
     this.dying_effect1 = cc.Sprite.create("fighter/bloodCircle.png");
@@ -184,12 +197,39 @@ charge:function(show)
         this.charge_effect = null;
     }
 },
+doubleBullet:function(duration)
+{
+    this.double_duration = duration;
+},
+magnetStat:function(duration)
+{
+    this.magnet_duration = duration;
+    this.schedule(this.tickMagnetStat);
+},
+
+tickMagnetStat:function(dt)
+{
+    this.magnet_duration -= dt;
+    if(this.magnet_duration<0)
+    {
+        this.magnet_duration = 0;
+        this.unschedule(this.tickMagnetStat);
+    }
+},
+
 getColRect:function () 
 {
     var origin = this.getPosition();
     origin.x -= this.col_size.width*0.5;
     origin.y -= this.col_size.height*0.5;
     return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
+},
+getMagnetRect:function()
+{
+    var origin = this.getPosition();
+    origin.x -= this.magnet_size.width*0.5;
+    origin.y -= this.magnet_size.height*0.5;
+    return new cc.rect(origin.x,origin.y,this.magnet_size.width,this.magnet_size.height);
 },
 
 });

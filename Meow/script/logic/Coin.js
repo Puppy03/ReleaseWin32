@@ -8,6 +8,8 @@ life_tick:0,
 coin_val:1,
 col_size:null,
 sound:null,
+magnet_speed:600,
+magnet_mark:false,
 initCoin:function (config) 
 {
     this.coin_val = config.coin_val;
@@ -38,23 +40,72 @@ die:function()
 },
 updateStat:function (dt)
 {
+    if(this.magnet_mark)
+    {
+        return;
+    }
     var parent = this.getParent();
     var pos_y = this.getPositionY();
     this.setPositionY(pos_y - this.getParent().roll_speed*dt);
     var fighter = parent.fighter;
-    if(fighter!=null)
+    if(fighter==null)
     {
-          var f_rect = fighter.getColRect();
-          var s_rect = this.getColRect();
-          if(cc.rectIntersectsRect(f_rect,s_rect))
-          {
-             PlayerData.StageCoin += this.coin_val;
-             cc.AudioEngine.getInstance().playEffect(this.sound);
-             ui_parser.currentScene.refreshStageCoin();
-             this.hp = 0;
-             return;
-          }
+        return;
     }
+    var s_rect = this.getColRect();
+
+    if(fighter.magnet_duration>0)
+    {
+        var magnet_rect = fighter.getMagnetRect();
+        if(cc.rectIntersectsRect(magnet_rect,s_rect))
+        {
+            this.magnet_mark = true;
+            this.schedule(this.tickMagenetMove);
+        }
+    }
+    else
+    {
+        var f_rect = fighter.getColRect();
+        if(cc.rectIntersectsRect(f_rect,s_rect))
+        {
+            this.coinPicked();
+            return;
+        }
+    }  
+},
+
+tickMagenetMove:function(dt)
+{
+    var fighter = this.getParent().fighter;
+    var s_pos = this.getPosition();
+    var f_pos = fighter.getPosition();
+    var f_rect = fighter.getColRect();
+    if(cc.rectContainsPoint(f_rect,s_pos))
+    {
+        this.coinPicked();
+        this.unschedule(this.tickMagenetMove);
+        return;
+    }
+    var vector = cc.p(f_pos.x-s_pos.x,f_pos.y-s_pos.y);
+    var v_len = getLength(f_pos,s_pos);
+    if(v_len<30)
+    {
+       this.coinPicked();
+       this.unschedule(this.tickMagenetMove);
+       return;
+    }
+    s_pos.x += (vector.x/v_len)*this.magnet_speed*dt;
+    s_pos.y += (vector.y/v_len)*this.magnet_speed*dt;
+    this.setPosition(s_pos);
+},
+
+coinPicked:function()
+{
+    PlayerData.StageCoin += this.coin_val;
+    cc.AudioEngine.getInstance().playEffect(this.sound);
+    ui_parser.currentScene.refreshStageCoin();
+    this.hp = 0;
+    return;
 },
 
 getColRect:function () 

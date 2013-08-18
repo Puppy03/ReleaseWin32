@@ -250,9 +250,6 @@ var FightLayer = cc.Node.extend({
         if(this.cur_node_idx == this.cur_segment.length)
         {
             this.cur_seg_idx++;
-            this.cur_node_idx = 0;
-            this.segment_tick = 0;
-
             if(this.cur_seg_idx>=this.stage_config.segments.length)
             {
                 if(this.stage_config.loop=="true")
@@ -262,10 +259,12 @@ var FightLayer = cc.Node.extend({
                 }
                 else
                 {
-                    this.getParent().stageEnd();
+                    //this.getParent().stageEnd();
                     return;
                 }
             }
+            this.cur_node_idx = 0;
+            this.segment_tick = 0;
             this.loadSegment();
         }
 

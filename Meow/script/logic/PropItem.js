@@ -44,6 +44,14 @@ itemPicked:function()
     {
         parent.chargeAhead(this.config.duration);
     }
+    else if(this.item_type == EItemType.EMagnet)
+    {
+        fighter.magnetStat(this.config.duration);
+    }
+    else if(this.item_type == EItemType.EDouleBullet)
+    {
+        fighter.doubleBullet(this.config.duration);
+    }
 },
 
 getColRect:function () 
