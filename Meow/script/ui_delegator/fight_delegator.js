@@ -19,12 +19,12 @@ ui_delegator.FightDelegator =
     },
     onRestart:function(node)
     {
-        ui_parser.currentScene.closePage("GameOver");
+        ui_parser.currentScene.closePage("ScoreEnd");
         ui_parser.currentScene.restartGame();
     },
     onNext:function(node)
     {
-        ui_parser.currentScene.closePage("StageEnd");
+        ui_parser.currentScene.closePage("ScoreEnd");
         ui_parser.currentScene.restartGame();
     },
 
