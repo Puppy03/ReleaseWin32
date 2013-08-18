@@ -154,7 +154,7 @@ SegmentCoin08:[
 
 ],
 //---------------------------------------stage1------------------------------
-Segment00:[
+S0100:[
 {time:1,  group:"Mon1X1",offset:72,speed:900},
 {time:2,  group:"Mon1X1",offset:-200},
 {time:3,  group:"Mon1X1",offset:128},
@@ -174,7 +174,7 @@ Segment00:[
 {time:21,  group:"Mon1X5",offset:0},
 {time:22,  group:"Mon1X5",offset:0},
 ],
-Segment01:[
+S0101:[
 {time:1,  group:"Mon1X1",offset:72},
 {time:2,  group:"Mon1X1",offset:-200},
 {time:3,  group:"Mon1X1",offset:128},
@@ -194,7 +194,7 @@ Segment01:[
 {time:21,  group:"Mon1X5",offset:0},
 {time:22,  group:"Mon1X5",offset:0},
 ],
-Segment02:[
+S0102:[
 {time:1,  group:"Mon1X1",offset:72},
 {time:1,  group:"Coin1X5",offset:0},
 {time:2,  group:"Mon1X1",offset:-200},
@@ -219,7 +219,7 @@ Segment02:[
 {time:22, group:"Mon1X5",offset:0},
 {time:24,group:"Mon1X5",offset:0},
 ],
-Segment03:[
+S0103:[
 {time:2,  group:"Mon1X5",offset:0},
 {time:4,  group:"Mon1X5",offset:0},
 {time:5, group:"Barrier3a",offset:0},
@@ -238,7 +238,7 @@ Segment03:[
 {time:19,  group:"BigCoin1X1",offset:256},
 {time:20, group:"MonZR",offset:0},
 ],
-Segment04:[
+S0104:[
 {time:2,  group:"MonZ",offset:0},
 {time:4,  group:"MonZR",offset:0},
 {time:5, group:"Meteorite4",offset:-128},
@@ -254,7 +254,7 @@ Segment04:[
 {time:18, group:"Meteorite1",offset:-128},
 {time:20, group:"Mon1X5b4",offset:0},
 ],
-Segment05:[
+S0105:[
 {time:2,  group:"Mon1X5a",offset:0},
 {time:3,  group:"Mon1X5a",offset:0},
 {time:4,  group:"Mon1X5a",offset:0},
@@ -274,7 +274,7 @@ Segment05:[
 {time:19,  group:"Mon1X1",offset:128},
 {time:20, group:"Mon2X3",offset:-256},
 ],
-Segment06:[
+S0106:[
 {time:2,  group:"Barrier3X2",offset:-256},
 {time:3,  group:"Mon1X3",offset:128},
 {time:4,  group:"BigCoin1X1",offset:-256},
@@ -296,24 +296,24 @@ Segment06:[
 ],
 //---------------------------------------stage2------------------------------
 S0200:[
-{time:1,  group:"Mon1X1",offset:72},
-{time:2,  group:"Mon1X1",offset:-200},
-{time:3,  group:"Mon1X1",offset:128},
-{time:4,  group:"Mon1X1",offset:-128},
+{time:2,  group:"Mon1X5a",offset:0},
+{time:4,  group:"Mon1X5a1",offset:-0},
+{time:6,  group:"Mon1X5a",offset:0},
+{time:8,  group:"Mon1X5a1",offset:-0},
 ],
 S0201:[
 {time:2,  group:"MonW",offset:0},
+{time:2, group:"MeteoriteA1",offset:0},
 {time:4,  group:"MonW",offset:0},
 {time:6,  group:"MonW",offset:0},
 {time:8,  group:"MonW",offset:0},
-{time:10,  group:"MonW",offset:0},
 ],
 S0202:[
 {time:2,  group:"MonV",offset:0},
+{time:2, group:"MeteoriteA1",offset:0},
 {time:4,  group:"MonV",offset:0},
 {time:6,  group:"MonV",offset:0},
 {time:8,  group:"MonV",offset:0},
-{time:10,  group:"MonV",offset:0},
 ],
 S0203:[
 {time:2,  group:"Mon1X5",offset:0},
@@ -385,7 +385,7 @@ S0205:[
 ],
 
 S0206:[
-{time:2,  group:"MonL01",offset:0},
+{time:2,  group:"Mon1X5a5",offset:0},
 {time:2,  group:"Barrier3a",offset:0},
 {time:4,  group:"Mon1X5a5",offset:0},
 {time:4,  group:"Barrier3a",offset:128},
@@ -395,17 +395,228 @@ S0206:[
 {time:8,  group:"Barrier3a",offset:128},
 ],
 S0207:[
-{time:2,  group:"MonL01",offset:128},
-{time:2,  group:"Barrier3a",offset:0},
-{time:4,  group:"MonL01",offset:0},
-{time:4,  group:"Barrier3a",offset:128},
-{time:6,  group:"MonL01",offset:0},
-{time:6,  group:"Barrier3a",offset:0},
-{time:8,  group:"MonL01",offset:-128},
-{time:8,  group:"Barrier3a",offset:128},
-],
-//---------------------------------------stage3------------------------------
 
+{time:2,  group:"Barrier3a",offset:0},
+{time:3,  group:"MonI01",offset:128},
+
+{time:5,  group:"Barrier3a",offset:128},
+{time:6,  group:"MonI01",offset:0},
+
+{time:8,  group:"Barrier3a",offset:0},
+{time:9,  group:"MonI01",offset:-128},
+
+{time:11,  group:"Barrier3a",offset:128},
+{time:12,  group:"MonI01",offset:-256},
+{time:12,  group:"MonI01",offset:256},
+{time:12,  group:"MonI01",offset:0},
+],
+S0208:[
+
+{time:2,  group:"Barrier3X1",offset:-256},
+{time:3,  group:"MonI01",offset:128},
+{time:4, group:"MeteoriteA1",offset:0},
+{time:5,  group:"Barrier3X1",offset:128},
+{time:6,  group:"MonI01",offset:0},
+{time:7, group:"MeteoriteA1",offset:0},
+{time:8,  group:"Barrier3X1",offset:0},
+{time:9,  group:"MonI01",offset:-128},
+{time:10, group:"MeteoriteA1",offset:0},
+{time:11,  group:"Barrier3X1",offset:128},
+{time:12,  group:"MonI01",offset:-256},
+{time:12,  group:"MonI01",offset:256},
+{time:12,  group:"MonI01",offset:0},
+{time:13, group:"MeteoriteA1",offset:0},
+],
+S0209:[
+
+{time:2,  group:"Meteorite1",offset:0},
+{time:2,  group:"Meteorite1",offset:-256},
+{time:2,  group:"Meteorite1",offset:256},
+
+{time:3,  group:"Meteorite1",offset:-128},
+{time:3,  group:"Meteorite1",offset:128},
+{time:3,  group:"Meteorite1",offset:0},
+
+{time:4,  group:"Meteorite1",offset:0},
+{time:4,  group:"Meteorite1",offset:-128},
+{time:4,  group:"Meteorite1",offset:256},
+{time:4,  group:"Meteorite1",offset:-256},
+
+{time:5,  group:"Meteorite1",offset:-128},
+{time:5,  group:"Meteorite1",offset:128},
+{time:5,  group:"Meteorite1",offset:0},
+//
+{time:6,  group:"Meteorite1",offset:0},
+{time:6,  group:"Meteorite1",offset:-256},
+{time:6,  group:"Meteorite1",offset:256},
+
+{time:7,  group:"Meteorite1",offset:-0},
+{time:7,  group:"Meteorite1",offset:-128},
+{time:7,  group:"Meteorite1",offset:128},
+{time:7,  group:"Meteorite1",offset:256},
+
+{time:8,  group:"Meteorite1",offset:0},
+{time:8,  group:"Meteorite1",offset:-256},
+{time:8,  group:"Meteorite1",offset:256},
+
+{time:9,  group:"Meteorite1",offset:-128},
+{time:9,  group:"Meteorite1",offset:128},
+{time:9,  group:"Meteorite1",offset:-256},
+{time:9,  group:"Meteorite1",offset:0},
+
+{time:9,  group:"Coin5X10",offset:0},
+{time:11,  group:"Coin5X10",offset:0},
+{time:13,  group:"Coin5X10",offset:0},
+{time:15,  group:"Coin5X10",offset:0},
+],
+
+
+//---------------------------------------stage3------------------------------
+S0300:[
+{time:2,  group:"Mon1X5",offset:0,speed:800},
+{time:4,  group:"Mon1X5",offset:0,speed:800},
+{time:6,  group:"Mon1X5",offset:0,speed:800},
+{time:8,  group:"Mon1X5",offset:0,speed:800},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0301:[
+{time:2,  group:"Barrier1",offset:-128},
+{time:2,  group:"Coin5X1",offset:256},
+{time:4,  group:"Barrier1",offset:128},
+{time:4,  group:"Coin5X1",offset:-128},
+{time:6,  group:"Barrier1",offset:-128},
+{time:6,  group:"Coin5X1",offset:128},
+{time:8,  group:"Barrier1",offset:128},
+{time:10,  group:"Coin5X1",offset:-256},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0302:[
+{time:2,  group:"Mon1X5a1",offset:0,speed:800},
+{time:4,  group:"Mon1X5a2",offset:0,speed:800},
+{time:6,  group:"Mon1X5a3",offset:0,speed:800},
+{time:8,  group:"Mon1X5a4",offset:0,speed:800},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0303:[
+{time:2,  group:"Barrier1",offset:-128},
+{time:2,  group:"Barrier1",offset:-256},
+{time:2,  group:"Coin5X1",offset:128},
+{time:4,  group:"Barrier1",offset:128},
+{time:4,  group:"Barrier1",offset:256},
+{time:4,  group:"Coin5X1",offset:0},
+{time:6,  group:"Barrier1",offset:-128},
+{time:6,  group:"Barrier1",offset:0},
+{time:6,  group:"Coin5X1",offset:128},
+{time:8,  group:"Barrier1",offset:128},
+{time:8,  group:"Barrier1",offset:0},
+{time:8,  group:"Coin5X1",offset:256},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0304:[
+{time:2,  group:"Mon1X5b1",offset:0,speed:800},
+{time:4,  group:"Mon1X5b2",offset:0,speed:800},
+{time:6,  group:"Mon1X5b3",offset:0,speed:800},
+{time:8,  group:"Mon1X5b4",offset:0,speed:800},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0305:[
+{time:2,  group:"Barrier1",offset:-128},
+{time:2,  group:"Barrier1",offset:-256},
+{time:2,  group:"Barrier1",offset:0},
+{time:2,  group:"Coin5X1",offset:128},
+{time:4,  group:"Barrier1",offset:128},
+{time:4,  group:"Barrier1",offset:256},
+{time:4,  group:"Barrier1",offset:0},
+{time:4,  group:"Coin5X1",offset:-128},
+{time:6,  group:"Barrier1",offset:-128},
+{time:6,  group:"Barrier1",offset:0},
+{time:6,  group:"Barrier1",offset:256},
+{time:6,  group:"Coin5X1",offset:128},
+{time:8,  group:"Barrier1",offset:128},
+{time:8,  group:"Barrier1",offset:0},
+{time:8,  group:"Barrier1",offset:-256},
+{time:2,  group:"Coin5X1",offset:256},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0306:[
+{time:2,  group:"Mon1X5b1",offset:0,speed:800},
+{time:4,  group:"Mon1X5b2",offset:0,speed:800},
+{time:6,  group:"Mon1X5b3",offset:0,speed:800},
+{time:8,  group:"Mon1X5b4",offset:0,speed:800},
+{time:10, group:"MeteoriteA1",offset:0},
+],
+S0310:[
+{time:2,  group:"BarrierL",offset:0},
+{time:2.5,  group:"BigCoin1X1",offset:-128},
+{time:5,  group:"Mon1X1",offset:-128},
+
+{time:4,  group:"BarrierLR",offset:0},
+{time:5.5,  group:"BigCoin1X1",offset:128},
+{time:7,  group:"Mon1X1",offset:128},
+
+{time:6,  group:"BarrierLR2",offset:0},
+{time:7.5,  group:"BigCoin1X1",offset:128},
+{time:9,  group:"Mon1X1",offset:128},
+
+{time:8,  group:"BarrierL2",offset:0},
+{time:9.5,  group:"BigCoin1X1",offset:-128},
+{time:11,  group:"Mon1X1",offset:-128},
+
+{time:10,  group:"BarrierL",offset:0},
+{time:11.5,  group:"BigCoin1X1",offset:-128},
+{time:13,  group:"Mon1X1",offset:-128},
+
+{time:12,  group:"BarrierLR",offset:0},
+{time:13.5,  group:"BigCoin1X1",offset:128},
+{time:15,  group:"Mon1X1",offset:128},
+
+{time:14,  group:"BarrierLR2",offset:0},
+{time:15.5,  group:"BigCoin1X1",offset:128},
+{time:17,  group:"Mon1X1",offset:128},
+
+{time:16,  group:"BarrierL2",offset:0},
+{time:17.5,  group:"BigCoin1X1",offset:-128},
+{time:19,  group:"Mon1X1",offset:-128},
+],
+//---------------------------------------stage4------------------------------
+
+//---------------------------------------stage10------------------------------
+S1000:[
+{time:2,  group:"Mon00",offset:0},
+{time:4,  group:"Mon00",offset:0},
+{time:6,  group:"Mon00",offset:0},
+{time:8,  group:"Mon00",offset:0},
+],
+S1001:[
+{time:2,  group:"Mon1_1",offset:0},
+{time:4,  group:"Mon1_2",offset:0},
+{time:6,  group:"Mon1_3",offset:0},
+{time:8,  group:"Mon1_4",offset:0},
+],
+S1002:[
+{time:2,  group:"Mon2_1",offset:0},
+{time:4,  group:"Mon2_2",offset:0},
+{time:6,  group:"Mon2_3",offset:0},
+{time:8,  group:"Mon2_4",offset:0},
+],
+S1003:[
+{time:2,  group:"Mon3_1",offset:0},
+{time:4,  group:"Mon3_2",offset:0},
+{time:6,  group:"Mon3_3",offset:0},
+{time:8,  group:"Mon3_4",offset:0},
+],
+S1004:[
+{time:2,  group:"Mon4_1",offset:0},
+{time:4,  group:"Mon4_2",offset:0},
+{time:6,  group:"Mon4_3",offset:0},
+{time:8,  group:"Mon4_4",offset:0},
+],
+S1005:[
+{time:2,  group:"Mon5_1",offset:0},
+{time:4,  group:"Mon5_2",offset:0},
+{time:6,  group:"Mon5_3",offset:0},
+{time:8,  group:"Mon5_4",offset:0},
+],
 
 //---------------------------------------stage4------------------------------
 Segment00a:[
