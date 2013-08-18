@@ -71,6 +71,12 @@ var FightScene = UIController.extend({
     openEndScore:function()
     {
         var page = this.openUIPage("layout/score_end.xml");
+        var lbl_score = page.getUINode("lblScore");
+        var lbl_dist = page.getUINode("lblDistance");
+        var lbl_coin = page.getUINode("lblCoin");
+        lbl_score.setText(PlayerData.StageScore);
+        lbl_dist.setText(PlayerData.StageDistance+"m");
+        lbl_coin.setText(PlayerData.StageCoin);
     },
 
     refreshStageCoin:function()
@@ -94,8 +100,6 @@ var FightScene = UIController.extend({
     {
         var lbl_dis = this.main_page.getUINode("LblDistance");
         lbl_dis.setText(PlayerData.StageDistance+"m");
-        var lbl_size = lbl_dis.getContentSize();
-        lbl_dis.setPositionX(ui_size.width*0.5-lbl_size.width*0.5-20);
 
         var img_bar = this.main_page.getUINode("StagePg");
         var img_gemo = this.main_page.getUINode("StagePgGemo");

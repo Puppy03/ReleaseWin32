@@ -7,5 +7,5 @@
   <Image ID="StagePg" ImageFile="ui/pg_dst.png" Pos="0,T30"/>
   <Image ID="StagePgGemo" ImageFile="ui/cat_gemo.png" Pos="-150,T30"/>
   <Button ID="ButtonPause" Style="BtnPause" Touch="onPauseGame" Pos="0,T88"/>
-  <Label ID="LblDistance" BmpFont="font/white.fnt" Content="12345M" Dimension="157,34" Alignment="Right" Scale="1" Pos="R72,T30"/>
+  <Label ID="LblDistance" BmpFont="font/white.fnt" Content="12345m" Dimension="157,34" Alignment="Right" Scale="1" Pos="R86,T30"/>
 </UIPage>

@@ -77,9 +77,9 @@ var FightLayer = cc.Node.extend({
                 dt *= this.charge_acc;
             }
         }
-        this.ticksSegments(dt);
-        this.tickMapNodes(dt);
         this.tickMoveGround(dt);
+        this.ticksSegments(dt);
+        this.tickMapNodes(dt);   
     },
 
     moveFighter:function(move_x)

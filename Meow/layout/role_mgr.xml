@@ -2,8 +2,10 @@
 <UIPage ID="RoleMgr" Delegator="RoleManage" StaticPage="true">
   <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleMgrGoBack" Pos="L50,T50"/>
   <Image ID="RolePvwBg" ImageFile="ui/role_preview.png" Pos="-130,T336"/>
-  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" Dimension="110,34" Alignment="Right" Scale="1" Pos="-51,-47"/>
+  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" Dimension="110,34" Alignment="Right" Scale="1" Pos="-51,T527"/>
   <Image ID="Item1" ImageFile="ui/item_1.png" Pos="120,T330"/>
+  <Image ID="Item1NumBg" ImageFile="ui/item_num.png" Pos="165,T380"/>
+  <Label ID="LblItemNum" BmpFont="font/zl_1.fnt" Content="10" Dimension="40,30" Alignment="Center" Scale="0.8" Pos="167,T378"/>
   <Image ID="Item2" ImageFile="ui/item_add.png" Pos="245,T330"/>
   <Button ID="BtnStart" Style="BtnPLayEnter" Touch="onStartGame" Pos="184,T496"/>
   <Image ID="TMypets" ImageFile="ui/t_my_pets.png" Pos="20,T600"/>
