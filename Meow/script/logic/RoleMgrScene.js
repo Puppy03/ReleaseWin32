@@ -12,7 +12,7 @@ var RoleMgrScene = UIController.extend({
 
         this.openRoleMgr();
         
-        var main_bg = cc.Sprite.create("scene/01.png");
+        var main_bg = cc.Sprite.create("ui/ui_shading.jpg");
         var bg_size = main_bg.getContentSize();
         var scale = win_size.width/bg_size.width;
         main_bg.setScale(scale);
@@ -21,15 +21,12 @@ var RoleMgrScene = UIController.extend({
         this.addChild(main_bg);
         
         var space_height = win_size.height-bg_size.height*scale;
-        if(space_height>1)
-        {
-            var space_img = cc.Sprite.create("ui/space.png");
-            var img_size = space_img.getContentSize();
-            this.addChild(space_img);
-            space_img.setScale(scale);
-            pos.y -= 960*scale*0.5+img_size.height*scale*0.5;
-            space_img.setPosition(pos);
-        }
+        var space_img = cc.Sprite.create("ui/ui_bottom.png");
+        var img_size = space_img.getContentSize();
+        this.addChild(space_img);
+        space_img.setScale(scale);
+        pos.y -= 960*scale*0.5+img_size.height*scale*0.5-52;
+        space_img.setPosition(pos);
 
         return true;
     },

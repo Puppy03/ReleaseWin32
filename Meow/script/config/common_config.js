@@ -20,4 +20,10 @@ ENormal:0,
 EFire:1,
 EIce:2,
 ELight:3,
+};
+
+var EFlType=
+{
+EFLLeft:0,
+EFLRight:1,
 }

@@ -2,8 +2,8 @@ require("script/config/common_config.js");
 
 var petConfig={
 Pet00:{
-    name:"Assassin",
-    col_size:{width:60,height:122},
+    pet_type:EPetType.ENormal,
+    att:10,
     actor:
     {
         prefix:"pet/PetLight_flyAni/1/",

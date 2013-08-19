@@ -2,12 +2,15 @@ require("script/config/barrier_config.js");
 
 var Pet = cc.Sprite.extend({
 pet_type:EMNodeType.EBarrier,
+fl_type:EFlType.EFLLeft,
 hp:1,
+att:10,
+fl_speed:300,
 config:null,
-initPet:function(config)
+initPet:function(config,fl_type)
 {
     this.config = config;
-
+    this.fl_type = fl_type;
     var motion = config.actor;
     var img_array = genImgArray(motion);
 
@@ -24,31 +27,11 @@ updateStat:function(dt)
 { 
     var parent = this.getParent();
     var fighter = parent.fighter;
-    var pos_y = this.getPositionY();
-    this.setPositionY(pos_y - this.getParent().roll_speed*dt);
-    if(fighter!=null)
-    {
-        var e_rect = rectForNode(this);
-        var f_rect = fighter.getColRect();
-        if(cc.rectIntersectsRect(e_rect,f_rect))
-        {
-            this.hp = 0;
-            fighter.die();
-            return;
-        }
-    }
+    var f_pos = fighter.getPosition();
 },
 
 die:function ()
 {
-},
-
-getColRect:function () 
-{
-    var origin = this.getPosition();
-    origin.x -= this.col_size.width*0.5;
-    origin.y -= this.col_size.height*0.5;
-    return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
 },
 
 });

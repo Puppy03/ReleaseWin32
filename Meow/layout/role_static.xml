@@ -1,5 +1,6 @@
 <UIPage ID="StagesPage" Delegator="RoleManage" StaticPage="true">
-  <Image ID="CoinNumBg" ImageFile="ui/gird9_1.png" Inset="32,32,46,46" Size="340,72" Pos="R178,T45"/>
+  <Image ID="TopPanel" ImageFile="ui/ui_top.png" Pos="0,T59"/>
+  <Image ID="CoinNumBg" ImageFile="ui/gird9_3.png" Inset="24,23,30,28" Size="340,72" Pos="R178,T45"/>
   <Image ID="CoinImgOwn" ImageFile="ui/coin.png" Pos="R316,T45"/>
   <Label ID="CoinNum" BmpFont="font/gold_big.fnt" Content="123456789" Dimension="200,34" Alignment="Left" Scale="1" Pos="R196,T43"/>
   <Button ID="BtnAddCoins" Style="BtnAddCoin" Touch="onAddCoins" Pos="R45,T44"/>
