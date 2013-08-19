@@ -426,6 +426,11 @@ Barrier2X1:[
 {type:2,config:"Barrier00",born_x:0,born_y:0},
 {type:2,config:"Barrier00",born_x:0,born_y:128},
 ],
+Barrier1X3:[
+{type:2,config:"Barrier00",born_x:0,born_y:0},
+{type:2,config:"Barrier00",born_x:128,born_y:0},
+{type:2,config:"Barrier00",born_x:-128,born_y:0},
+],
 Barrier3X1:[
 {type:2,config:"Barrier00",born_x:0,born_y:0},
 {type:2,config:"Barrier00",born_x:0,born_y:128},
@@ -487,6 +492,11 @@ Meteorite4:[
 {type:1,config:"Meteorite00",born_x:256,born_y:0},
 ],
 MonI01:[
+{type:0,config:"Enemy00",born_x:0,born_y:0},
+{type:0,config:"Enemy00",born_x:0,born_y:128},
+{type:0,config:"Enemy00",born_x:0,born_y:256},
+],
+Mon3X1:[
 {type:0,config:"Enemy00",born_x:0,born_y:0},
 {type:0,config:"Enemy00",born_x:0,born_y:128},
 {type:0,config:"Enemy00",born_x:0,born_y:256},
