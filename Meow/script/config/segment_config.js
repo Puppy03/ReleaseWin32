@@ -15,7 +15,7 @@ SegmentCoin10:[
 {time:8,  group:"Coin1X5",offset:-256},
 {time:9,  group:"Mon1X3",offset:128},
 ],
-SegmentCoin00:[
+S0900:[
 {time:1,  group:"MeteoriteA1",offset:0},
 {time:2,  group:"CoinA5",offset:0},
 {time:3,  group:"CoinA5",offset:0},
@@ -25,7 +25,7 @@ SegmentCoin00:[
 {time:6,  group:"BigCoin1X1",offset:0},
 {time:8,  group:"Coin10X5",offset:0},
 ],
-SegmentCoin01:[
+S0901:[
 {time:2,  group:"Coin1X10",offset:-256},
 {time:2,  group:"Coin1X10",offset:-192},
 {time:2,  group:"Barrier1",offset:64},
@@ -49,14 +49,14 @@ SegmentCoin01:[
 {time:10,  group:"Barrier1",offset:-64},
 {time:12,  group:"BigCoin1X5",offset:0},
 ],
-SegmentCoin02:[
+S0902:[
 {time:2,  group:"Coin5X5",offset:-256},
 {time:4,  group:"Coin5X5",offset:-128},
 {time:6,  group:"Coin5X5",offset:0},
 {time:8,  group:"Coin5X5",offset:-128},
 {time:10,  group:"Coin5X5",offset:-256},
 ],
-SegmentCoin03:[
+S0903:[
 {time:2,  group:"CoinZ5",offset:-128},
 {time:2,  group:"CoinZ5",offset:-64},
 {time:3,  group:"Barrier3X1",offset:-192},
@@ -70,7 +70,7 @@ SegmentCoin03:[
 {time:8,  group:"CoinZR5",offset:64},
 {time:9,  group:"Barrier3X1",offset:192},
 ],
-SegmentCoin04:[
+S0904:[
 {time:2,  group:"CoinZ10",offset:0},
 {time:2,  group:"CoinZ10",offset:-64},
 {time:3,  group:"Barrier3X1",offset:-192},
@@ -88,7 +88,7 @@ SegmentCoin04:[
 {time:9,  group:"Barrier3X1",offset:192},
 {time:9.15,  group:"BigCoin1X1",offset:-256},
 ],
-SegmentCoin05:[
+S0905:[
 {time:2,  group:"BigCoin1X5",offset:0},
 {time:3,  group:"Barrier3X1",offset:-192},
 {time:4,  group:"CoinZR10",offset:0},
@@ -101,7 +101,7 @@ SegmentCoin05:[
 {time:8,  group:"CoinZR10",offset:0},
 {time:9,  group:"Barrier3X1",offset:192},
 ],
-SegmentCoin06:[
+S0906:[
 {time:2,  group:"CoinA5",offset:0},
 {time:3,  group:"CoinA5",offset:0},
 {time:4,  group:"CoinA5",offset:0},
@@ -111,7 +111,7 @@ SegmentCoin06:[
 {time:6,  group:"BigCoin1X1",offset:0},
 {time:8,  group:"Coin10X5",offset:0},
 ],
-SegmentCoin07:[
+S0907:[
 {time:2,  group:"Coin5X5",offset:-256},
 {time:2,  group:"Barrier3X1",offset:128},
 {time:4,  group:"Coin5X5",offset:-128},
@@ -131,7 +131,7 @@ SegmentCoin5X10:[
 {time:6,  group:"Coin5X10",offset:0},
 {time:8,  group:"Coin5X10",offset:0},
 ],
-SegmentCoin08:[
+S0908:[
 {time:2,  group:"Barrier3a",offset:0},
 {time:2,  group:"BigCoin1X1",offset:-128},
 {time:2,  group:"BigCoin1X1",offset:128},
