@@ -8,7 +8,7 @@ life_tick:0,
 coin_val:1,
 col_size:null,
 sound:null,
-magnet_speed:600,
+magnet_speed:1200,
 magnet_mark:false,
 initCoin:function (config) 
 {
