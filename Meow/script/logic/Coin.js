@@ -80,15 +80,15 @@ tickMagenetMove:function(dt)
     var s_pos = this.getPosition();
     var f_pos = fighter.getPosition();
     var f_rect = fighter.getColRect();
-    if(cc.rectContainsPoint(f_rect,s_pos))
-    {
-        this.coinPicked();
-        this.unschedule(this.tickMagenetMove);
-        return;
-    }
+//    if(cc.rectContainsPoint(f_rect,s_pos))
+//    {
+//        this.coinPicked();
+//        this.unschedule(this.tickMagenetMove);
+//        return;
+//    }
     var vector = cc.p(f_pos.x-s_pos.x,f_pos.y-s_pos.y);
     var v_len = getLength(f_pos,s_pos);
-    if(v_len<30)
+    if(v_len<60)
     {
        this.coinPicked();
        this.unschedule(this.tickMagenetMove);

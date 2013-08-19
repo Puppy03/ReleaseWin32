@@ -37,7 +37,7 @@ var RoleMgrScene = UIController.extend({
     {
         var page_role_mgr = this.openUIPage("layout/role_mgr.xml");
         var role_bg = page_role_mgr._nodesMap["RolePvwBg"];
-        var motion = fighterConfig.Fighter00.actor.Fly;
+        var motion = fighterConfig.Fighter00.actor;
         var img_array = genImgArray(motion);
         var role_preview = cc.Sprite.create(img_array[0]);
         var animate = genAnimateArr(img_array,motion.interval);

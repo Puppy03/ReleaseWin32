@@ -29,7 +29,7 @@ initFighter:function (fighter_config)
     this.bullet_config = bulletConfig.Bullet00;
     this.col_size = fighter_config.col_size;
     this.magnet_size = cc.size(300,300);
-    var motion = fighter_config.actor.Fly;
+    var motion = fighter_config.actor;
     var img_array = genImgArray(motion);
 
     var firTexture = cc.TextureCache.getInstance().addImage(img_array[0]);

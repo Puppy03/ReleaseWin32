@@ -14,3 +14,10 @@ EDouleBullet:1,
 EAccelerate:2,
 EMagnet:3
 };
+
+var EPetType={
+ENormal:0,
+EFire:1,
+EIce:2,
+ELight:3,
+}
