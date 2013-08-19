@@ -12,5 +12,16 @@ Pet00:{
         interval:0.12,
     },
 },
+Pet01:{
+    pet_type:EPetType.ENormal,
+    att:10,
+    actor:
+    {
+        prefix:"pet/PetLight_flyAni/2/",
+        start:1,
+        end:4,
+        interval:0.12,
+    },
+},
 
 };

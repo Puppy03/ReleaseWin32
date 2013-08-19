@@ -1,5 +1,5 @@
 <UIPage ID="RoleChoose" Delegator="RoleManage" StaticPage="true">
-  <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleChooseBack" Pos="L50,T50"/>
+  <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleChooseBack" Pos="L50,T44"/>
   <Image ID="SelRoleBg" ImageFile="ui/role_info.png" Pos="0,T339"/>
   <Image ID="SelRoleImg" ImageFile="ui/role1.png" Pos="146,T339"/>
   <Image ID="Role1" ImageFile="ui/role_cur.png" Pos="-200,T725"/>

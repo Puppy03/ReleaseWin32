@@ -18,15 +18,28 @@ var RoleMgrScene = UIController.extend({
         main_bg.setScale(scale);
         var pos = cc.p(win_size.width*0.5,win_size.height-bg_size.height*0.5*scale);
         main_bg.setPosition(pos);
-        this.addChild(main_bg);
+        this.addChild(main_bg); 
         
         var space_height = win_size.height-bg_size.height*scale;
-        var space_img = cc.Sprite.create("ui/ui_bottom.png");
-        var img_size = space_img.getContentSize();
-        this.addChild(space_img);
-        space_img.setScale(scale);
-        pos.y -= 960*scale*0.5+img_size.height*scale*0.5-52;
-        space_img.setPosition(pos);
+        var bottom_img = cc.Sprite.create("ui/ui_bottom.png");
+        var img_size = bottom_img.getContentSize();
+        this.addChild(bottom_img);
+        bottom_img.setScaleX(scale);
+        var bottom_height = 52;
+
+        if(space_height<=0)
+        {
+            var b_pos = cc.p(win_size.width*0.5,-img_size.height*0.5+bottom_height);
+            bottom_img.setPosition(b_pos);
+            var top_img = page_role_staic.getUINode("TopPanel");
+            top_img.setScaleX(scale);
+        }
+        else
+        {
+            bottom_img.setScale(scale);
+            pos.y -= bg_size.height*scale*0.5+img_size.height*scale*0.5-bottom_height;
+            bottom_img.setPosition(pos);
+        }
 
         return true;
     },

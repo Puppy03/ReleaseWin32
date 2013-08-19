@@ -24,6 +24,8 @@ charge_effect:null,
 double_duration:0,
 magnet_duration:0,
 magnet_size:null,
+pet_left:null,
+pet_right:null,
 initFighter:function (fighter_config) 
 {
     this.bullet_config = bulletConfig.Bullet00;
@@ -124,9 +126,29 @@ resumeShoot:function ()
     this.schedule(this.tickShoot);
 },
 
+addPet:function(config)
+{
+    var parent = this.getParent();
+    if(this.pet_left == null)
+    {
+        var pet = new MeowPet;
+        pet.initPet(config,EFlType.EFLLeft);
+        parent.addChild(pet);
+        pet.setPosition(this.getPositionX()-pet.retain_range,-design_size.height*0.5+this.fight_y);
+        this.pet_left = pet;
+    }
+    else if(this.pet_right == null)
+    {
+        var pet = new MeowPet;
+        pet.initPet(config,EFlType.EFLRight);
+        parent.addChild(pet);
+        pet.setPosition(this.getPositionX()+pet.retain_range,-design_size.height*0.5+this.fight_y);
+        this.pet_right = pet;
+    }
+},
+
 die:function () 
 {
-    return;
     this.unschedule(this.tickShoot);
     ui_parser.currentScene.gameOver();
     this.dying_effect1 = cc.Sprite.create("fighter/bloodCircle.png");

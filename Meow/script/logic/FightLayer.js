@@ -7,6 +7,7 @@ require("script/logic/Enemy.js");
 require("script/logic/Meteorite.js");
 require("script/logic/Barrier.js");
 require("script/logic/PropItem.js");
+require("script/logic/MeowPet.js");
 
 var FightLayer = cc.Node.extend({
     fighter:null,
@@ -41,6 +42,9 @@ var FightLayer = cc.Node.extend({
         this.fighter = new Fighter;
         this.fighter.initFighter(fighterConfig.Fighter00);
         this.addChild(this.fighter);
+
+        this.fighter.addPet(petConfig.Pet00);
+        this.fighter.addPet(petConfig.Pet01);
 
         var img0 = cc.Sprite.create(stage_config.back_img);
         var img1 = cc.Sprite.create(stage_config.back_img);
