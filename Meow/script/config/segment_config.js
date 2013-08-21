@@ -764,6 +764,81 @@ S0500:[
 {time:14,  group:"Mon1X5",offset:0},
 {time:16,  group:"Mon1X5",offset:0},
 
+{time:18,  group:"Mon1X1",offset:0,speed:1200},
+{time:19,  group:"Mon1X1",offset:-128,speed:1200},
+{time:20,  group:"Mon1X1",offset:128,speed:1200},
+{time:21,  group:"Mon1X1",offset:256,speed:1200},
+{time:22,  group:"Mon1X1",offset:-256,speed:1200},
+{time:23,  group:"Mon1X1",offset:128,speed:1200},
+{time:24,  group:"Mon1X1",offset:0,speed:1200},
+{time:25,  group:"Mon1X1",offset:-128,speed:1200},
+{time:26,  group:"Mon1X1",offset:0,speed:1200},
+{time:27,  group:"Mon1X1",offset:-128,speed:1200},
+{time:28,  group:"Mon1X1",offset:128,speed:1200},
+{time:29,  group:"Mon1X1",offset:256,speed:1200},
+],
+S0501:[
+//Barrier+Coin
+{time:2,  group:"Barrier1X3",offset:0},
+{time:2,  group:"Coin1X5",offset:-256},
+{time:2,  group:"Coin1X5",offset:256},
+{time:4,  group:"Barrier1X3",offset:-128},
+{time:4,  group:"Coin1X5",offset:128},
+{time:4,  group:"Coin1X5",offset:256},
+{time:6,  group:"Barrier1X3",offset:0},
+{time:6,  group:"Coin1X5",offset:-256},
+{time:6,  group:"Coin1X5",offset:256},
+{time:8,  group:"Barrier1X3",offset:128},
+{time:8,  group:"Coin1X5",offset:-256},
+{time:8,  group:"Coin1X5",offset:-128},
+//Mon
+{time:10,  group:"Mon1X5",offset:0},
+{time:12,  group:"Mon1X5",offset:0},
+{time:14,  group:"Mon1X5",offset:0},
+{time:16,  group:"Mon1X5",offset:0},
+{time:16,  group:"MeteoriteA1",offset:0},
+//Mete+Mon
+{time:18,  group:"MeteoriteA1",offset:0},
+{time:18,  group:"Mon1X1",offset:0,speed:1200},
+{time:19,  group:"Mon1X1",offset:-128,speed:1200},
+{time:20,  group:"Mon1X1",offset:128,speed:1200},
+{time:21,  group:"Mon1X1",offset:256,speed:1200},
+{time:21,  group:"MeteoriteA1",offset:0},
+{time:22,  group:"Mon1X1",offset:-256,speed:1200},
+{time:23,  group:"Mon1X1",offset:128,speed:1200},
+{time:24,  group:"Mon1X1",offset:0,speed:1200},
+{time:25,  group:"Mon1X1",offset:-128,speed:1200},
+{time:25,  group:"MeteoriteA1",offset:0},
+],
+S0502:[
+//Barrier+Mon
+{time:2,  group:"Mon1X5",offset:0},
+
+{time:2,  group:"Barrier1",offset:-256},
+{time:3,  group:"Barrier1",offset:-128},
+{time:4,  group:"Barrier1",offset:0},
+
+{time:4,  group:"Mon1X5",offset:0},
+
+{time:5,  group:"Barrier1",offset:128},
+{time:6,  group:"Barrier1",offset:256},
+
+{time:6,  group:"Mon1X5",offset:0},
+
+{time:7,  group:"Barrier1",offset:128},
+{time:8,  group:"Barrier1",offset:0},
+{time:8,  group:"Mon1X5",offset:0},
+
+{time:9,  group:"Barrier1",offset:-128},
+{time:10,  group:"Barrier1",offset:-256},
+{time:11,  group:"Barrier1",offset:256},
+{time:12,  group:"MeteoriteA1",offset:0},
+
+{time:10,  group:"Mon1X5",offset:0},
+{time:12,  group:"Mon1X5",offset:0},
+{time:14,  group:"Mon1X5",offset:0},
+{time:16,  group:"Mon1X5",offset:0},
+
 {time:18,  group:"Mon1X1",offset:0,speed:1000},
 {time:19,  group:"Mon1X1",offset:-128,speed:1000},
 {time:20,  group:"Mon1X1",offset:128,speed:1000},
@@ -773,7 +848,7 @@ S0500:[
 {time:24,  group:"Mon1X1",offset:0,speed:1000},
 {time:25,  group:"Mon1X1",offset:-128,speed:1000},
 ],
-S0501:[
+S0503:[
 //Barrier+Mon
 {time:2,  group:"Mon1X5",offset:0},
 {time:4,  group:"Mon1X5",offset:0},
@@ -794,7 +869,27 @@ S0501:[
 {time:24,  group:"Mon1X1",offset:0,speed:1000},
 {time:25,  group:"Mon1X1",offset:-128,speed:1000},
 ],
+S0504:[
+//Barrier+Mon
+{time:2,  group:"Mon1X5",offset:0},
+{time:4,  group:"Mon1X5",offset:0},
+{time:6,  group:"Mon1X5",offset:0},
+{time:8,  group:"Mon1X5",offset:0},
 
+{time:10,  group:"Mon1X5",offset:0},
+{time:12,  group:"Mon1X5",offset:0},
+{time:14,  group:"Mon1X5",offset:0},
+{time:16,  group:"Mon1X5",offset:0},
+
+{time:18,  group:"Mon1X1",offset:0,speed:1000},
+{time:19,  group:"Mon1X1",offset:-128,speed:1000},
+{time:20,  group:"Mon1X1",offset:128,speed:1000},
+{time:21,  group:"Mon1X1",offset:256,speed:1000},
+{time:22,  group:"Mon1X1",offset:-256,speed:1000},
+{time:23,  group:"Mon1X1",offset:128,speed:1000},
+{time:24,  group:"Mon1X1",offset:0,speed:1000},
+{time:25,  group:"Mon1X1",offset:-128,speed:1000},
+],
 //---------------------------------------stage6------------------------------
 
 //---------------------------------------stage7------------------------------
