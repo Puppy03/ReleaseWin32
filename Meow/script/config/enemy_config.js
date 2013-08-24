@@ -1,13 +1,13 @@
 require("script/config/common_config.js");
 
 var deadEffect={
-prefix:"monster/boomdead/",
+prefix:"monster/mon_dead/",
 start:1,
-end:12,
-interval:0.06,
+end:7,
+interval:0.08,
 };
 
-var deadSound="sound/mon_dead.mp3";
+var deadSound="mon_dead.mp3";
 
 var enemyConfig={
 Enemy00:{
@@ -16,7 +16,7 @@ Enemy00:{
     col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -29,7 +29,7 @@ Enemy01:{
     col_size:{width:95,height:116},
     img_normal:"monster/level1/normal.png",
     img_hurt:"monster/level1/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -42,7 +42,7 @@ Enemy02:{
     col_size:{width:95,height:116},
     img_normal:"monster/level2/normal.png",
     img_hurt:"monster/level2/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -55,7 +55,7 @@ Enemy03:{
     col_size:{width:95,height:116},
     img_normal:"monster/level3/normal.png",
     img_hurt:"monster/level3/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -68,7 +68,7 @@ Enemy04:{
     col_size:{width:95,height:116},
     img_normal:"monster/level4/normal.png",
     img_hurt:"monster/level4/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -81,7 +81,7 @@ Enemy05:{
     col_size:{width:95,height:116},
     img_normal:"monster/level5/normal.png",
     img_hurt:"monster/level5/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -94,7 +94,7 @@ Enemy06:{
     col_size:{width:95,height:116},
     img_normal:"monster/level6/normal.png",
     img_hurt:"monster/level6/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -107,7 +107,7 @@ Enemy07:{
     col_size:{width:95,height:116},
     img_normal:"monster/level7/normal.png",
     img_hurt:"monster/level7/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -120,7 +120,7 @@ Enemy08:{
     col_size:{width:95,height:116},
     img_normal:"monster/level8/normal.png",
     img_hurt:"monster/level8/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -133,7 +133,7 @@ Enemy09:{
     col_size:{width:95,height:116},
     img_normal:"monster/level9/normal.png",
     img_hurt:"monster/level9/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
@@ -146,11 +146,56 @@ Enemy10:{
     col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
-    Fly:{
+    actor:{
     prefix:"monster/level0/",
     start:1,
     end:3,
     interval:0.12,
+    },
+},
+Dog1:{
+    hp:100,
+    speed:500,
+    col_size:{width:80,height:100},
+    img_normal:"",
+    img_hurt:"",
+    actor:{
+    prefix:"monster/dog1/",
+    start:1,
+    end:3,
+    interval:0.12,
+    },
+},
+Dog3:{
+    hp:100,
+    speed:250,
+    col_size:{width:80,height:100},
+    img_normal:"",
+    img_hurt:"",
+    actor:{
+    prefix:"monster/dog3/",
+    start:1,
+    end:4,
+    interval:0.12,
+    },
+},
+SummonDog:{
+    hp:100,
+    speed:250,
+    col_size:{width:80,height:100},
+    img_normal:"",
+    img_hurt:"",
+    actor:{
+    prefix:"monster/dog3/",
+    start:1,
+    end:4,
+    interval:0.12,
+    },
+    born:{
+    prefix:"monster/mon_dead/",
+    start:1,
+    end:7,
+    interval:0.08,
     },
 },
 };

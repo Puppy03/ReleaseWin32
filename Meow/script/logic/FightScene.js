@@ -6,10 +6,12 @@ require("script/logic/Fighter.js");
 require("script/logic/Enemy.js");
 require("script/logic/FightLayer.js");
 
+var audio_player=null;
 var FightScene = UIController.extend({
     pre_touch_pos:null,
     fight_layer:null,
     main_page:null,
+    
     initWithStage:function (stage) 
     {
         this.main_page = this.openUIPage("layout/fight_page.xml");
@@ -38,7 +40,10 @@ var FightScene = UIController.extend({
             space_img.setPosition(pos);
         }
 
-        //cc.AudioEngine.getInstance().playMusic("music/backgroundmusic01.mp3",true);
+        audio_palyer = new AudioPlayer;
+        audio_palyer.initPlayer(this);
+
+        audio_palyer.playBgMusic("backgroundmusic01.mp3");
 
         this.setTouchMode(1);
         this.setTouchPriority(100);

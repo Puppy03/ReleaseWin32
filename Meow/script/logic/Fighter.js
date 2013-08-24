@@ -30,13 +30,12 @@ initFighter:function (fighter_config)
 {
     this.bullet_config = bulletConfig.Bullet00;
     this.col_size = fighter_config.col_size;
-    this.magnet_size = cc.size(600,400);
+    this.magnet_size = cc.size(300,300);
     var motion = fighter_config.actor;
     var img_array = genImgArray(motion);
 
     var firTexture = cc.TextureCache.getInstance().addImage(img_array[0]);
-    var img_size = firTexture.getContentSize();
-    this.initWithTexture(firTexture,new cc.rect(0,0,img_size.width,img_size.height));
+    this.initWithTexture(firTexture);
 
     var animate = genAnimateArr(img_array,motion.interval);
     var repeat = cc.RepeatForever.create(animate);
@@ -53,19 +52,9 @@ initFighter:function (fighter_config)
 tickBorn:function (dt) 
 {
     this.born_tick -= dt;
-    if(this.getPositionY()>=(-design_size.height*0.5+this.fight_y) || this.born_tick<0.3)
+    if(this.born_tick<=0)
     {
         this.setPositionY(-design_size.height*0.5+this.fight_y);
-        var pos = this.getPosition();
-        pos = this.getParent().convertToWorldSpace(pos);
-
-        if(pos.y < this.fight_y)
-        {
-            cc.log("fight_pos:"+pos.y);
-            pos = this.getParent().convertToNodeSpace(cc.p(win_size.width*0.5,this.fight_y));
-            cc.log("adjust pos:"+pos.y);
-            this.setPosition(pos);
-        }
         this.schedule(this.tickShoot);
         this.unschedule(this.tickBorn);
         return;
@@ -119,11 +108,27 @@ shoot:function ()
 pauseShoot:function () 
 {
     this.unschedule(this.tickShoot);
+    if(this.pet_left != null)
+    {
+        this.pet_left.pause();
+    }
+    if(this.pet_right != null)
+    {
+        this.pet_right.pause();
+    }    
 },
 
 resumeShoot:function ()
 {
     this.schedule(this.tickShoot);
+    if(this.pet_left != null)
+    {
+        this.pet_left.resume();
+    }
+    if(this.pet_right != null)
+    {
+        this.pet_right.resume();
+    }
 },
 
 addPet:function(config)
@@ -133,7 +138,7 @@ addPet:function(config)
     {
         var pet = new MeowPet;
         pet.initPet(config,EFlType.EFLLeft);
-        parent.addChild(pet);
+        parent.addChild(pet,100);
         pet.setPosition(this.getPositionX()-pet.retain_range,-design_size.height*0.5+this.fight_y);
         this.pet_left = pet;
     }
@@ -141,7 +146,7 @@ addPet:function(config)
     {
         var pet = new MeowPet;
         pet.initPet(config,EFlType.EFLRight);
-        parent.addChild(pet);
+        parent.addChild(pet,100);
         pet.setPosition(this.getPositionX()+pet.retain_range,-design_size.height*0.5+this.fight_y);
         this.pet_right = pet;
     }

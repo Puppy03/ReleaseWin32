@@ -6,6 +6,7 @@ EMeteorite:1,
 EBarrier:2,
 ECoin:3,
 EItem:4,
+EBoss:5
 };
 
 var EItemType={
@@ -26,4 +27,4 @@ var EFlType=
 {
 EFLLeft:0,
 EFLRight:1,
-}
+};

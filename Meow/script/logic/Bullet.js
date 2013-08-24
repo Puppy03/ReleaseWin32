@@ -1,14 +1,16 @@
 //bullet
 var Bullet = cc.Sprite.extend({
     att:0,
-    speed:0,
+    speed_x:0,
+    speed_y:0,
     col_size:null,
     explosion:null,
     initBullet:function (config) 
     {
         this.init(config.image);
         this.col_size = config.col_size;
-        this.speed = config.speed;
+        this.speed_x = config.speed_x;
+        this.speed_y = config.speed_y;
         this.att = config.att;
         if(config.hasOwnProperty("explosion"))
         {
@@ -31,33 +33,34 @@ var Bullet = cc.Sprite.extend({
         for(var i in map_nodes)
         {
             var node = map_nodes[i];
-            if(node.mn_type != EMNodeType.EEnemy)
+            if(node.mn_type == EMNodeType.EEnemy || node.mn_type == EMNodeType.EBoss)
             {
-                continue;
-            }
-            var pos_y = node.getPositionY();
-            if(pos_y>win_size.height)
-            {
-                continue;
-            }
-            var e_rect = node.getColRect();;
-            if(cc.rectIntersectsRect(e_rect,col_rect))
-            {
-                  node.hited(this.att);
-                //if(this.explosion != null)
-                //{
-                    this.doExplosion();
-                // }
-                return;
+                var pos_y = node.getPositionY();
+                if(pos_y>win_size.height)
+                {
+                    continue;
+                }
+                var e_rect = node.getColRect();;
+                if(cc.rectIntersectsRect(e_rect,col_rect))
+                {
+                      node.hited(this.att);
+                      this.getParent().removeChild(this,true);
+                    //if(this.explosion != null)
+                    //{
+                        this.doExplosion();
+                    // }
+                    return;
+                }
             }
         }
-        
-        this.setPositionY(pos.y+this.speed*dt);
+        pos.x += this.speed_x*dt;
+        pos.y += this.speed_y*dt;
+        this.setPosition(pos);
     },
 
     doExplosion:function () 
     {
-        this.getParent().removeChild(this,true);
+
     },
     getColRect:function () 
     {

@@ -8,7 +8,7 @@ life_tick:0,
 coin_val:1,
 col_size:null,
 sound:null,
-magnet_speed:1200,
+magnet_speed:600,
 magnet_mark:false,
 initCoin:function (config) 
 {
@@ -54,7 +54,7 @@ updateStat:function (dt)
     }
     var s_rect = this.getColRect();
 
-    if(fighter.magnet_duration>0)
+    if(fighter.magnet_duration>0 && !this.magnet_mark)
     {
         var magnet_rect = fighter.getMagnetRect();
         if(cc.rectIntersectsRect(magnet_rect,s_rect))
@@ -102,7 +102,7 @@ tickMagenetMove:function(dt)
 coinPicked:function()
 {
     PlayerData.StageCoin += this.coin_val;
-    cc.AudioEngine.getInstance().playEffect(this.sound);
+    audio_palyer.playEffect(this.sound);
     ui_parser.currentScene.refreshStageCoin();
     this.hp = 0;
     return;

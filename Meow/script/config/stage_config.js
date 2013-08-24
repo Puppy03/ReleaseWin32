@@ -7,9 +7,9 @@ stage1:{
     roll_speed:250,
     loop:false,
     drop_items:[
-    {item_id:"Item00",percent:15.6},
-    {item_id:"Item01",percent:13.5},
-    {item_id:"Item02",percent:11.8},
+    {item_id:"Item00",percent:2.6},
+    {item_id:"Item01",percent:2.5},
+    {item_id:"Item02",percent:2.8},
     ],
     segments:[
     {id:"S0100",diff:1,acc:1},

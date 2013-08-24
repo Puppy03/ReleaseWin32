@@ -2,6 +2,7 @@
   <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleChooseBack" Pos="L50,T44"/>
   <Image ID="SelRoleBg" ImageFile="ui/role_info.png" Pos="0,T339"/>
   <Image ID="SelRoleImg" ImageFile="ui/role1.png" Pos="146,T339"/>
+  <Label ID="LblDescr" BmpFont="font/zl_1.fnt" Content="as dfa sdf asdf asd fas df as df" Dimension="280,200" Alignment="Left" Scale="1" Pos="-121,T300"/>
   <Image ID="Role1" ImageFile="ui/role_cur.png" Pos="-200,T725"/>
   <Image ID="Role2" ImageFile="ui/role_cur.png" Pos="0,T725"/>
   <Image ID="Role3" ImageFile="ui/role_cur.png" Pos="200,T725"/>

@@ -8,6 +8,9 @@ require("script/logic/Meteorite.js");
 require("script/logic/Barrier.js");
 require("script/logic/PropItem.js");
 require("script/logic/MeowPet.js");
+require("script/logic/Boss.js");
+
+var design_size = cc.size(640,960);
 
 var FightLayer = cc.Node.extend({
     fighter:null,
@@ -30,8 +33,7 @@ var FightLayer = cc.Node.extend({
 
     initStage:function (stage_config) 
     {
-        var layer_size = cc.size(640,960);
-        this.setContentSize(layer_size);
+        this.setContentSize(design_size);
         this.stage_config = stage_config;
         this.roll_speed = stage_config.roll_speed;
         PlayerData.StageMaxDis = stage_config.max_distance;
@@ -41,7 +43,7 @@ var FightLayer = cc.Node.extend({
 
         this.fighter = new Fighter;
         this.fighter.initFighter(fighterConfig.Fighter00);
-        this.addChild(this.fighter);
+        this.addChild(this.fighter,100);
 
         this.fighter.addPet(petConfig.Pet00);
         this.fighter.addPet(petConfig.Pet01);
@@ -217,6 +219,25 @@ var FightLayer = cc.Node.extend({
         this.map_nodes.push(coin);
     },
 
+    dropMeteorite:function(config,f_speed)
+    {
+        var _mete = new Meteorite;
+        _mete.initMeteorite(config,f_speed);
+        var pos_y = this.getContentSize().height*0.5+100;
+        _mete.setPositionY(pos_y);
+        this.addChild(_mete);
+        this.map_nodes.push(_mete);
+    },
+
+    createEnemy:function(config,pos)
+    {
+        var _enemy = new Enemy;
+        _enemy.initEnemy(_config);
+        _enemy.setPosition(pos);
+        this.addChild(_enemy);
+        this.map_nodes.push(_enemy);
+    },
+
     dropItem:function (pos)
     {
         var total_percent = 0;
@@ -276,7 +297,7 @@ var FightLayer = cc.Node.extend({
         {
             if(this.segment_tick>this.cur_segment[i].time)
             {
-                cc.log("cur node idx:"+i);
+                //cc.log("cur node idx:"+i);
                 this.createNode(this.cur_segment[i],this.cur_segment_diff);
                 this.cur_node_idx = i+1;
             }
@@ -342,7 +363,7 @@ var FightLayer = cc.Node.extend({
                     cc.log("follow speed:"+node.follow_speed)
                     follow_speed = node.follow_speed;
                 }
-                _meteo.initMeteorite(meteoriteConfig[node.config],follow_speed,this.getContentSize());
+                _meteo.initMeteorite(meteoriteConfig[node.config],follow_speed);
                 _meteo.setPosition(pos_x,pos_y);
                 this.addChild(_meteo);
 
@@ -365,6 +386,15 @@ var FightLayer = cc.Node.extend({
                 this.addChild(_coin);
 
                 this.map_nodes.push(_coin);
+            }
+            else if(node.type == EMNodeType.EBoss)
+            {
+                var _boss = new Boss;
+                _boss.initBoss(bossConfig[node.config]);
+                _boss.setPosition(pos_x,pos_y);
+                this.addChild(_boss);
+
+                this.map_nodes.push(_boss);
             }
       }
 

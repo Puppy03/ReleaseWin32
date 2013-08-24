@@ -15,7 +15,7 @@ Item01:{
 },
 Item02:{
     item_type:EItemType.EMagnet,
-    duration:1000,
+    duration:15,
     image:"item/item_magnet.png",
     col_size:{width:80,height:80},
 },

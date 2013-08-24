@@ -150,7 +150,6 @@ tickFollow:function(dt)
     }
     s_pos_x += dt*f_speed;
     this.setPositionX(s_pos_x);
-    cc.log("mete Pos x:"+s_pos_x);
 },
 
 born:function(dt) 

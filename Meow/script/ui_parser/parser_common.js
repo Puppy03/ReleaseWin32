@@ -1,28 +1,6 @@
 
 
 var win_size = cc.Director.getInstance().getWinSizeInPixels();
-var ui_size = cc.size(win_size.width,win_size.height);
-var ui_scale = 1;
-if(win_size.width!=design_size.width )
-{
-    var asp = win_size.height/win_size.width;
-    var scale_x = win_size.width/design_size.width;
-    var scale_y = win_size.height/design_size.height;
-    if(scale_x>scale_y)
-    {
-        ui_scale = scale_y;
-        ui_size.height = design_size.height;
-        ui_size.width = design_size.height/asp;
-    }
-    else
-    {
-        ui_scale = scale_x;
-        ui_size.width = design_size.width;
-        ui_size.height = design_size.width*asp;
-    };
-    cc.log("ui_size:"+ui_size.width+","+ui_size.height);
-    cc.log("ui_scale:"+ui_scale);
-};
 
 function getUIPosVal(_val) 
 {
@@ -32,22 +10,22 @@ function getUIPosVal(_val)
     {
      case "L":
      {
-        return -ui_size.width*0.5 + _val.substring(1)*1;
+        return -win_size.width*0.5 + _val.substring(1)*1;
         break;
      }
      case "R":
      {
-        return ui_size.width*0.5 - _val.substring(1)*1;
+        return win_size.width*0.5 - _val.substring(1)*1;
         break;
      }
      case "T":
      {
-        return ui_size.height*0.5 - _val.substring(1)*1;
+        return win_size.height*0.5 - _val.substring(1)*1;
         break;
      }
      case "B":
      {
-        return -ui_size.height*0.5 + _val.substring(1)*1;
+        return -win_size.height*0.5 + _val.substring(1)*1;
         break;
      }
      default:

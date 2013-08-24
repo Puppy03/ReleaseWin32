@@ -5,9 +5,9 @@ pet_type:EMNodeType.EBarrier,
 fl_type:EFlType.EFLLeft,
 hp:1,
 att:10,
-fl_speed:300,
-fl_offset:60,
-retain_range:150,
+fl_speed:250,
+fl_offset:50,
+retain_range:160,
 config:null,
 shoot_interval:1,
 shoot_tick:0,
@@ -21,8 +21,7 @@ initPet:function(config,fl_type)
     var img_array = genImgArray(motion);
 
     var firTexture = cc.TextureCache.getInstance().addImage(img_array[0]);
-    var img_size = firTexture.getContentSize();
-    this.initWithTexture(firTexture,new cc.rect(0,0,img_size.width,img_size.height));
+    this.initWithTexture(firTexture);
 
     var animate = genAnimateArr(img_array,motion.interval);
     var repeat = cc.RepeatForever.create(animate);
@@ -72,6 +71,14 @@ updateStat:function(dt)
         this.setPositionX(s_pos_x);
     }
 
+},
+pause:function ()
+{
+    this.unschedule(this.updateStat);
+},
+resume:function ()
+{
+    this.schedule(this.updateStat);
 },
 
 shoot:function () 
