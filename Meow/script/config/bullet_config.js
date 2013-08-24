@@ -12,7 +12,7 @@ BulletPet0:{
     image:"bullet/bullet.png",
     speed_x:0,
     speed_y:900,
-    att:300,
+    att:150,
     col_size:{width:36,height:36},
 },
 };

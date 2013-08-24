@@ -3,7 +3,7 @@ require("script/config/common_config.js");
 var stageConfigs = {
 stage1:{
     max_distance:10200,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:250,
     loop:false,
     drop_items:[
@@ -28,7 +28,7 @@ stage1:{
 },
 stage2:{
     max_distance:12000,
-    back_img:"scene/01.png",
+    back_img:"scene/02.jpg",
     roll_speed:250,
     loop:false,
     drop_items:[
@@ -51,7 +51,7 @@ stage2:{
 },
 stage3:{
     max_distance:14000,
-    back_img:"scene/01.png",
+    back_img:"scene/03.jpg",
     roll_speed:400,
     loop:false,
     drop_items:[
@@ -80,7 +80,7 @@ stage3:{
    },
 stage4:{
     max_distance:25000,
-    back_img:"scene/01.png",
+    back_img:"scene/04.jpg",
     roll_speed:600,
     loop:false,
     drop_items:[
@@ -89,7 +89,7 @@ stage4:{
     {item_id:"Item02",percent:11.8},
     ],
     segments:[
-    {id:"S0400",diff:1,acc:1},
+    {id:"S0405",diff:1,acc:1},
     {id:"M01",diff:1,acc:1.3},
     {id:"S0401",diff:1,acc:1.3},
     {id:"M02",diff:1,acc:1.3},
@@ -103,7 +103,7 @@ stage4:{
     },
 stage5:{
     max_distance:25000,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:600,
     loop:false,
     drop_items:[
@@ -112,21 +112,21 @@ stage5:{
     {item_id:"Item02",percent:11.8},
     ],
     segments:[
-    {id:"S0500",diff:1,acc:1.3},
+    {id:"S0500",diff:1,acc:1},
     {id:"M05",diff:1,acc:1.3},
-    {id:"S0501",diff:1,acc:1.3},
+    {id:"S0401",diff:1,acc:1.3},
     {id:"M02",diff:1,acc:1.3},
-    {id:"S0502",diff:1,acc:1},
+    {id:"S0402",diff:1,acc:1},
     {id:"M04",diff:1,acc:1},
-    {id:"S0503",diff:1,acc:1},
+    {id:"S0403",diff:1,acc:1},
     {id:"M05",diff:1,acc:1},
-    {id:"S0504",diff:1,acc:1},
+    {id:"S0404",diff:1,acc:1},
     {id:"M03",diff:1,acc:1},
     ],
     },
 stage6:{
     max_distance:25000,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:600,
     loop:false,
     drop_items:[
@@ -149,7 +149,7 @@ stage6:{
     },
 stage7:{
     max_distance:25000,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:600,
     loop:false,
     drop_items:[
@@ -172,7 +172,7 @@ stage7:{
     },
 stage8:{
     max_distance:25000,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:600,
     loop:false,
     drop_items:[
@@ -195,7 +195,7 @@ stage8:{
     },
 stage9:{
     max_distance:20000,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:400,
     loop:false,
     drop_items:[
@@ -221,7 +221,7 @@ stage9:{
 },
 stage10:{
     max_distance:10000,
-    back_img:"scene/01.png",
+    back_img:"scene/01.jpg",
     roll_speed:400,
     loop:false,
     drop_items:[

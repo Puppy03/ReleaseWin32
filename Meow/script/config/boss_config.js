@@ -19,7 +19,7 @@ Boss00:{
     {time:3,type:0,x:-150,y:0,dur:1},
     {time:4,type:1,born_x:0,config:"Meteorite00",follow_speed:300},
     {time:6,type:2,born_x:0,born_y:-100,speed_x:0,speed_y:-500,config:"BulletPet0"},
-    {time:8,type:3,born_x:0,born_y:-100,speed:500,config:"BulletPet0"},
+    {time:8,type:3,born_x:0,born_y:-100,speed:500,config:"SummonDog"},
     ],
     actor:{
     prefix:"monster/level9/",

@@ -16,6 +16,7 @@ speed:0,
 hp:0,
 img_normal:null,
 img_hurt:null,
+hurt_idle:false,
 anim_img:null,
 hurt_time:0,
 die_delay:0,
@@ -31,6 +32,7 @@ initEnemy:function (enemy_config)
     this.hp = enemy_config.hp;
     this.speed = enemy_config.speed;
     this.col_size = enemy_config.col_size;
+    this.hurt_idle = enemy_config.hurt_idle;
     if(enemy_config.img_normal != "")
     {
         this.img_normal = cc.Sprite.create(enemy_config.img_normal);
@@ -77,7 +79,14 @@ hited:function (damage)
     if(this.img_hurt!=null)
     {
         this.img_hurt.setVisible(true);
+    }
+    if(this.img_normal!=null)
+    {
         this.img_normal.setVisible(false);
+    }
+    if(this.hurt_idle)
+    {
+        this.anim_img.setVisible(false);
     }
     this.hurt_time = 0.2;
     this.cur_stat = EnemyStat.Hurt;
@@ -92,7 +101,9 @@ updateStat:function (dt)
         {
             this.cur_stat = EnemyStat.Normal;
             if(this.img_normal != null)
-            {this.img_normal.setVisible(false);}
+            {
+             this.img_normal.setVisible(false);
+            }
             this.anim_img.setVisible(true);
         }
         this.born_tick -= dt;
@@ -108,7 +119,14 @@ updateStat:function (dt)
             if(this.img_hurt!=null)
             {
                 this.img_hurt.setVisible(false);
+            }
+            if(this.img_normal!=null)
+            {
                 this.img_normal.setVisible(true);
+            }
+            if(this.hurt_idle)
+            {
+                this.anim_img.setVisible(true);
             }
         }
     }

@@ -42,7 +42,7 @@ var FightLayer = cc.Node.extend({
         this.back_imgs = [];
 
         this.fighter = new Fighter;
-        this.fighter.initFighter(fighterConfig.Fighter00);
+        this.fighter.initFighter(fighterConfig.Fighter01);
         this.addChild(this.fighter,100);
 
         this.fighter.addPet(petConfig.Pet00);
@@ -407,7 +407,7 @@ var FightLayer = cc.Node.extend({
             this.removeChild(this.fighter,true);
         }
         this.fighter = new Fighter;
-        this.fighter.initFighter(fighterConfig.Fighter00);
+        this.fighter.initFighter(fighterConfig.Fighter01);
         this.addChild(this.fighter);
 
         this.loadSegment();

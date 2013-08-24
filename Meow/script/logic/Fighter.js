@@ -6,10 +6,21 @@ var EFighterStat={
 EBorn:0,
 EFight:1,
 EDie:2,
-}
+};
+var FighterCry={
+prefix:"fighter/tear/",
+start:1,
+end:4,
+interval:0.12,
+};
 
-var Fighter = cc.Sprite.extend({
+var Fighter = cc.Node.extend({
 stat:EFighterStat.EBorn,
+anim_img:null,
+dying_img:null,
+dying_effect1:null,
+dying_effect2:null,
+charge_effect:null,
 col_size:null,
 shoot_interval:0.12,
 shoot_tick:0,
@@ -18,9 +29,6 @@ fight_y:120,
 born_tick:0,
 bullet_config:null,
 dying_tick:0,
-dying_effect1:null,
-dying_effect2:null,
-charge_effect:null,
 double_duration:0,
 magnet_duration:0,
 magnet_size:null,
@@ -34,12 +42,16 @@ initFighter:function (fighter_config)
     var motion = fighter_config.actor;
     var img_array = genImgArray(motion);
 
-    var firTexture = cc.TextureCache.getInstance().addImage(img_array[0]);
-    this.initWithTexture(firTexture);
+    this.anim_img = cc.Sprite.create(img_array[0]);
+    this.addChild(this.anim_img);
 
     var animate = genAnimateArr(img_array,motion.interval);
     var repeat = cc.RepeatForever.create(animate);
-    this.runAction(repeat);
+    this.anim_img.runAction(repeat);
+
+    this.dying_img = cc.Sprite.create(fighter_config.img_hurt);
+    this.addChild(this.dying_img);
+    this.dying_img.setVisible(false);
 
     this.setPosition(0,-design_size.height*0.5+this.born_y);
     var move = cc.MoveTo(0.3,cc.p(0,-design_size.height*0.5+this.fight_y));
@@ -90,7 +102,7 @@ shoot:function ()
     _bullet.initBullet(this.bullet_config);
     this.getParent().addChild(_bullet);
     var pos = this.getPosition();
-    pos.y += this.getContentSize().height*0.5;
+    pos.y += this.col_size.height*0.5;
     
     if(this.double_duration>0)
     {
@@ -156,65 +168,33 @@ die:function ()
 {
     this.unschedule(this.tickShoot);
     ui_parser.currentScene.gameOver();
-    this.dying_effect1 = cc.Sprite.create("fighter/bloodCircle.png");
-    this.dying_effect2 = cc.Sprite.create("fighter/bloodCircle.png");
+    this.anim_img.setVisible(false);
+    this.dying_img.setVisible(true);
+
+    var img_array = genImgArray(FighterCry);
+    this.dying_effect1 = cc.Sprite.create(img_array[0]);
+    this.dying_effect2 = cc.Sprite.create(img_array[0]);
     this.dying_effect2.setFlipX(true);
-    this.addChild(this.dying_effect1);
-    this.addChild(this.dying_effect2);
-    var size = this.getContentSize();
-    var pos = cc.p(size.width*0.5,size.height*0.5+8);
-    this.dying_effect1.setPosition(pos);
-    this.dying_effect2.setPosition(pos);
-    this.schedule(this.tickDyingEffect);
+    this.addChild(this.dying_effect1,-1);
+    this.addChild(this.dying_effect2,-1);
+    this.dying_effect1.setPosition(-75,0);
+    this.dying_effect2.setPosition(75,0);
+    
+    var animate1 = genAnimateArr(img_array,FighterCry.interval);
+    var animate2 = genAnimateArr(img_array,FighterCry.interval);
+    var repeat1 = cc.RepeatForever.create(animate1);
+    var repeat2 = cc.RepeatForever.create(animate2);
+    this.dying_effect1.runAction(repeat1);
+    this.dying_effect2.runAction(repeat2);
 },
 
-tickDyingEffect:function (dt)
-{
-    this.dying_tick += dt;
-    if(this.dying_tick>0.3)
-    {
-        this.dying_effect1.setScale(1.5);
-        this.dying_effect2.setScale(1.5);
-        this.dying_effect1.setRotation(25.5);
-        this.dying_effect2.setRotation(25.5);
-        this.unschedule(this.tickDyingEffect);
-        this.schedule(this.tickDyingMove);
-        this.dying_tick = 0;
-        return;
-    }
-},
-
-tickDyingMove:function(dt)
-{
-    this.dying_tick += dt;
-    if(this.dying_tick>0.3)
-    {
-        var move = cc.MoveTo.create(0.2,cc.p(this.getPositionX(),this.born_y));
-        this.runAction(move);
-        this.unschedule(this.tickDyingMove);
-        this.schedule(this.tickDyingEnd);
-        this.dying_tick = 0;
-        return;
-    }
-},
-
-tickDyingEnd:function(dt)
-{
-    this.dying_tick += dt;
-    if(this.getPositionY()<=this.born_y || this.dying_tick>0.2)
-    {
-        this.getParent().removeChild(this,true);
-        return;
-    }
-},
 charge:function(show)
 {
     if(show && this.charge_effect==null)
     {
         this.charge_effect = cc.Sprite.create("fighter/boosterHead.png");
         this.addChild(this.charge_effect);
-        var size = this.getContentSize();
-        this.charge_effect.setPosition(size.width*0.5,size.height+20);
+        this.charge_effect.setPosition(this.col_size.width*0.5,this.col_size.height+20);
         this.charge_effect.setScaleY(2);
         this.charge_effect.setScaleX(4);
     }

@@ -57,7 +57,6 @@ var FightScene = UIController.extend({
         cc.log("game over!");
         this.fight_layer.clearStage();
         this.setTouchEnabled(false);
-        this.fight_layer.fighter = null;
         this.openEndScore();
     },
 
@@ -66,10 +65,7 @@ var FightScene = UIController.extend({
         cc.log("stage end!!!");
         this.fight_layer.clearStage();
         this.setTouchEnabled(false);
-        if(this.fight_layer.fighter!=null)
-        {
-            this.fight_layer.fighter.pauseShoot();
-        }
+        this.fight_layer.fighter.pauseShoot();     
         this.openEndScore();
     },
 

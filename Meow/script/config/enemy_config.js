@@ -16,6 +16,7 @@ Enemy00:{
     col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -29,6 +30,7 @@ Enemy01:{
     col_size:{width:95,height:116},
     img_normal:"monster/level1/normal.png",
     img_hurt:"monster/level1/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -42,6 +44,7 @@ Enemy02:{
     col_size:{width:95,height:116},
     img_normal:"monster/level2/normal.png",
     img_hurt:"monster/level2/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -55,6 +58,7 @@ Enemy03:{
     col_size:{width:95,height:116},
     img_normal:"monster/level3/normal.png",
     img_hurt:"monster/level3/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -68,6 +72,7 @@ Enemy04:{
     col_size:{width:95,height:116},
     img_normal:"monster/level4/normal.png",
     img_hurt:"monster/level4/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -81,6 +86,7 @@ Enemy05:{
     col_size:{width:95,height:116},
     img_normal:"monster/level5/normal.png",
     img_hurt:"monster/level5/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -94,6 +100,7 @@ Enemy06:{
     col_size:{width:95,height:116},
     img_normal:"monster/level6/normal.png",
     img_hurt:"monster/level6/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -107,6 +114,7 @@ Enemy07:{
     col_size:{width:95,height:116},
     img_normal:"monster/level7/normal.png",
     img_hurt:"monster/level7/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -120,6 +128,7 @@ Enemy08:{
     col_size:{width:95,height:116},
     img_normal:"monster/level8/normal.png",
     img_hurt:"monster/level8/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -133,6 +142,7 @@ Enemy09:{
     col_size:{width:95,height:116},
     img_normal:"monster/level9/normal.png",
     img_hurt:"monster/level9/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -146,6 +156,7 @@ Enemy10:{
     col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
+    hurt_idle:false,
     actor:{
     prefix:"monster/level0/",
     start:1,
@@ -154,11 +165,12 @@ Enemy10:{
     },
 },
 Dog1:{
-    hp:100,
+    hp:120,
     speed:500,
     col_size:{width:80,height:100},
     img_normal:"",
     img_hurt:"",
+    hurt_idle:false,
     actor:{
     prefix:"monster/dog1/",
     start:1,
@@ -166,12 +178,27 @@ Dog1:{
     interval:0.12,
     },
 },
+Dog2:{
+    hp:200,
+    speed:500,
+    col_size:{width:80,height:100},
+    img_normal:"",
+    img_hurt:"monster/dog2/hurt.png",
+    hurt_idle:true,
+    actor:{
+    prefix:"monster/dog2/",
+    start:1,
+    end:4,
+    interval:0.12,
+    },
+},
 Dog3:{
-    hp:100,
+    hp:250,
     speed:250,
     col_size:{width:80,height:100},
     img_normal:"",
-    img_hurt:"",
+    img_hurt:"monster/dog3/hurt.png",
+    hurt_idle:true,
     actor:{
     prefix:"monster/dog3/",
     start:1,
@@ -185,6 +212,7 @@ SummonDog:{
     col_size:{width:80,height:100},
     img_normal:"",
     img_hurt:"",
+    hurt_idle:false,
     actor:{
     prefix:"monster/dog3/",
     start:1,
