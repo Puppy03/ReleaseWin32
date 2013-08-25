@@ -232,7 +232,7 @@ var FightLayer = cc.Node.extend({
     createEnemy:function(config,pos)
     {
         var _enemy = new Enemy;
-        _enemy.initEnemy(_config);
+        _enemy.initEnemy(config);
         _enemy.setPosition(pos);
         this.addChild(_enemy);
         this.map_nodes.push(_enemy);
@@ -284,7 +284,6 @@ var FightLayer = cc.Node.extend({
                 }
                 else
                 {
-                    //this.getParent().stageEnd();
                     return;
                 }
             }
@@ -297,7 +296,6 @@ var FightLayer = cc.Node.extend({
         {
             if(this.segment_tick>this.cur_segment[i].time)
             {
-                //cc.log("cur node idx:"+i);
                 this.createNode(this.cur_segment[i],this.cur_segment_diff);
                 this.cur_node_idx = i+1;
             }

@@ -43,7 +43,7 @@ var FightScene = UIController.extend({
         audio_palyer = new AudioPlayer;
         audio_palyer.initPlayer(this);
 
-        audio_palyer.playBgMusic("backgroundmusic01.mp3");
+       // audio_palyer.playBgMusic("backgroundmusic01.mp3");
 
         this.setTouchMode(1);
         this.setTouchPriority(100);

@@ -5,7 +5,6 @@ require("script/logic/Coin.js");
 var EnemyStat={
 Born:0,
 Normal:1,
-Hurt:2,
 }
 
 var Enemy = cc.Node.extend({
@@ -16,6 +15,7 @@ speed:0,
 hp:0,
 img_normal:null,
 img_hurt:null,
+hurt_flag:false,
 hurt_idle:false,
 anim_img:null,
 hurt_time:0,
@@ -47,9 +47,7 @@ initEnemy:function (enemy_config)
 
     var motion = enemy_config.actor;
     var img_array = genImgArray(motion);
-
-    var firTexture = cc.TextureCache.getInstance().addImage(img_array[0]);
-    this.anim_img = cc.Sprite.createWithTexture(firTexture);
+    this.anim_img = cc.Sprite.create(img_array[0]);
     var animate = genAnimateArr(img_array,motion.interval);
     var repeat = cc.RepeatForever.create(animate);
     this.anim_img.runAction(repeat);
@@ -68,7 +66,7 @@ initEnemy:function (enemy_config)
         this.born_tick = _animate.getAnimation().getDuration();
         this.born_effect = cc.Sprite.create(_array[0]);
         this.born_effect.runAction(_animate);
-        this.addChild(born_effect);
+        this.addChild(this.born_effect);
     }
 },
 
@@ -89,7 +87,7 @@ hited:function (damage)
         this.anim_img.setVisible(false);
     }
     this.hurt_time = 0.2;
-    this.cur_stat = EnemyStat.Hurt;
+    this.hurt_flag = true;
     
 },
 
@@ -102,20 +100,21 @@ updateStat:function (dt)
             this.cur_stat = EnemyStat.Normal;
             if(this.img_normal != null)
             {
-             this.img_normal.setVisible(false);
+             this.img_normal.setVisible(true);
             }
+            this.removeChild(this.born_effect,true);
             this.anim_img.setVisible(true);
         }
         this.born_tick -= dt;
         return;
     }
-    if(this.cur_stat == EnemyStat.Hurt)
+    if(this.hurt_flag == true)
     {
         if(this.hurt_time>0)
         {this.hurt_time -= dt;}
         else
         {
-            this.cur_stat = EnemyStat.Normal;
+            this.hurt_flag = false;
             if(this.img_hurt!=null)
             {
                 this.img_hurt.setVisible(false);

@@ -179,7 +179,7 @@ Dog1:{
     },
 },
 Dog2:{
-    hp:200,
+    hp:500,
     speed:500,
     col_size:{width:80,height:100},
     img_normal:"",

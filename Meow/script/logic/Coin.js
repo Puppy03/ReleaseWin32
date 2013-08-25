@@ -1,5 +1,8 @@
 require("script/config/coin_config.js");
 
+var CoinStat={
+
+};
 
 var Coin = cc.Sprite.extend({
 mn_type:EMNodeType.ECoin,

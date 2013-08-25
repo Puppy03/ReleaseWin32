@@ -7,17 +7,19 @@ Normal:1,
 Hurt:2
 }
 
-var Boss = cc.Sprite.extend({
+var Boss = cc.Node.extend({
 mn_type:EMNodeType.EBoss,
 cur_stat:BossStat.Born,
 config:null,
 hp:0,
 speed:0,
 fight_pos:200,
-texture_normal:null,
-texture_hurt:null,
+img_normal:null,
+img_hurt:null,
 anim_img:null,
+hurt_flag:false,
 hurt_time:0,
+hurt_idle:false,
 die_delay:0,
 die_effect:null,
 score_val:10,
@@ -31,20 +33,26 @@ initBoss:function (boss_config)
     this.hp = boss_config.hp;
     this.speed = boss_config.speed;
     this.col_size = boss_config.col_size;
-    this.texture_normal = cc.TextureCache.getInstance().addImage(boss_config.img_normal);
-    this.texture_hurt = cc.TextureCache.getInstance().addImage(boss_config.img_hurt);
-    var size = this.texture_normal.getContentSize();
-    this.initWithTexture(this.texture_normal);
+
+    if(boss_config.img_normal != "")
+    {
+        this.img_normal = cc.Sprite.create(boss_config.img_normal);
+        this.addChild(this.img_normal);
+    }
+    if(boss_config.img_hurt != "")
+    {
+        this.img_hurt = cc.Sprite.create(boss_config.img_hurt);
+        this.addChild(this.img_hurt);
+        this.img_hurt.setVisible(false);
+    }
 
     var motion = boss_config.actor;
     var img_array = genImgArray(motion);
 
-    var firTexture = cc.TextureCache.getInstance().addImage(img_array[0]);
-    this.anim_img = cc.Sprite.createWithTexture(firTexture);
+    this.anim_img = cc.Sprite.create(img_array[0]);
     var animate = genAnimateArr(img_array,motion.interval);
     var repeat = cc.RepeatForever.create(animate);
     this.anim_img.runAction(repeat);
-    this.anim_img.setPosition(cc.p(size.width*0.5,size.height*0.5));
     this.addChild(this.anim_img,-1);
 
 },
@@ -74,14 +82,25 @@ updateStat:function (dt)
 
 tickHurt:function(dt)
 {
-    if(this.cur_stat == BossStat.Hurt)
+    if(this.hurt_flag == true)
     {
         if(this.hurt_time>0)
         {this.hurt_time -= dt;}
         else
         {
-            this.cur_stat = BossStat.Normal;
-            this.setTexture(this.texture_normal);
+            this.hurt_flag = false;
+            if(this.img_hurt!=null)
+            {
+                this.img_hurt.setVisible(false);
+            }
+            if(this.img_normal!=null)
+            {
+                this.img_normal.setVisible(true);
+            }
+            if(this.hurt_idle)
+            {
+                this.anim_img.setVisible(true);
+            }
         }
     }
     var fighter = this.getParent().fighter;
@@ -100,12 +119,13 @@ tickHurt:function(dt)
 tickBehavior:function(dt)
 {
     this.behavior_tick += dt;
-    if(this.cur_behavior_idx == this.config.behavior.length-1)
+    if(this.cur_behavior_idx == this.config.behavior.length)
     {
         if(this.behavior_tick>this.config.loop_time)
         {
-                this.behavior_tick = 0;
-                this.cur_behavior_idx = 0;
+            cc.log("behavior loop!!");
+            this.behavior_tick = 0;
+            this.cur_behavior_idx = 0;
         }
         else
         {
@@ -113,14 +133,20 @@ tickBehavior:function(dt)
         }
     }
 
-    var cur_behavior = this.config.behavior[this.cur_behavior_idx];
-    if(this.behavior_tick>=cur_behavior.time)
+    for(var i=this.cur_behavior_idx; i<this.config.behavior.length; i++)
     {
-        this.cur_behavior_idx++;
-        cc.log("cur behavior idx:"+this.cur_behavior_idx);
-        this.runBehavior(cur_behavior);
-    }
-    
+        var behavior = this.config.behavior[i];
+        if(this.behavior_tick>behavior.time)
+        {
+            cc.log("cur behavior idx:"+this.cur_behavior_idx);
+            this.runBehavior(behavior);
+            this.cur_behavior_idx = i+1;
+        }
+        else
+        {
+            return;
+        }
+    } 
 },
 
 runBehavior:function(behavior)
@@ -163,9 +189,21 @@ hited:function (damage)
 {
     this.hp -= damage;
 
-    this.setTexture(this.texture_hurt);
+    if(this.img_hurt!=null)
+    {
+        this.img_hurt.setVisible(true);
+    }
+    if(this.img_normal!=null)
+    {
+        this.img_normal.setVisible(false);
+    }
+    if(this.hurt_idle)
+    {
+        this.anim_img.setVisible(false);
+    }
+
     this.hurt_time = 0.2;
-    this.cur_stat = BossStat.Hurt;
+    this.hurt_flag = true;
 },
 
 die:function () 
