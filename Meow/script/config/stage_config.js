@@ -306,16 +306,7 @@ stage8:{
     {item_id:"Item02",percent:11.8},
     ],
     segments:[
-    {id:"S0405",diff:1,acc:1},
-    {id:"M01",diff:1,acc:1.3},
-    {id:"S0401",diff:1,acc:1.3},
-    {id:"M02",diff:1,acc:1.3},
-    {id:"S0402",diff:1,acc:1},
-    {id:"M04",diff:1,acc:1},
-    {id:"S0403",diff:1,acc:1},
-    {id:"M05",diff:1,acc:1},
-    {id:"S0404",diff:1,acc:1},
-    {id:"M03",diff:1,acc:1},
+    {id:"S0801",diff:1,acc:1},
     ],
     },
 stage9:{

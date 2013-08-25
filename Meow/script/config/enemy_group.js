@@ -1,5 +1,8 @@
 
 var enemyGroup={
+Boss1:[
+{type:5,config:"Boss00",born_x:0,born_y:0},
+],
 MonSuper1X5:[
 {type:0,config:"Enemy10",born_x:-256,born_y:0},
 {type:0,config:"Enemy10",born_x:-128,born_y:0},
@@ -216,6 +219,34 @@ CoinW5:[
 {type:3,config:"Coin00",born_x:128,born_y:64},
 {type:3,config:"Coin00",born_x:192,born_y:128},
 {type:3,config:"Coin00",born_x:256,born_y:192},
+],
+Coin2X2:[
+{type:3,config:"Coin00",born_x:-64,born_y:0},
+{type:3,config:"Coin00",born_x:-64,born_y:64},
+{type:3,config:"Coin00",born_x:-0,born_y:0},
+{type:3,config:"Coin00",born_x:-0,born_y:64},
+],
+CoinF1:[
+{type:3,config:"Coin00",born_x:-0,born_y:0},
+{type:3,config:"Coin00",born_x:-0,born_y:64},
+{type:3,config:"Coin00",born_x:-0,born_y:128},
+{type:3,config:"Coin00",born_x:-64,born_y:64},
+{type:3,config:"Coin00",born_x:64,born_y:64},
+],
+CoinF2:[
+{type:3,config:"Coin00",born_x:-0,born_y:0},
+{type:3,config:"Coin00",born_x:-0,born_y:64},
+{type:3,config:"Coin00",born_x:-0,born_y:128},
+{type:3,config:"Coin00",born_x:-0,born_y:192},
+{type:3,config:"Coin00",born_x:0,born_y:256},
+{type:3,config:"Coin00",born_x:-64,born_y:64},
+{type:3,config:"Coin00",born_x:64,born_y:64},
+{type:3,config:"Coin00",born_x:64,born_y:128},
+{type:3,config:"Coin00",born_x:-64,born_y:128},
+{type:3,config:"Coin00",born_x:-128,born_y:128},
+{type:3,config:"Coin00",born_x:128,born_y:128},
+{type:3,config:"Coin00",born_x:64,born_y:192},
+{type:3,config:"Coin00",born_x:-64,born_y:192},
 ],
 BigCoin1X5:[
 {type:3,config:"Coin01",born_x:-256,born_y:0},

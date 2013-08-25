@@ -12,7 +12,7 @@ var deadSound="mon_dead.mp3";
 var enemyConfig={
 Enemy00:{
     hp:100,
-    speed:500,
+    speed:600,
     col_size:{width:95,height:116},
     img_normal:"monster/level0/normal.png",
     img_hurt:"monster/level0/hurt.png",
