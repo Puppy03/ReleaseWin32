@@ -8,7 +8,7 @@ var UILabel = cc.Node.extend({
 label:null,
 type:ELblType.ELblTTF,
 align:ETextAlign.Center,
-draw_bound:true,
+draw_bound:false,
 initLabelTTF:function(str,font,dimension,alignment,font_size)
 {
     this.type = ELblType.ELblTTF;

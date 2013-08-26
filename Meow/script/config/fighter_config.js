@@ -15,6 +15,8 @@ Fighter00:{
 Fighter01:{
     name:"princess",
     col_size:{width:60,height:122},
+    magnet_size_n:{width:100,height:130},
+    magnet_size_s:{width:300,height:300},
     img_hurt:"fighter/princess/cry.png",
     actor:
     {

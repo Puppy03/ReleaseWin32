@@ -1,8 +1,5 @@
 require("script/config/coin_config.js");
 
-var CoinStat={
-
-};
 
 var Coin = cc.Sprite.extend({
 mn_type:EMNodeType.ECoin,
@@ -47,9 +44,9 @@ updateStat:function (dt)
     {
         return;
     }
-    var parent = this.getParent();
+    var parent = this.getParent().getParent();
     var pos_y = this.getPositionY();
-    this.setPositionY(pos_y - this.getParent().roll_speed*dt);
+    this.setPositionY(pos_y - parent.roll_speed*dt);
     var fighter = parent.fighter;
     if(fighter==null)
     {
@@ -57,7 +54,7 @@ updateStat:function (dt)
     }
     var s_rect = this.getColRect();
 
-    if(fighter.magnet_duration>0 && !this.magnet_mark)
+    if(!this.magnet_mark)
     {
         var magnet_rect = fighter.getMagnetRect();
         if(cc.rectIntersectsRect(magnet_rect,s_rect))
@@ -66,20 +63,11 @@ updateStat:function (dt)
             this.schedule(this.tickMagenetMove);
         }
     }
-    else
-    {
-        var f_rect = fighter.getColRect();
-        if(cc.rectIntersectsRect(f_rect,s_rect))
-        {
-            this.coinPicked();
-            return;
-        }
-    }  
 },
 
 tickMagenetMove:function(dt)
 {
-    var fighter = this.getParent().fighter;
+    var fighter = this.getParent().getParent().fighter;
     var s_pos = this.getPosition();
     var f_pos = fighter.getPosition();
     var f_rect = fighter.getColRect();

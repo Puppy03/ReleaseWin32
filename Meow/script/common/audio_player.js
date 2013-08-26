@@ -1,7 +1,7 @@
 
 
 var AudioPlayer = cc.Node.extend({
-min_intvr:0.06,
+min_intvr:0.1,
 sequence:null,
 playing_num:0,
 initPlayer:function (parent)

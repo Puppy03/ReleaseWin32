@@ -33,7 +33,7 @@ var Bullet = cc.Sprite.extend({
         for(var i in map_nodes)
         {
             var node = map_nodes[i];
-            if(node.mn_type == EMNodeType.EEnemy || node.mn_type == EMNodeType.EBoss)
+            if(node.mn_type == EMNodeType.EMonster || node.mn_type == EMNodeType.EBoss)
             {
                 var pos_y = node.getPositionY();
                 if(pos_y>win_size.height)

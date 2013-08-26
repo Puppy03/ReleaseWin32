@@ -3,7 +3,7 @@ require("script/config/stage_config.js");
 require("script/config/fighter_config.js");
 require("script/config/segment_config.js");
 require("script/logic/Fighter.js");
-require("script/logic/Enemy.js");
+require("script/logic/Monster.js");
 require("script/logic/FightLayer.js");
 
 var audio_player=null;

@@ -15,7 +15,8 @@ interval:0.12,
 };
 
 var Fighter = cc.Node.extend({
-stat:EFighterStat.EBorn,
+cur_stat:EFighterStat.EBorn,
+config:null,
 anim_img:null,
 dying_img:null,
 dying_effect1:null,
@@ -36,9 +37,10 @@ pet_left:null,
 pet_right:null,
 initFighter:function (fighter_config) 
 {
+    this.config = fighter_config;
     this.bullet_config = bulletConfig.Bullet00;
     this.col_size = fighter_config.col_size;
-    this.magnet_size = cc.size(300,300);
+    this.magnet_size = fighter_config.magnet_size_n;
     var motion = fighter_config.actor;
     var img_array = genImgArray(motion);
 
@@ -211,6 +213,7 @@ doubleBullet:function(duration)
 magnetStat:function(duration)
 {
     this.magnet_duration = duration;
+    this.magnet_size = this.config.magnet_size_s;
     this.schedule(this.tickMagnetStat);
 },
 
@@ -220,6 +223,7 @@ tickMagnetStat:function(dt)
     if(this.magnet_duration<0)
     {
         this.magnet_duration = 0;
+        this.magnet_size = this.config.magnet_size_n;
         this.unschedule(this.tickMagnetStat);
     }
 },

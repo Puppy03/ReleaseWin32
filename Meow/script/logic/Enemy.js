@@ -1,51 +1,41 @@
-require("script/config/enemy_config.js");
+
 require("script/logic/Explosion.js");
 require("script/logic/Coin.js");
 
-var EnemyStat={
-Born:0,
-Normal:1,
-}
-
 var Enemy = cc.Node.extend({
-mn_type:EMNodeType.EEnemy,
-cur_stat:EnemyStat.Normal,
-config:null,
 speed:0,
 hp:0,
+fight_pos:200,
+col_size:null,
 img_normal:null,
 img_hurt:null,
 hurt_flag:false,
 hurt_idle:false,
 anim_img:null,
 hurt_time:0,
-die_delay:0,
 die_effect:null,
-score_val:10,
-col_size:null,
 born_effect:null,
 born_tick:0,
 
-initEnemy:function (enemy_config) 
+initEnemy:function (config) 
 {
-    this.config = enemy_config;
-    this.hp = enemy_config.hp;
-    this.speed = enemy_config.speed;
-    this.col_size = enemy_config.col_size;
-    this.hurt_idle = enemy_config.hurt_idle;
-    if(enemy_config.img_normal != "")
+    this.hp = config.hp;
+    this.speed = config.speed;
+    this.col_size = config.col_size;
+    this.hurt_idle = config.hurt_idle;
+    if(config.img_normal != "")
     {
-        this.img_normal = cc.Sprite.create(enemy_config.img_normal);
+        this.img_normal = cc.Sprite.create(config.img_normal);
         this.addChild(this.img_normal);
     }
-    if(enemy_config.img_hurt != "")
+    if(config.img_hurt != "")
     {
-        this.img_hurt = cc.Sprite.create(enemy_config.img_hurt);
+        this.img_hurt = cc.Sprite.create(config.img_hurt);
         this.addChild(this.img_hurt);
         this.img_hurt.setVisible(false);
     }
 
-    var motion = enemy_config.actor;
+    var motion = config.actor;
     var img_array = genImgArray(motion);
     this.anim_img = cc.Sprite.create(img_array[0]);
     var animate = genAnimateArr(img_array,motion.interval);
@@ -53,14 +43,14 @@ initEnemy:function (enemy_config)
     this.anim_img.runAction(repeat);
     this.addChild(this.anim_img,-1);
 
-    if(enemy_config.hasOwnProperty("born"))
+    if(config.hasOwnProperty("born"))
     {
         this.anim_img.setVisible(false);
         if(this.img_normal != null)
         {this.img_normal.setVisible(false);}
-        this.cur_stat = EnemyStat.Born;
+        this.cur_stat = MonsterStat.Born;
 
-        var _motion = enemy_config.born;
+        var _motion = config.born;
         var _array = genImgArray(_motion);
         var _animate = genAnimateArr(_array,_motion.interval);
         this.born_tick = _animate.getAnimation().getDuration();
@@ -91,51 +81,40 @@ hited:function (damage)
     
 },
 
-updateStat:function (dt) 
+tickHurt:function(dt)
 {
-    if(this.cur_stat == EnemyStat.Born)
+    if(!this.hurt_flag)
+        return;
+
+    if(this.hurt_time>0)
+    {this.hurt_time -= dt;}
+    else
     {
-        if(this.born_tick<=0)
+        this.hurt_flag = false;
+        if(this.img_hurt!=null)
         {
-            this.cur_stat = EnemyStat.Normal;
-            if(this.img_normal != null)
-            {
-             this.img_normal.setVisible(true);
-            }
-            this.removeChild(this.born_effect,true);
+            this.img_hurt.setVisible(false);
+        }
+        if(this.img_normal!=null)
+        {
+            this.img_normal.setVisible(true);
+        }
+        if(this.hurt_idle)
+        {
             this.anim_img.setVisible(true);
         }
-        this.born_tick -= dt;
-        return;
     }
-    if(this.hurt_flag == true)
-    {
-        if(this.hurt_time>0)
-        {this.hurt_time -= dt;}
-        else
-        {
-            this.hurt_flag = false;
-            if(this.img_hurt!=null)
-            {
-                this.img_hurt.setVisible(false);
-            }
-            if(this.img_normal!=null)
-            {
-                this.img_normal.setVisible(true);
-            }
-            if(this.hurt_idle)
-            {
-                this.anim_img.setVisible(true);
-            }
-        }
-    }
+},
 
+tickMove:function(dt)
+{
+    var parent = this.getParent();
     var pos_y = this.getPositionY();
 
-    pos_y -= dt*this.speed;
+    pos_y -= dt*(this.speed+parent.roll_speed);
     this.setPositionY(pos_y);
 
-    var fighter = this.getParent().fighter;
+    var fighter = parent.fighter;
     if(fighter != null)
     {
         var e_rect = rectForNode(this);
@@ -149,11 +128,29 @@ updateStat:function (dt)
     }
 },
 
-die:function () 
+tickBorn:function (dt)
 {
-    PlayerData.StageScore += this.score_val;
-    ui_parser.currentScene.refreshStageScore();
+    if(this.born_tick<=0)
+    {
+        this.cur_stat = MonsterStat.Normal;
+        if(this.img_normal != null)
+        {
+            this.img_normal.setVisible(true);
+        }
+        this.removeChild(this.born_effect,true);
+        this.anim_img.setVisible(true);
+    }
+    this.born_tick -= dt;
+},
 
+updateStat:function (dt) 
+{
+    this.tickMove(dt);
+    this.tickHurt(dt); 
+},
+
+runDeadEffect:function()
+{
     var explosion = new Explosion;
     explosion.initExplotion(deadEffect);
     var pos = this.getPosition()
@@ -162,21 +159,11 @@ die:function ()
     parent.addChild(explosion);
 
     audio_palyer.playEffect(deadSound);
-
-    if(!parent.dropItem(pos))
-    {
-        parent.dropCoin(coinConfig.Coin00,pos);
-    }  
 },
 
-updateDieDelay:function (dt) 
+die:function () 
 {
-    this.die_delay -= dt;
-    if(this.die_delay<0)
-    {
-        this.getParent().removeChild(this.die_effect,true);
-        this.getParent().removeChild(this,true);
-    }
+    this.runDeadEffect();
 },
 
 getColRect:function () 

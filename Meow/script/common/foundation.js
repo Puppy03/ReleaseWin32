@@ -68,3 +68,9 @@ function shakeNode(node,val)
     var repeat = cc.RepeatForever.create(sq);
     node.runAction(sq);
 }
+
+function getNowTime()
+{
+    var date = new Date();
+    return date.getTime();
+}

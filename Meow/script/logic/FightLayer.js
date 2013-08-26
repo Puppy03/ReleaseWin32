@@ -3,7 +3,7 @@ require("script/config/stage_config.js");
 require("script/config/fighter_config.js");
 require("script/config/segment_config.js");
 require("script/logic/Fighter.js");
-require("script/logic/Enemy.js");
+require("script/logic/Monster.js");
 require("script/logic/Meteorite.js");
 require("script/logic/Barrier.js");
 require("script/logic/PropItem.js");
@@ -30,6 +30,7 @@ var FightLayer = cc.Node.extend({
     charge_dur:0,
     charge_acc:3,
     segment_acc:1,
+    coin_batch:null,
 
     initStage:function (stage_config) 
     {
@@ -38,6 +39,7 @@ var FightLayer = cc.Node.extend({
         this.roll_speed = stage_config.roll_speed;
         PlayerData.StageMaxDis = stage_config.max_distance;
 
+        this.coin_batch = [];
         this.map_nodes = [];
         this.back_imgs = [];
 
@@ -105,7 +107,8 @@ var FightLayer = cc.Node.extend({
 
          for(var i in this.map_nodes)
         {
-           this.removeChild(this.map_nodes[i],true);   
+            var node = this.map_nodes[i];
+           node.getParent().removeChild(node,true);   
         }
         this.map_nodes = [];
         this.segment_tick = 0;
@@ -183,7 +186,7 @@ var FightLayer = cc.Node.extend({
             if(node.hp <=0 )
             {
                 node.die();
-                this.removeChild(node,true);
+                node.getParent().removeChild(node,true);
                 this.map_nodes.splice(i,1);
                 continue;
             }
@@ -215,8 +218,22 @@ var FightLayer = cc.Node.extend({
         var coin = new Coin;
         coin.initCoin(config);
         coin.setPosition(pos);
-        this.addChild(coin);
         this.map_nodes.push(coin);
+        var batch = null;
+        for(var i in this.coin_batch)
+        {
+            if(coin.getTexture() == this.coin_batch[i].getTexture())
+            {
+                batch = this.coin_batch[i];
+            }
+        }
+        if(batch==null)
+        {
+            batch = cc.SpriteBatchNode.createWithTexture(coin.getTexture(),100);
+            this.addChild(batch,100);
+            this.coin_batch.push(batch);
+        }
+        batch.addChild(coin);
     },
 
     dropMeteorite:function(config,f_speed)
@@ -231,11 +248,11 @@ var FightLayer = cc.Node.extend({
 
     createEnemy:function(config,pos)
     {
-        var _enemy = new Enemy;
-        _enemy.initEnemy(config);
-        _enemy.setPosition(pos);
-        this.addChild(_enemy);
-        this.map_nodes.push(_enemy);
+        var _monster = new Monster;
+        _monster.initMonster(config);
+        _monster.setPosition(pos);
+        this.addChild(_monster);
+        this.map_nodes.push(_monster);
     },
 
     dropItem:function (pos)
@@ -337,20 +354,20 @@ var FightLayer = cc.Node.extend({
             var node = group[i];
             var pos_x = node.born_x+seg_node.offset;
             var pos_y = this.getContentSize().height*0.5+100+node.born_y;
-             if(node.type == EMNodeType.EEnemy)
+             if(node.type == EMNodeType.EMonster)
             {
-                var _enemy = new Enemy;
-                _enemy.initEnemy(enemyConfig[node.config]);
-                this.addChild(_enemy);      
-                _enemy.setPosition(pos_x,pos_y);
-                _enemy.hp *= diff;
+                var _monster = new Monster;
+                _monster.initMonster(monsterConfig[node.config]);
+                this.addChild(_monster);      
+                _monster.setPosition(pos_x,pos_y);
+                _monster.hp *= diff;
                 if(seg_node.hasOwnProperty("speed"))
                 {
-                    _enemy.speed = seg_node.speed;
-                    cc.log("cur mon speed:"+ _enemy.speed);
+                    _monster.speed = seg_node.speed;
+                    cc.log("cur mon speed:"+ _monster.speed);
                 }
 
-                this.map_nodes.push(_enemy); 
+                this.map_nodes.push(_monster); 
             }
             else if(node.type == EMNodeType.EMeteorite)
             {
@@ -378,12 +395,7 @@ var FightLayer = cc.Node.extend({
             }
             else if(node.type == EMNodeType.ECoin)
             {
-                var _coin = new Coin;
-                _coin.initCoin(coinConfig[node.config]);
-                _coin.setPosition(pos_x,pos_y);
-                this.addChild(_coin);
-
-                this.map_nodes.push(_coin);
+                this.dropCoin(coinConfig[node.config],cc.p(pos_x,pos_y));
             }
             else if(node.type == EMNodeType.EBoss)
             {
@@ -395,7 +407,6 @@ var FightLayer = cc.Node.extend({
                 this.map_nodes.push(_boss);
             }
       }
-
     },
 
     restartStage:function () 
@@ -406,7 +417,7 @@ var FightLayer = cc.Node.extend({
         }
         this.fighter = new Fighter;
         this.fighter.initFighter(fighterConfig.Fighter01);
-        this.addChild(this.fighter);
+        this.addChild(this.fighter,100);
 
         this.loadSegment();
 
