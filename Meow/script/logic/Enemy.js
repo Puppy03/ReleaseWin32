@@ -9,9 +9,10 @@ fight_pos:200,
 col_size:null,
 img_normal:null,
 img_hurt:null,
+anim_normal:null,
+anim_hurt:null,
 hurt_flag:false,
 hurt_idle:false,
-anim_img:null,
 hurt_time:0,
 die_effect:null,
 born_effect:null,
@@ -22,35 +23,50 @@ initEnemy:function (config)
     this.hp = config.hp;
     this.speed = config.speed;
     this.col_size = config.col_size;
-    this.hurt_idle = config.hurt_idle;
-    if(config.img_normal != "")
+    if(config.hasOwnProperty("hurt_idle"))
+    {
+        this.hurt_idle = config.hurt_idle;
+    }
+    if(config.hasOwnProperty("img_normal"))
     {
         this.img_normal = cc.Sprite.create(config.img_normal);
         this.addChild(this.img_normal);
     }
-    if(config.img_hurt != "")
+    if(config.hasOwnProperty("img_hurt"))
     {
         this.img_hurt = cc.Sprite.create(config.img_hurt);
         this.addChild(this.img_hurt);
         this.img_hurt.setVisible(false);
     }
 
-    var motion = config.actor;
+    var motion = config.anim_normal;
     var img_array = genImgArray(motion);
-    this.anim_img = cc.Sprite.create(img_array[0]);
+    this.anim_normal = cc.Sprite.create(img_array[0]);
     var animate = genAnimateArr(img_array,motion.interval);
     var repeat = cc.RepeatForever.create(animate);
-    this.anim_img.runAction(repeat);
-    this.addChild(this.anim_img,-1);
+    this.anim_normal.runAction(repeat);
+    this.addChild(this.anim_normal,-1);
 
-    if(config.hasOwnProperty("born"))
+    if(config.hasOwnProperty("anim_hurt"))
     {
-        this.anim_img.setVisible(false);
+        var motion = config.anim_hurt;
+        var img_array = genImgArray(motion);
+        this.anim_hurt = cc.Sprite.create(img_array[0]);
+        var animate = genAnimateArr(img_array,motion.interval);
+        var repeat = cc.RepeatForever.create(animate);
+        this.anim_hurt.runAction(repeat);
+        this.addChild(this.anim_hurt,1);
+        this.anim_hurt.setVisible(false);
+    }
+
+    if(config.hasOwnProperty("anim_born"))
+    {
+        this.anim_normal.setVisible(false);
         if(this.img_normal != null)
         {this.img_normal.setVisible(false);}
         this.cur_stat = MonsterStat.Born;
 
-        var _motion = config.born;
+        var _motion = config.anim_born;
         var _array = genImgArray(_motion);
         var _animate = genAnimateArr(_array,_motion.interval);
         this.born_tick = _animate.getAnimation().getDuration();
@@ -74,7 +90,11 @@ hited:function (damage)
     }
     if(this.hurt_idle)
     {
-        this.anim_img.setVisible(false);
+        this.anim_normal.setVisible(false);
+    }
+    if(this.anim_hurt!= null)
+    {
+        this.anim_hurt.setVisible(true);
     }
     this.hurt_time = 0.2;
     this.hurt_flag = true;
@@ -101,7 +121,11 @@ tickHurt:function(dt)
         }
         if(this.hurt_idle)
         {
-            this.anim_img.setVisible(true);
+            this.anim_normal.setVisible(true);
+        }
+        if(this.anim_hurt!=null)
+        {
+            this.anim_hurt.setVisible(false);
         }
     }
 },
@@ -138,7 +162,7 @@ tickBorn:function (dt)
             this.img_normal.setVisible(true);
         }
         this.removeChild(this.born_effect,true);
-        this.anim_img.setVisible(true);
+        this.anim_normal.setVisible(true);
     }
     this.born_tick -= dt;
 },

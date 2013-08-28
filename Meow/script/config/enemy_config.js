@@ -10,7 +10,7 @@ interval:0.08,
 var deadSound="mon_dead.mp3";
 
 var enemyConfig={
-Enemy00:{
+Dog1:{
     hp:100,
     speed:600,
     col_size:{width:95,height:116},
@@ -24,7 +24,7 @@ Enemy00:{
     interval:0.12,
     },
 },
-Enemy01:{
+Dog5:{
     hp:200,
     speed:500,
     col_size:{width:95,height:116},
@@ -38,7 +38,7 @@ Enemy01:{
     interval:0.12,
     },
 },
-Enemy02:{
+Dog6:{
     hp:300,
     speed:500,
     col_size:{width:95,height:116},
@@ -52,7 +52,7 @@ Enemy02:{
     interval:0.12,
     },
 },
-Enemy03:{
+Dog5:{
     hp:400,
     speed:500,
     col_size:{width:95,height:116},
@@ -66,7 +66,7 @@ Enemy03:{
     interval:0.12,
     },
 },
-Enemy04:{
+Dog6:{
     hp:500,
     speed:500,
     col_size:{width:95,height:116},
