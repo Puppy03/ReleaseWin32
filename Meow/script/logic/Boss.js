@@ -28,11 +28,25 @@ updateStat:function (dt)
         this.tickBorn(dt);
         return;
     }
-    this.tickMove(dt);
+    //this.tickMove(dt);
     this.tickHurt(dt);
     if(this.cur_stat == BossStat.Normal)
     {
         this.tickBehavior(dt);
+    }
+},
+
+tickBorn:function(dt)
+{
+    var parent = this.getParent();
+    var pos_y = this.getPositionY();
+
+    pos_y -= dt*(this.speed+parent.roll_speed);
+    this.setPositionY(pos_y);
+
+    if(pos_y <= this.fight_pos)
+    {
+        this.cur_stat = BossStat.Normal;
     }
 },
 
