@@ -1,4 +1,4 @@
-
+require("script/logic/PetItem.js");
 var RoleMgrScene = UIController.extend({
     init:function () 
     {
@@ -31,10 +31,17 @@ var RoleMgrScene = UIController.extend({
     {
         var page = this.openUIPage("layout/role_pets.xml");
         var pets_scroll = page.getUINode("petScroll");
-        for(var i=0; i<5; i++)
+        for(var i=0; i<2; i++)
         {
-            var sp = cc.Sprite.create("ui/btn_s.png");
-            pets_scroll.addItemNode(sp);
+            var pet_item = new PetItem;
+            pet_item.initPetItem(PlayerData.Pets[0]);
+            pets_scroll.addItemNode(pet_item);
+        }
+        for(var i=0; i<3; i++)
+        {
+            var pet_item = new PetItem;
+            pet_item.initPetItem(PlayerData.Pets[1]);
+            pets_scroll.addItemNode(pet_item);
         }
     },
 });

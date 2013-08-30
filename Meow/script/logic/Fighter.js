@@ -35,11 +35,16 @@ magnet_duration:0,
 magnet_size:null,
 pet_left:null,
 pet_right:null,
+draw_col_rect:true,
 initFighter:function (fighter_config) 
 {
     this.config = fighter_config;
     this.bullet_config = bulletConfig.Bullet00;
     this.col_size = fighter_config.col_size;
+    if(this.draw_col_rect)
+    {
+        this.drawColRect();
+    }
     this.magnet_size = fighter_config.magnet_size_n;
     var motion = fighter_config.actor;
     var img_array = genImgArray(motion);
@@ -168,6 +173,7 @@ addPet:function(config)
 
 die:function () 
 {
+    return;
     this.unschedule(this.tickShoot);
     ui_parser.currentScene.gameOver();
     this.anim_img.setVisible(false);
@@ -235,6 +241,19 @@ getColRect:function ()
     origin.y -= this.col_size.height*0.5;
     return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
 },
+
+drawColRect:function ()
+{
+    var size = this.col_size;
+    var d_bound = cc.DrawNode.create();
+    var green = cc.c4f(0,1,0,1); 
+    d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(size.width*0.5,size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(size.width*0.5,size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(-size.width*0.5,-size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(-size.width*0.5,-size.height*0.5),1,green);
+    this.addChild(d_bound);
+},
+
 getMagnetRect:function()
 {
     var origin = this.getPosition();

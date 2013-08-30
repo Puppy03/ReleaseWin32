@@ -17,12 +17,17 @@ hurt_time:0,
 die_effect:null,
 born_effect:null,
 born_tick:0,
+draw_col_rect:true,
 
 initEnemy:function (config) 
 {
     this.hp = config.hp;
     this.speed = config.speed;
     this.col_size = config.col_size;
+    if(this.draw_col_rect)
+    {
+        this.drawColRect();
+    }
     if(config.hasOwnProperty("hurt_idle"))
     {
         this.hurt_idle = config.hurt_idle;
@@ -141,7 +146,7 @@ tickMove:function(dt)
     var fighter = parent.fighter;
     if(fighter != null)
     {
-        var e_rect = rectForNode(this);
+        var e_rect = this.getColRect();
         var f_rect = fighter.getColRect();
         if(cc.rectIntersectsRect(e_rect,f_rect))
         {
@@ -198,4 +203,15 @@ getColRect:function ()
     return new cc.rect(origin.x,origin.y,this.col_size.width,this.col_size.height);
 },
 
+drawColRect:function ()
+{
+    var size = this.col_size;
+    var d_bound = cc.DrawNode.create();
+    var green = cc.c4f(0,1,0,1); 
+    d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(size.width*0.5,size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(size.width*0.5,size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(-size.width*0.5,-size.height*0.5),cc.p(size.width*0.5,-size.height*0.5),1,green);
+    d_bound.drawSegment(cc.p(-size.width*0.5,size.height*0.5),cc.p(-size.width*0.5,-size.height*0.5),1,green);
+    this.addChild(d_bound);
+},
 });

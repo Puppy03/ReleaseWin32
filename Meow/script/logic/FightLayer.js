@@ -197,14 +197,14 @@ var FightLayer = cc.Node.extend({
                 if(pos_y<size.height*0.5)
                 {
                     node.die();
-                    this.removeChild(node,true);
+                    node.getParent().removeChild(node,true);
                     this.map_nodes.splice(i,1);
                     continue;
                 }
             }
             if((pos_y+size.height*0.5)<-layer_size.height*0.5)
             {
-                this.removeChild(node,true);
+                node.getParent().removeChild(node,true);
                 this.map_nodes.splice(i,1);
                 continue;
             }
@@ -349,11 +349,13 @@ var FightLayer = cc.Node.extend({
     createNode:function (seg_node,diff)
     {
         var group = enemyGroup[seg_node.group];
+        cc.log(seg_node.group);
         for(var i in group)
         {
             var node = group[i];
             var pos_x = node.born_x+seg_node.offset;
             var pos_y = this.getContentSize().height*0.5+100+node.born_y;
+            cc.log(node.config);
              if(node.type == EMNodeType.EMonster)
             {
                 var _monster = new Monster;

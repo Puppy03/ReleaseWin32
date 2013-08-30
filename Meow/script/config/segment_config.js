@@ -542,6 +542,31 @@ S0115:[
 {time:8,  group:"Mon1X5",offset:-0},
 
 ],
+S0116:[
+//DOG1+DOG2
+
+{time:2,  group:"Mona",offset:-0},
+{time:4,  group:"Monb",offset:-0},
+{time:6,  group:"Mona",offset:-0},
+{time:8,  group:"Monb",offset:-0},
+{time:10,  group:"Mona",offset:-0},
+{time:12,  group:"Monb",offset:-0},
+{time:14,  group:"Mona",offset:-0},
+{time:16,  group:"Monb",offset:-0},
+
+],
+S0117:[
+//Mon
+{time:2,  group:"CoinF1",offset:192},
+{time:2,  group:"Mon1X5",offset:-0},
+{time:4,  group:"CoinF1",offset:-256},
+{time:4,  group:"Mon1X5",offset:-0},
+{time:6,  group:"CoinF1",offset:192},
+{time:6,  group:"Mon1X5",offset:-0},
+{time:8,  group:"CoinF1",offset:-256},
+{time:8,  group:"Mon1X5",offset:-0},
+
+],
 //---------------------------------------stage2------------------------------
 S0200:[
 {time:2,  group:"Mon1X5a",offset:0},
@@ -1049,6 +1074,13 @@ S0501:[
 S0801:[
 //Barrier+Mon
 {time:2,  group:"Boss1",offset:0},
+],
+S0802:[
+//Barrier+Mon
+{time:2,  group:"Mon1X5",offset:0},
+{time:4,  group:"Mon1X5",offset:0},
+{time:6,  group:"Mon1X5",offset:0},
+{time:8,  group:"Mon1X5",offset:0},
 ],
 //---------------------------------------stage10------------------------------
 S1000:[

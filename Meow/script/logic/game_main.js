@@ -9,6 +9,7 @@ require("script/common/jsb_opengl.js");
 require("script/common/jsb_sys.js");
 require("script/common/audio_player.js");
 
+var design_size = cc.size(640,960);
 require("script/ui_parser/ui_parser.js");
 require("script/logic/LoginScene.js");
 require("script/logic/FightScene.js");
@@ -19,7 +20,7 @@ require("script/logic/PlayerData.js");
 //cc.dumpConfig();
 
 var director = cc.Director.getInstance();
-director.setDisplayStats(true);
+director.setDisplayStats(false);
 
 
 // set FPS. the default value is 1.0/60 if you don't call this

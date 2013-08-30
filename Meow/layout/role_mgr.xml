@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UIPage ID="RoleMgr" Delegator="RoleManage" StaticPage="true">
-  <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleMgrGoBack" Pos="L50,436"/>
-  <Image ID="RolePvwBg" ImageFile="ui/role_preview.png" Pos="-130,144"/>
-  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" Dimension="110,34" Alignment="Right" Scale="1" Pos="-51,-477"/>
-  <Image ID="Item1" ImageFile="ui/item_1.png" Pos="120,150"/>
-  <Image ID="Item1NumBg" ImageFile="ui/item_num.png" Pos="165,100"/>
-  <Label ID="LblItemNum" BmpFont="font/zl_1.fnt" Content="10" Dimension="40,30" Alignment="Center" Scale="0.8" Pos="167,102"/>
-  <Image ID="Item2" ImageFile="ui/item_add.png" Pos="245,150"/>
-  <Button ID="BtnStart" Style="BtnPLayEnter" Touch="onStartGame" Pos="184,-16"/>
-  <Image ID="TMypets" ImageFile="ui/t_my_pets.png" Pos="20,-120"/>
-  <Image ID="RoleCurrent" ImageFile="ui/role_cur.png" Pos="-200,-250"/>
-  <Image ID="Pet1" ImageFile="ui/pet_current.png" Pos="5,-260"/>
-  <Button ID="BtnAddPet" Style="BtnAddPet" Touch="onAddPet" Pos="205,-240"/>
-  <Button ID="BtnChangeRole" Style="BtnChgRole" Touch="onChangeRole" Pos="-260,-315"/>
+  <Button ID="BtnGoBack" Style="BtnBack" Touch="onRoleMgrGoBack" Pos="L50,T44" AutoSpace="true"/>
+  <Image ID="RolePvwBg" ImageFile="ui/role_preview.png" Pos="-130,144" AutoSpace="true"/>
+  <Label ID="LblLevel" BmpFont="font/zl_1.fnt" Content="Lv99" Dimension="110,34" Alignment="Right" Scale="1" Pos="-51,0" AutoSpace="true"/>
+  <Image ID="Item1" ImageFile="ui/item_1.png" Pos="120,150" AutoSpace="true"/>
+  <Image ID="Item1NumBg" ImageFile="ui/item_num.png" Pos="165,100" AutoSpace="true"/>
+  <Label ID="LblItemNum" BmpFont="font/zl_1.fnt" Content="10" Dimension="40,30" Alignment="Center" Scale="0.8" Pos="167,102" AutoSpace="true"/>
+  <Image ID="Item2" ImageFile="ui/item_add.png" Pos="245,150" AutoSpace="true"/>
+  <Button ID="BtnStart" Style="BtnPLayEnter" Touch="onStartGame" Pos="184,-16" AutoSpace="true"/>
+  <Image ID="TMypets" ImageFile="ui/t_my_pets.png" Pos="20,-120" AutoSpace="true"/>
+  <Image ID="RoleCurrent" ImageFile="ui/role_cur.png" Pos="-200,-250" AutoSpace="true"/>
+  <Image ID="Pet1" ImageFile="ui/pet_current.png" Pos="5,-260" AutoSpace="true"/>
+  <Button ID="BtnAddPet" Style="BtnAddPet" Touch="onAddPet" Pos="205,-240" AutoSpace="true"/>
+  <Button ID="BtnChangeRole" Style="BtnChgRole" Touch="onChangeRole" Pos="-260,-315" AutoSpace="true"/>
 </UIPage>

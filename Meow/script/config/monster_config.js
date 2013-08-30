@@ -4,7 +4,7 @@ var monsterConfig={
 Dog1:{
     hp:120,
     speed:200,
-    col_size:{width:80,height:100},   
+    col_size:{width:120,height:100},   
     anim_normal:{
     prefix:"monster/dog1/",
     start:1,
@@ -13,9 +13,9 @@ Dog1:{
     },
 },
 Dog2:{
-    hp:500,
+    hp:300,
     speed:200,
-    col_size:{width:80,height:100},
+    col_size:{width:120,height:100},
     img_hurt:"monster/dog2/hurt.png",
     
     anim_normal:{
@@ -28,7 +28,7 @@ Dog2:{
 Dog3:{
     hp:250,
     speed:0,
-    col_size:{width:80,height:100}, 
+    col_size:{width:120,height:100}, 
     img_hurt:"monster/dog3/hurt.png",
     hurt_idle:true,
     anim_normal:{
@@ -42,7 +42,7 @@ Dog3:{
 Dog4:{
     hp:250,
     speed:0,
-    col_size:{width:80,height:100},
+    col_size:{width:120,height:100},
     img_hurt:"monster/dog4/hurt.png",
     anim_normal:{
     prefix:"monster/dog4/",
@@ -54,7 +54,7 @@ Dog4:{
 Dog5:{
     hp:500,
     speed:100,
-    col_size:{width:80,height:100},
+    col_size:{width:120,height:100},
     anim_normal:{
     prefix:"monster/dog5/normal/",
     start:1,
@@ -71,7 +71,7 @@ Dog5:{
 Dog6:{
     hp:500,
     speed:100,
-    col_size:{width:80,height:100},
+    col_size:{width:120,height:100},
     anim_normal:{
     prefix:"monster/dog6/normal/",
     start:1,

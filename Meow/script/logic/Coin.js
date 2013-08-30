@@ -37,6 +37,7 @@ initCoin:function (config)
 
 die:function()
 {
+    cc.log("coin die!");
 },
 updateStat:function (dt)
 {

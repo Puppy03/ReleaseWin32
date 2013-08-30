@@ -4,6 +4,7 @@ var petConfig={
 Pet00:{
     pet_type:EPetType.ENormal,
     att:10,
+    avatar:"ui/pet2.png",
     actor:
     {
         prefix:"pet/PetLight_flyAni/1/",
@@ -15,6 +16,7 @@ Pet00:{
 Pet01:{
     pet_type:EPetType.ENormal,
     att:10,
+    avatar:"ui/pet3.png",
     actor:
     {
         prefix:"pet/PetLight_flyAni/2/",

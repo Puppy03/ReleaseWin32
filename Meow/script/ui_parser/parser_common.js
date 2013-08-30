@@ -2,45 +2,45 @@
 
 var win_size = cc.Director.getInstance().getWinSizeInPixels();
 
-function getUIPosVal(_val) 
-{
-    var flag = _val.substr(0,1);
-
-    switch(flag)
-    {
-     case "L":
-     {
-        return -win_size.width*0.5 + _val.substring(1)*1;
-        break;
-     }
-     case "R":
-     {
-        return win_size.width*0.5 - _val.substring(1)*1;
-        break;
-     }
-     case "T":
-     {
-        return win_size.height*0.5 - _val.substring(1)*1;
-        break;
-     }
-     case "B":
-     {
-        return -win_size.height*0.5 + _val.substring(1)*1;
-        break;
-     }
-     default:
-     {
-        return _val;
-        break;
-     }
-    }
-};
-
 function affinePostion(attrs,node) 
 {
-    var pos = attrs["Pos"].split(",");
-    var x = getUIPosVal(pos[0]);
-    var y = getUIPosVal(pos[1]);
+    var relative = false;
+    var pos = pos = attrs["Pos"].split(",");
+    if(attrs.hasOwnProperty("AutoSpace"))
+    {
+        relative = true;
+    }
+   
+    var flag_width = pos[0].substr(0,1);
+    var flag_height = pos[1].substr(0,1);
+    var x = 0;
+    var y = 0;
+     if(flag_width == "L")
+     {
+        x = -win_size.width*0.5 + pos[0].substring(1)*1;
+     }
+     else if(flag_width == "R")
+     {
+        x = win_size.width*0.5 - pos[0].substring(1)*1;
+     }
+     else
+     {
+        x = pos[0]*1;
+     }
+
+     if(flag_height == "B")
+     {
+        y = -win_size.height*0.5 + pos[1].substring(1)*(relative?win_size.height/design_size.height:1);
+     }
+     else if(flag_height == "T")
+     {
+        y = win_size.height*0.5 - pos[1].substring(1)*(relative?win_size.height/design_size.height:1);
+     }
+     else
+     {
+        y = pos[1]*(relative?win_size.height/design_size.height:1);
+     }
+
     node.setPosition(x,y);
 };
 
